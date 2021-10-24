@@ -16,6 +16,8 @@ namespace parserExcel
         public readonly string ClearRnnPattern = @"(РНН)\s{0,2}\d{3}\s{0,2}\d{3}\s{0,2}\d{3}\s{0,2}\d{3}";
         public readonly string AcctInKpInvoice = @"\s\d{11}\s";
         public readonly string DateInKPSheet = @"\s\d{2}[.]\d{2}[.]\d{4}\s";
+        public readonly string Clear = @"(/)?(,)?\s{0,2}(,)?\s{0,2}((тел)|(Тел)|(Доб)|(доб)|(Моб)|(моб)|(факс)|(факс))(:)?(.)?\s{0,2}\d{0,4}(-)?\d{0,4}(,)?";
+        public readonly string Clear2 = @"($,){0,2}";
 
     }
 }

@@ -156,10 +156,10 @@ namespace parserExcel
             customer = regexTel.Replace(customer, string.Empty, 1);
             customer = regexTel.Replace(customer, string.Empty, 1);
 
-            Regex regexClear = new Regex(@"(/)?(,)?\s{0,2}(,)?\s{0,2}((тел)|(Тел)|(Доб)|(доб)|(Моб)|(моб)|(факс)|(факс))(:)?(.)?\s{0,2}\d{0,4}(-)?\d{0,4}(,)?");
+            Regex regexClear = new Regex(regularFormular.Clear);
             customer = regexClear.Replace(customer, string.Empty, 1);
 
-            Regex regexClear2 = new Regex(@"($,){0,2}");
+            Regex regexClear2 = new Regex(regularFormular.Clear2);
             customer = regexClear2.Replace(customer, string.Empty, 1);
             customerInfo.Adress += customer;
             return customerInfo;
