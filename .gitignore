@@ -1,0 +1,6 @@
+.vs/
+.idea/
+*.user
+parserExcel/parserExcel/obj
+parserExcel/parserExcel/bin
+parserExcel/packages
