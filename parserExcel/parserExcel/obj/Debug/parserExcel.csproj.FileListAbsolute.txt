@@ -1,0 +1,7 @@
+C:\Users\asus\source\repos\parserExcel\parserExcel\bin\Debug\parserExcel.exe.config
+C:\Users\asus\source\repos\parserExcel\parserExcel\bin\Debug\parserExcel.exe
+C:\Users\asus\source\repos\parserExcel\parserExcel\bin\Debug\parserExcel.pdb
+C:\Users\asus\source\repos\parserExcel\parserExcel\obj\Debug\parserExcel.csproj.AssemblyReference.cache
+C:\Users\asus\source\repos\parserExcel\parserExcel\obj\Debug\parserExcel.csproj.CoreCompileInputs.cache
+C:\Users\asus\source\repos\parserExcel\parserExcel\obj\Debug\parserExcel.exe
+C:\Users\asus\source\repos\parserExcel\parserExcel\obj\Debug\parserExcel.pdb

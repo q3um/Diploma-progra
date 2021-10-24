@@ -1,0 +1,11 @@
+C:\Users\asus\source\repos\parserExcel\ContractFill\bin\Release\Договор.docx
+C:\Users\asus\source\repos\parserExcel\ContractFill\bin\Release\ContractFill.exe.config
+C:\Users\asus\source\repos\parserExcel\ContractFill\bin\Release\ContractFill.exe
+C:\Users\asus\source\repos\parserExcel\ContractFill\bin\Release\ContractFill.pdb
+C:\Users\asus\source\repos\parserExcel\ContractFill\obj\Release\ContractFill.Form1.resources
+C:\Users\asus\source\repos\parserExcel\ContractFill\obj\Release\ContractFill.Properties.Resources.resources
+C:\Users\asus\source\repos\parserExcel\ContractFill\obj\Release\ContractFill.csproj.GenerateResource.cache
+C:\Users\asus\source\repos\parserExcel\ContractFill\obj\Release\ContractFill.csproj.CoreCompileInputs.cache
+C:\Users\asus\source\repos\parserExcel\ContractFill\obj\Release\ContractFill.exe
+C:\Users\asus\source\repos\parserExcel\ContractFill\obj\Release\ContractFill.pdb
+C:\Users\asus\source\repos\parserExcel\ContractFill\obj\Release\ContractFill.csproj.AssemblyReference.cache
