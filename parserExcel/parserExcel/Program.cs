@@ -26,8 +26,8 @@ namespace parserExcel
                 }
                 parser.ProductItemProcessor(fileName, items, customerInfos);
             }
-            parser.printProductItems(items);
-            parser.printProductCustomerInfos(customerInfos);
+            parser.PrintProductItems(items);
+            parser.PrintProductCustomerInfos(customerInfos);
             //parser.CustomerProcessorToTxt();
 
             //Contract.formFillingContract();
