@@ -1,9 +1,9 @@
 .vs/
 .idea/
 *.user
-App.config
-parserExcel/ParserExc/obj
-parserExcel/ParserExc/bin
+*.config
+parserExcel/WindowsFormsApp1/obj
+parserExcel/WindowsFormsApp1/bin
 parserExcel/packages
 
 
