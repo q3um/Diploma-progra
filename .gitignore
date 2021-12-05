@@ -1,8 +1,9 @@
 .vs/
 .idea/
 *.user
-parserExcel/parserExcel/obj
-parserExcel/parserExcel/bin
+App.config
+parserExcel/pParserExc/obj
+parserExcel/parserExc/bin
 parserExcel/packages
-parserExcel/ContractFill/obj/
-parserExcel/ContractFill/bin/
+
+
