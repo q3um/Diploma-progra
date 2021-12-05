@@ -7,6 +7,8 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "parserExcel", "parserExcel\
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ContractFill", "ContractFill\ContractFill.csproj", "{ED28B9DA-24BB-416F-B6A0-A36E2CE11786}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ParserExc", "WindowsFormsApp1\ParserExc.csproj", "{0DDF743A-5DA9-49F6-A500-B9C79C0DC2C1}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -21,6 +23,10 @@ Global
 		{ED28B9DA-24BB-416F-B6A0-A36E2CE11786}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{ED28B9DA-24BB-416F-B6A0-A36E2CE11786}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{ED28B9DA-24BB-416F-B6A0-A36E2CE11786}.Release|Any CPU.Build.0 = Release|Any CPU
+		{0DDF743A-5DA9-49F6-A500-B9C79C0DC2C1}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{0DDF743A-5DA9-49F6-A500-B9C79C0DC2C1}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{0DDF743A-5DA9-49F6-A500-B9C79C0DC2C1}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{0DDF743A-5DA9-49F6-A500-B9C79C0DC2C1}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

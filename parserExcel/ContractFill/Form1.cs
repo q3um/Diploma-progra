@@ -1,18 +1,15 @@
-﻿using System;
+﻿using Cyriller;
+using Cyriller.Model;
+using System;
 using System.Collections.Generic;
-using System.ComponentModel;
-using System.Data;
-using System.Drawing;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 using System.Windows.Forms;
+
 
 namespace ContractFill
 {
-    public partial class Form1 : Form
+    public partial class ContractFill : Form
     {
-        public Form1()
+        public ContractFill()
         {
             InitializeComponent();
         }
@@ -25,31 +22,205 @@ namespace ContractFill
         private void button1_Click(object sender, EventArgs e)
         {
             var helper = new wordHelper("Договор.docx");
+            var parserInvoice = new ParserInvoice("Счет.xlsm");
+            List<ProductItem> productItems = new List<ProductItem>();
+            parserInvoice.ProductItemProcessor(productItems);
+            double sum = 0;
+            double nds = 0;
+            foreach (var item in productItems)
+            {
+                sum += item.Sum;
+            }
+            nds = sum * 20 / 120;
+            string sumProp = Сумма.Пропись(sum, Валюта.Рубли);
+            CyrNounCollection cyrNounCollection = new CyrNounCollection();
+            CyrAdjectiveCollection cyrAdjectiveCollection = new CyrAdjectiveCollection();
+            CyrPhrase cyrPhrase = new CyrPhrase(cyrNounCollection, cyrAdjectiveCollection);
+            CyrName cyrName = new CyrName();
+            CyrResult resultDolg = cyrPhrase.Decline(Dolgnost.Text, GetConditionsEnum.Similar);
+            CyrResult resultName = cyrName.Decline(FIO.Text);
+            string FioSokr = helper.FioSokr(FIO.Text);
+            string NumberContract = dateTimePicker1.Value.ToString("yyMdhm");
             var items = new Dictionary<string, string>
             {
-                {"{org}", textBox1.Text  },
-                {"{dolg-rod}", textBox2.Text  },
-                {"{fio-rod}", textBox3.Text  },
-                {"{na-osnovanii}", textBox4.Text  },
-                {"{INN}", textBox5.Text  },
-                {"{KPP}", textBox6.Text  },
-                {"{OGRN}", textBox7.Text  },
-                {"{Adress}", textBox8.Text  },
-                {"{Bank}", textBox9.Text  },
-                {"{Bik}", textBox10.Text  },
+                {"{number}", NumberContract  },
+                {"{org}", Organization.Text  },
+                {"{dolg-rod}", resultDolg.Родительный  },
+                {"{fio-rod}", resultName.Родительный  },
+                {"{na-osnovanii}", NaOsnovanii.Text  },
+                {"{INN}", INN.Text  },
+                {"{KPP}", KPP.Text  },
+                {"{Adress}", Adress.Text  },
+                {"{Bank}", Bank.Text  },
+                {"{Bik}", BIK.Text  },
                 {"{DATE}", dateTimePicker1.Value.ToString("dd.MM.yyyy")  },
-                {"{dolg-im}", textBox11.Text  },
-                {"{fio-im}", textBox12.Text  },
-                {"{r/s}", textBox13.Text  },
-                {"{k/s}", textBox14.Text  },
+                {"{dolg-im}", Dolgnost.Text  },
+                {"{fio-im}", FIO.Text  },
+                {"{fioSokr}", FioSokr  },
+                {"{r/s}", RS.Text },
+                {"{k/s}", KS.Text  },
+                {"{sumProp}", sumProp  },
+                {"{sum}", sum.ToString("F" + 2)  },
+                {"{nds}", nds.ToString("F" + 2)  },
+
             };
 
-            helper.Process(items);
+            helper.Process(items, productItems);
         }
 
         private void label14_Click(object sender, EventArgs e)
         {
 
+        }
+
+        //private void button3_Click(object sender, EventArgs e)
+        //{
+            
+        //}
+
+        private void label2_Click(object sender, EventArgs e)
+        {
+
+        }
+
+        private void button2_Click(object sender, EventArgs e)
+        {
+            var helper = new wordHelper("ДоговорКЗ.docx");
+            var parserInvoice = new ParserInvoice("Счет.xlsm");
+            List<ProductItem> productItems = new List<ProductItem>();
+            parserInvoice.ProductItemProcessor(productItems);
+            double sum = 0;
+            foreach (var item in productItems)
+            {
+                sum += item.Sum;
+            }
+            string sumProp = Сумма.Пропись(sum, Валюта.Рубли);
+            CyrNounCollection cyrNounCollection = new CyrNounCollection();
+            CyrAdjectiveCollection cyrAdjectiveCollection = new CyrAdjectiveCollection();
+            CyrPhrase cyrPhrase = new CyrPhrase(cyrNounCollection, cyrAdjectiveCollection);
+            CyrName cyrName = new CyrName();
+            CyrResult resultDolg = cyrPhrase.Decline(Dolgnost.Text, GetConditionsEnum.Similar);
+            CyrResult resultName = cyrName.Decline(FIO.Text);
+            string FioSokr = helper.FioSokr(FIO.Text);
+            string NumberContract = dateTimePicker1.Value.ToString("yyMdhm");
+            var items = new Dictionary<string, string>
+            {
+                {"{number}", NumberContract  },
+                {"{org}", Organization.Text  },
+                {"{dolg-rod}", resultDolg.Родительный  },
+                {"{fio-rod}", resultName.Родительный  },
+                {"{na-osnovanii}", NaOsnovanii.Text  },
+                {"{Adress}", Adress.Text  },
+                {"{Bank}", Bank.Text  },
+                {"{Bin}", BIN.Text  },
+                {"{Bik}", BIK.Text  },
+                {"{DATE}", dateTimePicker1.Value.ToString("dd.MM.yyyy")  },
+                {"{dolg-im}", Dolgnost.Text  },
+                {"{fio-im}", FIO.Text  },
+                {"{fioSokr}", FioSokr  },
+                {"{sumProp}", sumProp  },
+                {"{sum}", sum.ToString("F" + 2)  },
+
+            };
+
+            helper.Process(items, productItems);
+        }
+
+        private void tableLayoutPanel2_Paint(object sender, PaintEventArgs e)
+        {
+
+        }
+
+        private void button3_Click(object sender, EventArgs e)
+        {
+            var helper = new wordHelper("ДоговорРФ60.docx");
+            var parserInvoice = new ParserInvoice("Счет.xlsm");
+            List<ProductItem> productItems = new List<ProductItem>();
+            parserInvoice.ProductItemProcessor(productItems);
+            double sum = 0;
+            double nds = 0;
+            foreach (var item in productItems)
+            {
+                sum += item.Sum;
+            }
+            nds = sum * 20 / 120;
+            string sumProp = Сумма.Пропись(sum, Валюта.Рубли);
+            CyrNounCollection cyrNounCollection = new CyrNounCollection();
+            CyrAdjectiveCollection cyrAdjectiveCollection = new CyrAdjectiveCollection();
+            CyrPhrase cyrPhrase = new CyrPhrase(cyrNounCollection, cyrAdjectiveCollection);
+            CyrName cyrName = new CyrName();
+            CyrResult resultDolg = cyrPhrase.Decline(Dolgnost.Text, GetConditionsEnum.Similar);
+            CyrResult resultName = cyrName.Decline(FIO.Text);
+            string FioSokr = helper.FioSokr(FIO.Text);
+            string NumberContract = dateTimePicker1.Value.ToString("yyMdhm");
+            var items = new Dictionary<string, string>
+            {
+                {"{number}", NumberContract  },
+                {"{org}", Organization.Text  },
+                {"{dolg-rod}", resultDolg.Родительный  },
+                {"{fio-rod}", resultName.Родительный  },
+                {"{na-osnovanii}", NaOsnovanii.Text  },
+                {"{INN}", INN.Text  },
+                {"{KPP}", KPP.Text  },
+                {"{Adress}", Adress.Text  },
+                {"{Bank}", Bank.Text  },
+                {"{Bik}", BIK.Text  },
+                {"{DATE}", dateTimePicker1.Value.ToString("dd.MM.yyyy")  },
+                {"{dolg-im}", Dolgnost.Text  },
+                {"{fio-im}", FIO.Text  },
+                {"{fioSokr}", FioSokr  },
+                {"{r/s}", RS.Text },
+                {"{k/s}", KS.Text  },
+                {"{sumProp}", sumProp  },
+                {"{sum}", sum.ToString("F" + 2)  },
+                {"{nds}", nds.ToString("F" + 2)  },
+
+            };
+
+            helper.Process(items, productItems);
+        }
+
+        private void button4_Click(object sender, EventArgs e)
+        {
+            var helper = new wordHelper("ДоговорКЗ60.docx");
+            var parserInvoice = new ParserInvoice("Счет.xlsm");
+            List<ProductItem> productItems = new List<ProductItem>();
+            parserInvoice.ProductItemProcessor(productItems);
+            double sum = 0;
+            foreach (var item in productItems)
+            {
+                sum += item.Sum;
+            }
+            string sumProp = Сумма.Пропись(sum, Валюта.Рубли);
+            CyrNounCollection cyrNounCollection = new CyrNounCollection();
+            CyrAdjectiveCollection cyrAdjectiveCollection = new CyrAdjectiveCollection();
+            CyrPhrase cyrPhrase = new CyrPhrase(cyrNounCollection, cyrAdjectiveCollection);
+            CyrName cyrName = new CyrName();
+            CyrResult resultDolg = cyrPhrase.Decline(Dolgnost.Text, GetConditionsEnum.Similar);
+            CyrResult resultName = cyrName.Decline(FIO.Text);
+            string FioSokr = helper.FioSokr(FIO.Text);
+            string NumberContract = dateTimePicker1.Value.ToString("yyMdhm");
+            var items = new Dictionary<string, string>
+            {
+                {"{number}", NumberContract  },
+                {"{org}", Organization.Text  },
+                {"{dolg-rod}", resultDolg.Родительный  },
+                {"{fio-rod}", resultName.Родительный  },
+                {"{na-osnovanii}", NaOsnovanii.Text  },
+                {"{Adress}", Adress.Text  },
+                {"{Bank}", Bank.Text  },
+                {"{Bin}", BIN.Text  },
+                {"{Bik}", BIK.Text  },
+                {"{DATE}", dateTimePicker1.Value.ToString("dd.MM.yyyy")  },
+                {"{dolg-im}", Dolgnost.Text  },
+                {"{fio-im}", FIO.Text  },
+                {"{fioSokr}", FioSokr  },
+                {"{sumProp}", sumProp  },
+                {"{sum}", sum.ToString("F" + 2)  },
+
+            };
+
+            helper.Process(items, productItems);
         }
     }
 }

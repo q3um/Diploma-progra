@@ -1,0 +1,10 @@
+C:\diploma\Diploma-progra\parserExcel\WindowsFormsApp1\bin\Release\WindowsFormsApp1.exe.config
+C:\diploma\Diploma-progra\parserExcel\WindowsFormsApp1\bin\Release\WindowsFormsApp1.exe
+C:\diploma\Diploma-progra\parserExcel\WindowsFormsApp1\bin\Release\WindowsFormsApp1.pdb
+C:\diploma\Diploma-progra\parserExcel\WindowsFormsApp1\obj\Release\WindowsFormsApp1.csproj.AssemblyReference.cache
+C:\diploma\Diploma-progra\parserExcel\WindowsFormsApp1\obj\Release\WindowsFormsApp1.Form1.resources
+C:\diploma\Diploma-progra\parserExcel\WindowsFormsApp1\obj\Release\WindowsFormsApp1.Properties.Resources.resources
+C:\diploma\Diploma-progra\parserExcel\WindowsFormsApp1\obj\Release\WindowsFormsApp1.csproj.GenerateResource.cache
+C:\diploma\Diploma-progra\parserExcel\WindowsFormsApp1\obj\Release\WindowsFormsApp1.csproj.CoreCompileInputs.cache
+C:\diploma\Diploma-progra\parserExcel\WindowsFormsApp1\obj\Release\WindowsFormsApp1.exe
+C:\diploma\Diploma-progra\parserExcel\WindowsFormsApp1\obj\Release\WindowsFormsApp1.pdb

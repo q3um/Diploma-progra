@@ -51,7 +51,6 @@
   <ItemGroup>
     <Compile Include="Contract.cs" />
     <Compile Include="CustomerInfo.cs" />
-    <Compile Include="ProductInfo.cs" />
     <Compile Include="ProductItem.cs" />
     <Compile Include="Parser.cs" />
     <Compile Include="Program.cs" />

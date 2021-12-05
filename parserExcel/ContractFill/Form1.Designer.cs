@@ -3,7 +3,7 @@ using System;
 
 namespace ContractFill
 {
-    partial class Form1
+    partial class ContractFill
     {
         /// <summary>
         /// Обязательная переменная конструктора.
@@ -31,24 +31,23 @@ namespace ContractFill
         /// </summary>
         private void InitializeComponent()
         {
+            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(ContractFill));
             this.dateTimePicker1 = new System.Windows.Forms.DateTimePicker();
-            this.textBox12 = new System.Windows.Forms.TextBox();
-            this.textBox11 = new System.Windows.Forms.TextBox();
-            this.textBox10 = new System.Windows.Forms.TextBox();
-            this.textBox9 = new System.Windows.Forms.TextBox();
-            this.textBox8 = new System.Windows.Forms.TextBox();
-            this.textBox7 = new System.Windows.Forms.TextBox();
-            this.textBox6 = new System.Windows.Forms.TextBox();
-            this.textBox5 = new System.Windows.Forms.TextBox();
-            this.textBox4 = new System.Windows.Forms.TextBox();
-            this.textBox3 = new System.Windows.Forms.TextBox();
-            this.textBox2 = new System.Windows.Forms.TextBox();
-            this.textBox1 = new System.Windows.Forms.TextBox();
+            this.KS = new System.Windows.Forms.TextBox();
+            this.RS = new System.Windows.Forms.TextBox();
+            this.BIK = new System.Windows.Forms.TextBox();
+            this.Bank = new System.Windows.Forms.TextBox();
+            this.Adress = new System.Windows.Forms.TextBox();
+            this.BIN = new System.Windows.Forms.TextBox();
+            this.KPP = new System.Windows.Forms.TextBox();
+            this.INN = new System.Windows.Forms.TextBox();
+            this.NaOsnovanii = new System.Windows.Forms.TextBox();
+            this.FIO = new System.Windows.Forms.TextBox();
+            this.Dolgnost = new System.Windows.Forms.TextBox();
+            this.Organization = new System.Windows.Forms.TextBox();
             this.label2 = new System.Windows.Forms.Label();
-            this.label13 = new System.Windows.Forms.Label();
             this.label11 = new System.Windows.Forms.Label();
             this.label4 = new System.Windows.Forms.Label();
-            this.label12 = new System.Windows.Forms.Label();
             this.label10 = new System.Windows.Forms.Label();
             this.label9 = new System.Windows.Forms.Label();
             this.label8 = new System.Windows.Forms.Label();
@@ -58,120 +57,123 @@ namespace ContractFill
             this.label3 = new System.Windows.Forms.Label();
             this.label1 = new System.Windows.Forms.Label();
             this.tableLayoutPanel1 = new System.Windows.Forms.TableLayoutPanel();
+            this.label15 = new System.Windows.Forms.Label();
+            this.label16 = new System.Windows.Forms.Label();
             this.tableLayoutPanel2 = new System.Windows.Forms.TableLayoutPanel();
             this.button1 = new System.Windows.Forms.Button();
             this.button2 = new System.Windows.Forms.Button();
-            this.label15 = new System.Windows.Forms.Label();
-            this.label16 = new System.Windows.Forms.Label();
-            this.textBox13 = new System.Windows.Forms.TextBox();
-            this.textBox14 = new System.Windows.Forms.TextBox();
+            this.tableLayoutPanel3 = new System.Windows.Forms.TableLayoutPanel();
+            this.button3 = new System.Windows.Forms.Button();
+            this.button4 = new System.Windows.Forms.Button();
+            this.tableLayoutPanel4 = new System.Windows.Forms.TableLayoutPanel();
             this.tableLayoutPanel1.SuspendLayout();
             this.tableLayoutPanel2.SuspendLayout();
+            this.tableLayoutPanel3.SuspendLayout();
             this.SuspendLayout();
             // 
             // dateTimePicker1
             // 
             this.dateTimePicker1.Format = System.Windows.Forms.DateTimePickerFormat.Short;
-            this.dateTimePicker1.Location = new System.Drawing.Point(366, 353);
+            this.dateTimePicker1.Location = new System.Drawing.Point(359, 353);
             this.dateTimePicker1.Name = "dateTimePicker1";
             this.dateTimePicker1.Size = new System.Drawing.Size(100, 22);
             this.dateTimePicker1.TabIndex = 13;
             // 
-            // textBox12
+            // KS
             // 
-            this.textBox12.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.textBox12.Location = new System.Drawing.Point(366, 423);
-            this.textBox12.Name = "textBox12";
-            this.textBox12.Size = new System.Drawing.Size(561, 22);
-            this.textBox12.TabIndex = 12;
+            this.KS.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.KS.Location = new System.Drawing.Point(359, 416);
+            this.KS.Name = "KS";
+            this.KS.Size = new System.Drawing.Size(420, 22);
+            this.KS.TabIndex = 12;
             // 
-            // textBox11
+            // RS
             // 
-            this.textBox11.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.textBox11.Location = new System.Drawing.Point(366, 388);
-            this.textBox11.Name = "textBox11";
-            this.textBox11.Size = new System.Drawing.Size(561, 22);
-            this.textBox11.TabIndex = 11;
+            this.RS.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.RS.Location = new System.Drawing.Point(359, 388);
+            this.RS.Name = "RS";
+            this.RS.Size = new System.Drawing.Size(420, 22);
+            this.RS.TabIndex = 11;
             // 
-            // textBox10
+            // BIK
             // 
-            this.textBox10.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.textBox10.Location = new System.Drawing.Point(366, 318);
-            this.textBox10.Name = "textBox10";
-            this.textBox10.Size = new System.Drawing.Size(561, 22);
-            this.textBox10.TabIndex = 10;
+            this.BIK.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.BIK.Location = new System.Drawing.Point(359, 318);
+            this.BIK.Name = "BIK";
+            this.BIK.Size = new System.Drawing.Size(420, 22);
+            this.BIK.TabIndex = 10;
             // 
-            // textBox9
+            // Bank
             // 
-            this.textBox9.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.textBox9.Location = new System.Drawing.Point(366, 283);
-            this.textBox9.Name = "textBox9";
-            this.textBox9.Size = new System.Drawing.Size(561, 22);
-            this.textBox9.TabIndex = 9;
+            this.Bank.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.Bank.Location = new System.Drawing.Point(359, 283);
+            this.Bank.Name = "Bank";
+            this.Bank.Size = new System.Drawing.Size(420, 22);
+            this.Bank.TabIndex = 9;
             // 
-            // textBox8
+            // Adress
             // 
-            this.textBox8.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.textBox8.Location = new System.Drawing.Point(366, 248);
-            this.textBox8.Name = "textBox8";
-            this.textBox8.Size = new System.Drawing.Size(561, 22);
-            this.textBox8.TabIndex = 8;
+            this.Adress.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.Adress.Location = new System.Drawing.Point(359, 248);
+            this.Adress.Name = "Adress";
+            this.Adress.Size = new System.Drawing.Size(420, 22);
+            this.Adress.TabIndex = 8;
             // 
-            // textBox7
+            // BIN
             // 
-            this.textBox7.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.textBox7.Location = new System.Drawing.Point(366, 213);
-            this.textBox7.Name = "textBox7";
-            this.textBox7.Size = new System.Drawing.Size(561, 22);
-            this.textBox7.TabIndex = 7;
+            this.BIN.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.BIN.Location = new System.Drawing.Point(359, 213);
+            this.BIN.Name = "BIN";
+            this.BIN.Size = new System.Drawing.Size(420, 22);
+            this.BIN.TabIndex = 7;
             // 
-            // textBox6
+            // KPP
             // 
-            this.textBox6.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.textBox6.Location = new System.Drawing.Point(366, 178);
-            this.textBox6.Name = "textBox6";
-            this.textBox6.Size = new System.Drawing.Size(561, 22);
-            this.textBox6.TabIndex = 6;
+            this.KPP.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.KPP.Location = new System.Drawing.Point(359, 178);
+            this.KPP.Name = "KPP";
+            this.KPP.Size = new System.Drawing.Size(420, 22);
+            this.KPP.TabIndex = 6;
             // 
-            // textBox5
+            // INN
             // 
-            this.textBox5.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.textBox5.Location = new System.Drawing.Point(366, 143);
-            this.textBox5.Name = "textBox5";
-            this.textBox5.Size = new System.Drawing.Size(561, 22);
-            this.textBox5.TabIndex = 5;
+            this.INN.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.INN.Location = new System.Drawing.Point(359, 143);
+            this.INN.Name = "INN";
+            this.INN.Size = new System.Drawing.Size(420, 22);
+            this.INN.TabIndex = 5;
             // 
-            // textBox4
+            // NaOsnovanii
             // 
-            this.textBox4.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.textBox4.Location = new System.Drawing.Point(366, 108);
-            this.textBox4.Name = "textBox4";
-            this.textBox4.Size = new System.Drawing.Size(561, 22);
-            this.textBox4.TabIndex = 4;
+            this.NaOsnovanii.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.NaOsnovanii.Location = new System.Drawing.Point(359, 108);
+            this.NaOsnovanii.Name = "NaOsnovanii";
+            this.NaOsnovanii.Size = new System.Drawing.Size(420, 22);
+            this.NaOsnovanii.TabIndex = 4;
             // 
-            // textBox3
+            // FIO
             // 
-            this.textBox3.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.textBox3.Location = new System.Drawing.Point(366, 73);
-            this.textBox3.Name = "textBox3";
-            this.textBox3.Size = new System.Drawing.Size(561, 22);
-            this.textBox3.TabIndex = 3;
+            this.FIO.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.FIO.Location = new System.Drawing.Point(359, 73);
+            this.FIO.Name = "FIO";
+            this.FIO.Size = new System.Drawing.Size(420, 22);
+            this.FIO.TabIndex = 3;
             // 
-            // textBox2
+            // Dolgnost
             // 
-            this.textBox2.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.textBox2.Location = new System.Drawing.Point(366, 38);
-            this.textBox2.Name = "textBox2";
-            this.textBox2.Size = new System.Drawing.Size(561, 22);
-            this.textBox2.TabIndex = 2;
+            this.Dolgnost.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.Dolgnost.Location = new System.Drawing.Point(359, 38);
+            this.Dolgnost.Name = "Dolgnost";
+            this.Dolgnost.Size = new System.Drawing.Size(420, 22);
+            this.Dolgnost.TabIndex = 2;
             // 
-            // textBox1
+            // Organization
             // 
-            this.textBox1.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.textBox1.Location = new System.Drawing.Point(366, 3);
-            this.textBox1.Name = "textBox1";
-            this.textBox1.Size = new System.Drawing.Size(561, 22);
-            this.textBox1.TabIndex = 1;
+            this.Organization.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.Organization.Location = new System.Drawing.Point(359, 3);
+            this.Organization.Name = "Organization";
+            this.Organization.Size = new System.Drawing.Size(420, 22);
+            this.Organization.TabIndex = 1;
             // 
             // label2
             // 
@@ -181,28 +183,17 @@ namespace ContractFill
             this.label2.Location = new System.Drawing.Point(3, 35);
             this.label2.Name = "label2";
             this.label2.Padding = new System.Windows.Forms.Padding(5);
-            this.label2.Size = new System.Drawing.Size(357, 35);
+            this.label2.Size = new System.Drawing.Size(350, 35);
             this.label2.TabIndex = 0;
-            this.label2.Text = "Должность представителя в род.п.";
-            // 
-            // label13
-            // 
-            this.label13.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
-            this.label13.AutoSize = true;
-            this.label13.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
-            this.label13.Location = new System.Drawing.Point(221, 420);
-            this.label13.Name = "label13";
-            this.label13.Padding = new System.Windows.Forms.Padding(5);
-            this.label13.Size = new System.Drawing.Size(139, 35);
-            this.label13.TabIndex = 0;
-            this.label13.Text = "ФИО в им.п.";
+            this.label2.Text = "Должность подписывающего лица";
+            this.label2.Click += new System.EventHandler(this.label2_Click);
             // 
             // label11
             // 
             this.label11.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
             this.label11.AutoSize = true;
             this.label11.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
-            this.label11.Location = new System.Drawing.Point(214, 105);
+            this.label11.Location = new System.Drawing.Point(207, 105);
             this.label11.Name = "label11";
             this.label11.Padding = new System.Windows.Forms.Padding(5);
             this.label11.Size = new System.Drawing.Size(146, 35);
@@ -214,31 +205,19 @@ namespace ContractFill
             this.label4.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
             this.label4.AutoSize = true;
             this.label4.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
-            this.label4.Location = new System.Drawing.Point(289, 350);
+            this.label4.Location = new System.Drawing.Point(282, 350);
             this.label4.Name = "label4";
             this.label4.Padding = new System.Windows.Forms.Padding(5);
             this.label4.Size = new System.Drawing.Size(71, 35);
             this.label4.TabIndex = 0;
             this.label4.Text = "Дата";
             // 
-            // label12
-            // 
-            this.label12.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
-            this.label12.AutoSize = true;
-            this.label12.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
-            this.label12.Location = new System.Drawing.Point(158, 385);
-            this.label12.Name = "label12";
-            this.label12.Padding = new System.Windows.Forms.Padding(5);
-            this.label12.Size = new System.Drawing.Size(202, 35);
-            this.label12.TabIndex = 0;
-            this.label12.Text = "Должность в им.п.";
-            // 
             // label10
             // 
             this.label10.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
             this.label10.AutoSize = true;
             this.label10.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
-            this.label10.Location = new System.Drawing.Point(300, 315);
+            this.label10.Location = new System.Drawing.Point(293, 315);
             this.label10.Name = "label10";
             this.label10.Padding = new System.Windows.Forms.Padding(5);
             this.label10.Size = new System.Drawing.Size(60, 35);
@@ -250,7 +229,7 @@ namespace ContractFill
             this.label9.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
             this.label9.AutoSize = true;
             this.label9.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
-            this.label9.Location = new System.Drawing.Point(295, 280);
+            this.label9.Location = new System.Drawing.Point(288, 280);
             this.label9.Name = "label9";
             this.label9.Padding = new System.Windows.Forms.Padding(5);
             this.label9.Size = new System.Drawing.Size(65, 35);
@@ -262,7 +241,7 @@ namespace ContractFill
             this.label8.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
             this.label8.AutoSize = true;
             this.label8.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
-            this.label8.Location = new System.Drawing.Point(241, 245);
+            this.label8.Location = new System.Drawing.Point(234, 245);
             this.label8.Name = "label8";
             this.label8.Padding = new System.Windows.Forms.Padding(5);
             this.label8.Size = new System.Drawing.Size(119, 35);
@@ -274,36 +253,36 @@ namespace ContractFill
             this.label7.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
             this.label7.AutoSize = true;
             this.label7.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
-            this.label7.Location = new System.Drawing.Point(286, 210);
+            this.label7.Location = new System.Drawing.Point(182, 210);
             this.label7.Name = "label7";
             this.label7.Padding = new System.Windows.Forms.Padding(5);
-            this.label7.Size = new System.Drawing.Size(74, 35);
+            this.label7.Size = new System.Drawing.Size(171, 35);
             this.label7.TabIndex = 0;
-            this.label7.Text = "ОГРН";
+            this.label7.Text = "БИН(Казахстан)";
             // 
             // label6
             // 
             this.label6.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
             this.label6.AutoSize = true;
             this.label6.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
-            this.label6.Location = new System.Drawing.Point(298, 175);
+            this.label6.Location = new System.Drawing.Point(241, 175);
             this.label6.Name = "label6";
             this.label6.Padding = new System.Windows.Forms.Padding(5);
-            this.label6.Size = new System.Drawing.Size(62, 35);
+            this.label6.Size = new System.Drawing.Size(112, 35);
             this.label6.TabIndex = 0;
-            this.label6.Text = "КПП";
+            this.label6.Text = "КПП (РФ)";
             // 
             // label5
             // 
             this.label5.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
             this.label5.AutoSize = true;
             this.label5.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
-            this.label5.Location = new System.Drawing.Point(293, 140);
+            this.label5.Location = new System.Drawing.Point(241, 140);
             this.label5.Name = "label5";
             this.label5.Padding = new System.Windows.Forms.Padding(5);
-            this.label5.Size = new System.Drawing.Size(67, 35);
+            this.label5.Size = new System.Drawing.Size(112, 35);
             this.label5.TabIndex = 0;
-            this.label5.Text = "ИНН ";
+            this.label5.Text = "ИНН (РФ)";
             // 
             // label3
             // 
@@ -313,16 +292,16 @@ namespace ContractFill
             this.label3.Location = new System.Drawing.Point(66, 70);
             this.label3.Name = "label3";
             this.label3.Padding = new System.Windows.Forms.Padding(5);
-            this.label3.Size = new System.Drawing.Size(294, 35);
+            this.label3.Size = new System.Drawing.Size(287, 35);
             this.label3.TabIndex = 0;
-            this.label3.Text = "ФИО представителя в род.п.";
+            this.label3.Text = "ФИО подписывающего лица";
             // 
             // label1
             // 
             this.label1.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
             this.label1.AutoSize = true;
             this.label1.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
-            this.label1.Location = new System.Drawing.Point(129, 0);
+            this.label1.Location = new System.Drawing.Point(122, 0);
             this.label1.Name = "label1";
             this.label1.Padding = new System.Windows.Forms.Padding(5);
             this.label1.Size = new System.Drawing.Size(231, 35);
@@ -334,6 +313,7 @@ namespace ContractFill
             this.tableLayoutPanel1.ColumnCount = 2;
             this.tableLayoutPanel1.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle());
             this.tableLayoutPanel1.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 100F));
+            this.tableLayoutPanel1.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 20F));
             this.tableLayoutPanel1.Controls.Add(this.label1, 0, 0);
             this.tableLayoutPanel1.Controls.Add(this.label3, 0, 2);
             this.tableLayoutPanel1.Controls.Add(this.label5, 0, 4);
@@ -342,29 +322,27 @@ namespace ContractFill
             this.tableLayoutPanel1.Controls.Add(this.label8, 0, 7);
             this.tableLayoutPanel1.Controls.Add(this.label9, 0, 8);
             this.tableLayoutPanel1.Controls.Add(this.label10, 0, 9);
-            this.tableLayoutPanel1.Controls.Add(this.label12, 0, 11);
             this.tableLayoutPanel1.Controls.Add(this.label4, 0, 10);
             this.tableLayoutPanel1.Controls.Add(this.label11, 0, 3);
-            this.tableLayoutPanel1.Controls.Add(this.label13, 0, 12);
             this.tableLayoutPanel1.Controls.Add(this.label2, 0, 1);
-            this.tableLayoutPanel1.Controls.Add(this.textBox1, 1, 0);
-            this.tableLayoutPanel1.Controls.Add(this.textBox2, 1, 1);
-            this.tableLayoutPanel1.Controls.Add(this.textBox3, 1, 2);
-            this.tableLayoutPanel1.Controls.Add(this.textBox4, 1, 3);
-            this.tableLayoutPanel1.Controls.Add(this.textBox5, 1, 4);
-            this.tableLayoutPanel1.Controls.Add(this.textBox6, 1, 5);
-            this.tableLayoutPanel1.Controls.Add(this.textBox7, 1, 6);
-            this.tableLayoutPanel1.Controls.Add(this.textBox8, 1, 7);
-            this.tableLayoutPanel1.Controls.Add(this.textBox9, 1, 8);
-            this.tableLayoutPanel1.Controls.Add(this.textBox10, 1, 9);
-            this.tableLayoutPanel1.Controls.Add(this.textBox11, 1, 11);
-            this.tableLayoutPanel1.Controls.Add(this.textBox12, 1, 12);
+            this.tableLayoutPanel1.Controls.Add(this.Organization, 1, 0);
+            this.tableLayoutPanel1.Controls.Add(this.Dolgnost, 1, 1);
+            this.tableLayoutPanel1.Controls.Add(this.FIO, 1, 2);
+            this.tableLayoutPanel1.Controls.Add(this.NaOsnovanii, 1, 3);
+            this.tableLayoutPanel1.Controls.Add(this.INN, 1, 4);
+            this.tableLayoutPanel1.Controls.Add(this.KPP, 1, 5);
+            this.tableLayoutPanel1.Controls.Add(this.BIN, 1, 6);
+            this.tableLayoutPanel1.Controls.Add(this.Adress, 1, 7);
+            this.tableLayoutPanel1.Controls.Add(this.Bank, 1, 8);
+            this.tableLayoutPanel1.Controls.Add(this.BIK, 1, 9);
+            this.tableLayoutPanel1.Controls.Add(this.RS, 1, 11);
+            this.tableLayoutPanel1.Controls.Add(this.KS, 1, 12);
             this.tableLayoutPanel1.Controls.Add(this.dateTimePicker1, 1, 10);
-            this.tableLayoutPanel1.Controls.Add(this.tableLayoutPanel2, 1, 15);
-            this.tableLayoutPanel1.Controls.Add(this.label15, 0, 13);
-            this.tableLayoutPanel1.Controls.Add(this.label16, 0, 14);
-            this.tableLayoutPanel1.Controls.Add(this.textBox13, 1, 13);
-            this.tableLayoutPanel1.Controls.Add(this.textBox14, 1, 14);
+            this.tableLayoutPanel1.Controls.Add(this.label15, 0, 11);
+            this.tableLayoutPanel1.Controls.Add(this.label16, 0, 12);
+            this.tableLayoutPanel1.Controls.Add(this.tableLayoutPanel2, 1, 13);
+            this.tableLayoutPanel1.Controls.Add(this.tableLayoutPanel3, 1, 14);
+            this.tableLayoutPanel1.Controls.Add(this.tableLayoutPanel4, 0, 13);
             this.tableLayoutPanel1.Dock = System.Windows.Forms.DockStyle.Fill;
             this.tableLayoutPanel1.Location = new System.Drawing.Point(0, 0);
             this.tableLayoutPanel1.Name = "tableLayoutPanel1";
@@ -382,13 +360,37 @@ namespace ContractFill
             this.tableLayoutPanel1.RowStyles.Add(new System.Windows.Forms.RowStyle());
             this.tableLayoutPanel1.RowStyles.Add(new System.Windows.Forms.RowStyle());
             this.tableLayoutPanel1.RowStyles.Add(new System.Windows.Forms.RowStyle());
-            this.tableLayoutPanel1.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 33F));
-            this.tableLayoutPanel1.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 35F));
+            this.tableLayoutPanel1.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 44F));
+            this.tableLayoutPanel1.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 49F));
             this.tableLayoutPanel1.RowStyles.Add(new System.Windows.Forms.RowStyle());
-            this.tableLayoutPanel1.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 39F));
-            this.tableLayoutPanel1.Size = new System.Drawing.Size(930, 731);
+            this.tableLayoutPanel1.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 14F));
+            this.tableLayoutPanel1.Size = new System.Drawing.Size(782, 603);
             this.tableLayoutPanel1.TabIndex = 0;
             this.tableLayoutPanel1.Paint += new System.Windows.Forms.PaintEventHandler(this.tableLayoutPanel1_Paint);
+            // 
+            // label15
+            // 
+            this.label15.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
+            this.label15.AutoSize = true;
+            this.label15.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
+            this.label15.Location = new System.Drawing.Point(263, 385);
+            this.label15.Name = "label15";
+            this.label15.Size = new System.Drawing.Size(90, 25);
+            this.label15.TabIndex = 17;
+            this.label15.Text = "Р\\с (РФ)";
+            this.label15.TextAlign = System.Drawing.ContentAlignment.TopRight;
+            // 
+            // label16
+            // 
+            this.label16.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
+            this.label16.AutoSize = true;
+            this.label16.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
+            this.label16.Location = new System.Drawing.Point(263, 413);
+            this.label16.Name = "label16";
+            this.label16.Size = new System.Drawing.Size(90, 25);
+            this.label16.TabIndex = 18;
+            this.label16.Text = "К\\с (РФ)";
+            this.label16.TextAlign = System.Drawing.ContentAlignment.TopRight;
             // 
             // tableLayoutPanel2
             // 
@@ -397,21 +399,22 @@ namespace ContractFill
             this.tableLayoutPanel2.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 50F));
             this.tableLayoutPanel2.Controls.Add(this.button1, 0, 2);
             this.tableLayoutPanel2.Controls.Add(this.button2, 1, 2);
-            this.tableLayoutPanel2.Location = new System.Drawing.Point(366, 526);
+            this.tableLayoutPanel2.Location = new System.Drawing.Point(359, 444);
             this.tableLayoutPanel2.Name = "tableLayoutPanel2";
             this.tableLayoutPanel2.RowCount = 3;
             this.tableLayoutPanel2.RowStyles.Add(new System.Windows.Forms.RowStyle());
             this.tableLayoutPanel2.RowStyles.Add(new System.Windows.Forms.RowStyle());
             this.tableLayoutPanel2.RowStyles.Add(new System.Windows.Forms.RowStyle());
-            this.tableLayoutPanel2.Size = new System.Drawing.Size(346, 36);
+            this.tableLayoutPanel2.Size = new System.Drawing.Size(346, 37);
             this.tableLayoutPanel2.TabIndex = 15;
+            this.tableLayoutPanel2.Paint += new System.Windows.Forms.PaintEventHandler(this.tableLayoutPanel2_Paint);
             // 
             // button1
             // 
             this.button1.Dock = System.Windows.Forms.DockStyle.Fill;
             this.button1.Location = new System.Drawing.Point(3, 3);
             this.button1.Name = "button1";
-            this.button1.Size = new System.Drawing.Size(167, 30);
+            this.button1.Size = new System.Drawing.Size(167, 33);
             this.button1.TabIndex = 14;
             this.button1.Text = "Договор РФ";
             this.button1.UseVisualStyleBackColor = true;
@@ -419,66 +422,78 @@ namespace ContractFill
             // 
             // button2
             // 
-            this.button2.Dock = System.Windows.Forms.DockStyle.Fill;
             this.button2.Location = new System.Drawing.Point(176, 3);
             this.button2.Name = "button2";
-            this.button2.Size = new System.Drawing.Size(167, 30);
-            this.button2.TabIndex = 14;
+            this.button2.Size = new System.Drawing.Size(167, 33);
+            this.button2.TabIndex = 15;
             this.button2.Text = "Договор Казахстан";
             this.button2.UseVisualStyleBackColor = true;
-            this.button2.Click += new System.EventHandler(this.button1_Click);
+            this.button2.Click += new System.EventHandler(this.button2_Click);
             // 
-            // label15
+            // tableLayoutPanel3
             // 
-            this.label15.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
-            this.label15.AutoSize = true;
-            this.label15.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
-            this.label15.Location = new System.Drawing.Point(320, 455);
-            this.label15.Name = "label15";
-            this.label15.Size = new System.Drawing.Size(40, 25);
-            this.label15.TabIndex = 17;
-            this.label15.Text = "Р\\с";
-            this.label15.TextAlign = System.Drawing.ContentAlignment.TopRight;
+            this.tableLayoutPanel3.ColumnCount = 2;
+            this.tableLayoutPanel3.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 50F));
+            this.tableLayoutPanel3.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 50F));
+            this.tableLayoutPanel3.Controls.Add(this.button3, 0, 2);
+            this.tableLayoutPanel3.Controls.Add(this.button4, 1, 2);
+            this.tableLayoutPanel3.Location = new System.Drawing.Point(359, 488);
+            this.tableLayoutPanel3.Name = "tableLayoutPanel3";
+            this.tableLayoutPanel3.RowCount = 3;
+            this.tableLayoutPanel3.RowStyles.Add(new System.Windows.Forms.RowStyle());
+            this.tableLayoutPanel3.RowStyles.Add(new System.Windows.Forms.RowStyle());
+            this.tableLayoutPanel3.RowStyles.Add(new System.Windows.Forms.RowStyle());
+            this.tableLayoutPanel3.Size = new System.Drawing.Size(346, 37);
+            this.tableLayoutPanel3.TabIndex = 19;
             // 
-            // label16
+            // button3
             // 
-            this.label16.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
-            this.label16.AutoSize = true;
-            this.label16.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
-            this.label16.Location = new System.Drawing.Point(320, 488);
-            this.label16.Name = "label16";
-            this.label16.Size = new System.Drawing.Size(40, 25);
-            this.label16.TabIndex = 18;
-            this.label16.Text = "К\\с";
-            this.label16.TextAlign = System.Drawing.ContentAlignment.TopRight;
+            this.button3.Location = new System.Drawing.Point(3, 3);
+            this.button3.Name = "button3";
+            this.button3.Size = new System.Drawing.Size(167, 34);
+            this.button3.TabIndex = 0;
+            this.button3.Text = "Договор РФ 60/40";
+            this.button3.UseVisualStyleBackColor = true;
+            this.button3.Click += new System.EventHandler(this.button3_Click);
             // 
-            // textBox13
+            // button4
             // 
-            this.textBox13.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.textBox13.Location = new System.Drawing.Point(366, 458);
-            this.textBox13.Name = "textBox13";
-            this.textBox13.Size = new System.Drawing.Size(561, 22);
-            this.textBox13.TabIndex = 19;
+            this.button4.AutoSize = true;
+            this.button4.Location = new System.Drawing.Point(176, 3);
+            this.button4.Name = "button4";
+            this.button4.Size = new System.Drawing.Size(167, 34);
+            this.button4.TabIndex = 1;
+            this.button4.Text = "Договор КЗ 60/40";
+            this.button4.UseVisualStyleBackColor = true;
+            this.button4.Click += new System.EventHandler(this.button4_Click);
             // 
-            // textBox14
+            // tableLayoutPanel4
             // 
-            this.textBox14.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.textBox14.Location = new System.Drawing.Point(366, 491);
-            this.textBox14.Name = "textBox14";
-            this.textBox14.Size = new System.Drawing.Size(561, 22);
-            this.textBox14.TabIndex = 20;
+            this.tableLayoutPanel4.ColumnCount = 2;
+            this.tableLayoutPanel4.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 50F));
+            this.tableLayoutPanel4.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 50F));
+            this.tableLayoutPanel4.Location = new System.Drawing.Point(3, 444);
+            this.tableLayoutPanel4.Name = "tableLayoutPanel4";
+            this.tableLayoutPanel4.RowCount = 2;
+            this.tableLayoutPanel4.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 50F));
+            this.tableLayoutPanel4.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 50F));
+            this.tableLayoutPanel4.Size = new System.Drawing.Size(200, 38);
+            this.tableLayoutPanel4.TabIndex = 20;
             // 
-            // Form1
+            // ContractFill
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(930, 731);
+            this.ClientSize = new System.Drawing.Size(782, 603);
             this.Controls.Add(this.tableLayoutPanel1);
-            this.Name = "Form1";
-            this.Text = "Form1";
+            this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
+            this.Name = "ContractFill";
+            this.Text = "ContractFill";
             this.tableLayoutPanel1.ResumeLayout(false);
             this.tableLayoutPanel1.PerformLayout();
             this.tableLayoutPanel2.ResumeLayout(false);
+            this.tableLayoutPanel3.ResumeLayout(false);
+            this.tableLayoutPanel3.PerformLayout();
             this.ResumeLayout(false);
 
         }
@@ -488,23 +503,21 @@ namespace ContractFill
         #endregion
 
         private System.Windows.Forms.DateTimePicker dateTimePicker1;
-        private System.Windows.Forms.TextBox textBox12;
-        private System.Windows.Forms.TextBox textBox11;
-        private System.Windows.Forms.TextBox textBox10;
-        private System.Windows.Forms.TextBox textBox9;
-        private System.Windows.Forms.TextBox textBox8;
-        private System.Windows.Forms.TextBox textBox7;
-        private System.Windows.Forms.TextBox textBox6;
-        private System.Windows.Forms.TextBox textBox5;
-        private System.Windows.Forms.TextBox textBox4;
-        private System.Windows.Forms.TextBox textBox3;
-        private System.Windows.Forms.TextBox textBox2;
-        private System.Windows.Forms.TextBox textBox1;
+        private System.Windows.Forms.TextBox KS;
+        private System.Windows.Forms.TextBox RS;
+        private System.Windows.Forms.TextBox BIK;
+        private System.Windows.Forms.TextBox Bank;
+        private System.Windows.Forms.TextBox Adress;
+        private System.Windows.Forms.TextBox BIN;
+        private System.Windows.Forms.TextBox KPP;
+        private System.Windows.Forms.TextBox INN;
+        private System.Windows.Forms.TextBox NaOsnovanii;
+        private System.Windows.Forms.TextBox FIO;
+        private System.Windows.Forms.TextBox Dolgnost;
+        private System.Windows.Forms.TextBox Organization;
         private System.Windows.Forms.Label label2;
-        private System.Windows.Forms.Label label13;
         private System.Windows.Forms.Label label11;
         private System.Windows.Forms.Label label4;
-        private System.Windows.Forms.Label label12;
         private System.Windows.Forms.Label label10;
         private System.Windows.Forms.Label label9;
         private System.Windows.Forms.Label label8;
@@ -514,13 +527,15 @@ namespace ContractFill
         private System.Windows.Forms.Label label3;
         private System.Windows.Forms.Label label1;
         private System.Windows.Forms.TableLayoutPanel tableLayoutPanel1;
-        private System.Windows.Forms.TableLayoutPanel tableLayoutPanel2;
-        private System.Windows.Forms.Button button1;
-        private System.Windows.Forms.Button button2;
         private System.Windows.Forms.Label label15;
         private System.Windows.Forms.Label label16;
-        private System.Windows.Forms.TextBox textBox13;
-        private System.Windows.Forms.TextBox textBox14;
+        private System.Windows.Forms.Button button2;
+        private System.Windows.Forms.TableLayoutPanel tableLayoutPanel2;
+        private System.Windows.Forms.Button button1;
+        private System.Windows.Forms.TableLayoutPanel tableLayoutPanel3;
+        private System.Windows.Forms.Button button3;
+        private System.Windows.Forms.Button button4;
+        private System.Windows.Forms.TableLayoutPanel tableLayoutPanel4;
     }
 }
 

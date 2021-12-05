@@ -5,7 +5,7 @@ using System.Text;
 using System.Threading.Tasks;
 using Word = Microsoft.Office.Interop.Word;
 
-namespace parserExcel
+namespace WindowsFormsApp1
 {
     class Contract
     {

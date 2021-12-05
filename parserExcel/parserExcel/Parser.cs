@@ -8,7 +8,7 @@ using System.Threading.Tasks;
 using Excel = Microsoft.Office.Interop.Excel;
 
 
-namespace parserExcel
+namespace WindowsFormsApp1
 {
     class Parser
     {
@@ -62,7 +62,7 @@ namespace parserExcel
                     customerInfos.Add(customerInfo);
                     if (excelSheet.Range["AQ25"].Value == null)
                     {
-                        int countNameInInvoice = 27; //строка с которой начинаются товары в счете
+                        int countNameInInvoice = 27;
                         do
                         {
                             ProductItem productItem = new ProductItem()
@@ -84,7 +84,7 @@ namespace parserExcel
                     }
                     else
                     {
-                        int countNameInInvoice = 25; //строка с которой начинаются товары в счете
+                        int countNameInInvoice = 25;
                         do
                         {
                             ProductItem productItem = new ProductItem();
@@ -233,10 +233,10 @@ namespace parserExcel
                 customer = regexTel.Replace(customer, string.Empty, 1);
                 customer = regexTel.Replace(customer, string.Empty, 1);
 
-                Regex regexClear = new Regex(@"(/)?(,)?\s{0,2}(,)?\s{0,2}((тел)|(Тел)|(Доб)|(доб)|(Моб)|(моб)|(факс)|(факс))(:)?(.)?\s{0,2}\d{0,4}(-)?\d{0,4}(,)?");
+                Regex regexClear = new Regex(RegularFormular.Clear);
                 customer = regexClear.Replace(customer, string.Empty, 1);
 
-                Regex regexClear2 = new Regex(@"($,){0,2}");
+                Regex regexClear2 = new Regex(RegularFormular.Clear2);
                 customer = regexClear2.Replace(customer, string.Empty, 1);
                 customerInfo.Adress += customer;
                 customerInfoList.Add(customerInfo);
@@ -259,36 +259,7 @@ namespace parserExcel
             Console.WriteLine("Complete");
         }
 
-        public void productProcessor(string fileName)
-        {
-            int countNameInKP = 15;
-            int countNameInInvoice = 27;
-            int countNameInInvoiceOld = 25;
-            Excel.Application excelApp = new Excel.Application();
-            Excel.Workbook excelWorkBook;
-            Excel.Worksheet excelSheet;
-
-            excelWorkBook = excelApp.Workbooks.Open(fileName);
-            string nameList = (excelApp.Sheets[1] as Excel.Worksheet).Name;
-            string fullProductInfo;
-            excelSheet = excelWorkBook.Worksheets[nameList];
-            if (nameList == "НДС внутри" || nameList == "НДС сверху" || nameList == "НДС 0%")
-            {
-
-            }
-            else if (nameList == "КП" || nameList == "КП НДС 0%")
-            {
-
-            }
-            else if (true)
-            {
-
-            }
-            fullProductInfo = (excelSheet.Range[$"AQ{countNameInInvoice}"].Value) ?? string.Empty;
-
-            excelApp.Quit();
-
-        } //Удалить, если код не актуален
+        
 
         public void PrintProductItems(List<ProductItem> items)
         {
