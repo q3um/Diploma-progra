@@ -1,0 +1,9 @@
+.vs/
+.idea/
+*.user
+App.config
+parserExcel/pParserExc/obj
+parserExcel/parserExc/bin
+parserExcel/packages
+
+
