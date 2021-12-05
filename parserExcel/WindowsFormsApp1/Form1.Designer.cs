@@ -289,7 +289,6 @@ namespace WindowsFormsApp1
             this.monthCalendar1.MaxSelectionCount = 365;
             this.monthCalendar1.Name = "monthCalendar1";
             this.monthCalendar1.TabIndex = 16;
-            this.monthCalendar1.DateSelected += new System.Windows.Forms.DateRangeEventHandler(this.monthCalendar1_DateSelected);
             // 
             // label44
             // 
@@ -994,7 +993,6 @@ namespace WindowsFormsApp1
             this.label13.TabIndex = 6;
             this.label13.Text = "Юридический адрес";
             this.label13.TextAlign = System.Drawing.ContentAlignment.TopRight;
-            this.label13.Click += new System.EventHandler(this.label13_Click);
             // 
             // label11
             // 
@@ -1006,7 +1004,6 @@ namespace WindowsFormsApp1
             this.label11.TabIndex = 4;
             this.label11.Text = "ИНН";
             this.label11.TextAlign = System.Drawing.ContentAlignment.TopRight;
-            this.label11.Click += new System.EventHandler(this.label11_Click);
             // 
             // label14
             // 
@@ -1018,7 +1015,6 @@ namespace WindowsFormsApp1
             this.label14.TabIndex = 7;
             this.label14.Text = "Банк";
             this.label14.TextAlign = System.Drawing.ContentAlignment.TopRight;
-            this.label14.Click += new System.EventHandler(this.label14_Click);
             // 
             // label15
             // 
@@ -1062,7 +1058,6 @@ namespace WindowsFormsApp1
             this.label12.Size = new System.Drawing.Size(46, 20);
             this.label12.TabIndex = 5;
             this.label12.Text = "КПП";
-            this.label12.Click += new System.EventHandler(this.label12_Click);
             // 
             // Organization
             // 
@@ -1552,7 +1547,6 @@ namespace WindowsFormsApp1
             this.tableLayoutPanel2.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 9.09918F));
             this.tableLayoutPanel2.Size = new System.Drawing.Size(913, 569);
             this.tableLayoutPanel2.TabIndex = 2;
-            this.tableLayoutPanel2.Paint += new System.Windows.Forms.PaintEventHandler(this.tableLayoutPanel2_Paint);
             // 
             // textBox19
             // 
@@ -1745,7 +1739,6 @@ namespace WindowsFormsApp1
             this.groupBox2.TabIndex = 1;
             this.groupBox2.TabStop = false;
             this.groupBox2.Text = "Функции";
-            this.groupBox2.Enter += new System.EventHandler(this.groupBox2_Enter);
             // 
             // button15
             // 
@@ -1848,7 +1841,6 @@ namespace WindowsFormsApp1
             this.label39.TabIndex = 0;
             this.label39.Text = "Название компании";
             this.label39.TextAlign = System.Drawing.ContentAlignment.TopRight;
-            this.label39.Click += new System.EventHandler(this.label39_Click);
             // 
             // textBox44
             // 
@@ -1869,7 +1861,6 @@ namespace WindowsFormsApp1
             this.label38.TabIndex = 25;
             this.label38.Text = "К договору №";
             this.label38.TextAlign = System.Drawing.ContentAlignment.TopRight;
-            this.label38.Click += new System.EventHandler(this.label38_Click);
             // 
             // label40
             // 
@@ -1907,7 +1898,6 @@ namespace WindowsFormsApp1
             this.label43.TabIndex = 2;
             this.label43.Text = "ФИО представителя";
             this.label43.TextAlign = System.Drawing.ContentAlignment.TopRight;
-            this.label43.Click += new System.EventHandler(this.label43_Click);
             // 
             // textBox43
             // 
@@ -1928,7 +1918,6 @@ namespace WindowsFormsApp1
             this.label45.TabIndex = 6;
             this.label45.Text = "Юридический адрес";
             this.label45.TextAlign = System.Drawing.ContentAlignment.TopRight;
-            this.label45.Click += new System.EventHandler(this.label45_Click);
             // 
             // textBox42
             // 
@@ -2107,7 +2096,6 @@ namespace WindowsFormsApp1
             this.MinimumSize = new System.Drawing.Size(1301, 780);
             this.Name = "Form1";
             this.Text = "Analyzis&Forms";
-            this.Load += new System.EventHandler(this.Form1_Load);
             this.tabControl1.ResumeLayout(false);
             this.tabFiltersItems.ResumeLayout(false);
             this.panel1.ResumeLayout(false);

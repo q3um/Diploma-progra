@@ -17,10 +17,7 @@ namespace WindowsFormsApp1
         {
             using (ProductItemContext db = new ProductItemContext())
             {
-                using (InvoiceContext db2 = new InvoiceContext())
-                {
-                    using (CustomerInfoContext db3 = new CustomerInfoContext())
-                    {
+
                         Excel.Application excelApp = new Excel.Application();
                         Excel.Workbook excelWorkBook;
                         Excel.Worksheet excelSheet;
@@ -182,19 +179,17 @@ namespace WindowsFormsApp1
                         invoice.Date = date;
                         invoice.Sum = Sum;
                         invoice.Type = type;
-                        db2.invoices.Add(invoice);
+                        db.invoices.Add(invoice);
                         if (customerInfo.Customer != null)
                         {
-                            db3.customerInfos.Add(customerInfo);
+                            db.customerInfos.Add(customerInfo);
 
                         }
                         excelWorkBook.Close(false, Type.Missing, Type.Missing);
                         excelApp.Quit();
                         db.SaveChanges();
-                        db2.SaveChanges();
-                        db3.SaveChanges();
-                    }
-                }
+
+
             }
         }
 
