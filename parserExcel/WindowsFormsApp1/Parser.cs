@@ -18,146 +18,147 @@ namespace WindowsFormsApp1
             using (ProductItemContext db = new ProductItemContext())
             {
 
-                        Excel.Application excelApp = new Excel.Application();
-                        Excel.Workbook excelWorkBook;
-                        Excel.Worksheet excelSheet;
-                        int countNameInKP = 15; // строка с которой начинаются товары в кп
+                Excel.Application excelApp = new Excel.Application();
+                Excel.Workbook excelWorkBook;
+                Excel.Worksheet excelSheet;
+                int countNameInKP = 15; // строка с которой начинаются товары в кп
 
-                        excelWorkBook = excelApp.Workbooks.Open(fileName);
-                        string nameList = (excelApp.Sheets[1] as Excel.Worksheet).Name;
-                        excelSheet = excelWorkBook.Worksheets[nameList];
-                        CustomerInfo customerInfo = new CustomerInfo();
-                        double Sum = 0;
-                        string acct = string.Empty;
-                        string customer = string.Empty;
-                        DateTime date = default;
-                        string type = string.Empty;
-                        if (nameList == "НДС внутри" || nameList == "НДС сверху" || nameList == "НДС 0%")
+                excelWorkBook = excelApp.Workbooks.Open(fileName);
+                string nameList = (excelApp.Sheets[1] as Excel.Worksheet).Name;
+                excelSheet = excelWorkBook.Worksheets[nameList];
+                CustomerInfo customerInfo = new CustomerInfo();
+                double Sum = 0;
+                string acct = string.Empty;
+                string customer = string.Empty;
+                DateTime date = default;
+                string type = string.Empty;
+                if (nameList == "НДС внутри" || nameList == "НДС сверху" || nameList == "НДС 0%")
+                {
+                    if (excelSheet.Range["B16"].Value.ToString().Contains("КП"))
+                    {
+                        int countNameInInvoice = 27;
+                        do
                         {
-                            if (excelSheet.Range["B16"].Value.Contains("КП"))
+                            //excelSheet = excelWorkBook.Worksheets[nameList];
+                            ProductItem productItem = new ProductItem();
+                            productItem.Customer = null;
+                            Regex regexAcct = new Regex(RegularFormular.AcctInKpInvoice);
+                            productItem.Acct = regexAcct.Match(excelSheet.Range["B16"].Value).Value;
+                            Regex regexDate = new Regex(RegularFormular.DateInKPSheet);
+                            productItem.Date = Convert.ToDateTime(regexDate.Match(excelSheet.Range["B16"].Value).Value);
+                            productItem.PartNumber = excelSheet.Range[$"AQ{countNameInInvoice}"].Value;
+                            productItem.Quanity = Convert.ToInt32(excelSheet.Range[$"AR{countNameInInvoice}"].Value);
+                            productItem.Price = Convert.ToDouble(excelSheet.Range[$"AS{countNameInInvoice}"].Value);
+                            productItem.Sum = productItem.Price * productItem.Quanity;
+                            productItem.Type = "КП";
+                            Sum += productItem.Sum;
+                            customer = productItem.Customer;
+                            acct = productItem.Acct;
+                            date = productItem.Date;
+                            type = productItem.Type;
+
+
+                            //items.Add(productItem);
+                            db.productItems.Add(productItem);
+                            db.SaveChanges();
+                            countNameInInvoice++;
+                        } while ((excelSheet.Range[$"AR{countNameInInvoice}"].Value) != null);
+                        countNameInInvoice = 27;
+                    }
+                    else if (excelSheet.Range["B5"].Value != null)
+                    {
+                        customerInfo = CustomerProcessor(excelSheet.Range[$"G11"].Value);
+                        int countNameInInvoice = 16;
+                        do
+                        {
+                            ProductItem productItem = new ProductItem()
                             {
-                                int countNameInInvoice = 27;
-                                do
-                                {
-                                    //excelSheet = excelWorkBook.Worksheets[nameList];
-                                    ProductItem productItem = new ProductItem();
-                                    productItem.Customer = null;
-                                    Regex regexAcct = new Regex(RegularFormular.AcctInKpInvoice);
-                                    productItem.Acct = regexAcct.Match(excelSheet.Range["B16"].Value).Value;
-                                    Regex regexDate = new Regex(RegularFormular.DateInKPSheet);
-                                    productItem.Date = Convert.ToDateTime(regexDate.Match(excelSheet.Range["B16"].Value).Value);
-                                    productItem.PartNumber = excelSheet.Range[$"AQ{countNameInInvoice}"].Value;
-                                    productItem.Quanity = Convert.ToInt32(excelSheet.Range[$"AR{countNameInInvoice}"].Value);
-                                    productItem.Price = Convert.ToDouble(excelSheet.Range[$"AS{countNameInInvoice}"].Value);
-                                    productItem.Sum = productItem.Price * productItem.Quanity;
-                                    productItem.Type = "КП";
-                                    Sum += productItem.Sum;
-                                    customer = productItem.Customer;
-                                    acct = productItem.Acct;
-                                    date = productItem.Date;
-                                    type = productItem.Type;
+                                Acct = excelSheet.Range["B5"].Value.Substring(17, 11),
+                                Date = Convert.ToDateTime(excelSheet.Range["B5"].Value.Substring(32, 10)),
+                                Customer = excelSheet.Range[$"G11"].Value,
+                                PartNumber = excelSheet.Range[$"AQ{countNameInInvoice}"].Value,
+                                Quanity = Convert.ToInt32(excelSheet.Range[$"AR{countNameInInvoice}"].Value),
+                                Price = Convert.ToDouble(excelSheet.Range[$"AS{countNameInInvoice}"].Value),
+                                Type = nameList,
+
+                            };
+                            productItem.Sum = productItem.Price * productItem.Quanity;
+                            Sum += productItem.Sum;
+                            customer = productItem.Customer;
+                            acct = productItem.Acct;
+                            date = productItem.Date;
+                            type = productItem.Type;
 
 
-                                    //items.Add(productItem);
-                                    db.productItems.Add(productItem);
-                                    countNameInInvoice++;
-                                } while ((excelSheet.Range[$"AR{countNameInInvoice}"].Value) != null);
-                                countNameInInvoice = 27;
-                            }
+                            //items.Add(productItem);
+                            db.productItems.Add(productItem);
+                            db.SaveChanges();
+                            countNameInInvoice++;
+                        } while ((excelSheet.Range[$"AR{countNameInInvoice}"].Value) != null);
+                        countNameInInvoice = 16;
+                    }
 
-                            else if (excelSheet.Range["AQ25"].Value == null
-                                && excelSheet.Range["AQ27"].Value == null
-                                && excelSheet.Range["AQ15"].Value == null)
-                            {
-                                return;
-                            }
-                            else
-                            {
-                                char x;
-                                if (excelSheet.Range["G22"].Value == null)
-                                {
-                                    x = 'F';
-                                }
-                                else
-                                {
-                                    x = 'G';
-                                }
-                                customerInfo = CustomerProcessor(excelSheet.Range[$"{x}22"].Value);
-                                customerInfos.Add(customerInfo);
-                                if (excelSheet.Range["AQ25"].Value == null)
-                                {
-                                    int countNameInInvoice = 27;
-                                    do
-                                    {
-                                        ProductItem productItem = new ProductItem()
-                                        {
-                                            Acct = excelSheet.Range["B16"].Value.Substring(17, 11),
-                                            Date = Convert.ToDateTime(excelSheet.Range["B16"].Value.Substring(32, 10)),
-                                            Customer = excelSheet.Range[$"{x}22"].Value,
-                                            PartNumber = excelSheet.Range[$"AQ{countNameInInvoice}"].Value,
-                                            Quanity = Convert.ToInt32(excelSheet.Range[$"AR{countNameInInvoice}"].Value),
-                                            Price = Convert.ToDouble(excelSheet.Range[$"AS{countNameInInvoice}"].Value),
-                                            Type = nameList,
-
-                                        };
-                                        productItem.Sum = productItem.Price * productItem.Quanity;
-                                        Sum += productItem.Sum;
-                                        customer = productItem.Customer;
-                                        acct = productItem.Acct;
-                                        date = productItem.Date;
-                                        type = productItem.Type;
-
-                                        //items.Add(productItem);
-                                        db.productItems.Add(productItem);
-
-                                        countNameInInvoice++;
-                                    } while ((excelSheet.Range[$"AR{countNameInInvoice}"].Value) != null);
-                                    countNameInInvoice = 27;
-                                }
-                                else
-                                {
-                                    int countNameInInvoice = 25;
-                                    do
-                                    {
-                                        ProductItem productItem = new ProductItem();
-                                        productItem.Acct = excelSheet.Range["B16"].Value.Substring(17, 11);
-                                        productItem.Date = Convert.ToDateTime(excelSheet.Range["B16"].Value.Substring(32, 10));
-                                        productItem.Customer = excelSheet.Range[$"{x}22"].Value;
-                                        productItem.PartNumber = excelSheet.Range[$"AQ{countNameInInvoice}"].Value;
-                                        productItem.Quanity = Convert.ToInt32(excelSheet.Range[$"AR{countNameInInvoice}"].Value);
-                                        productItem.Price = Convert.ToDouble(excelSheet.Range[$"AS{countNameInInvoice}"].Value);
-                                        productItem.Sum = productItem.Price * productItem.Quanity;
-                                        productItem.Type = nameList;
-                                        Sum += productItem.Sum;
-                                        customer = productItem.Customer;
-                                        acct = productItem.Acct;
-                                        date = productItem.Date;
-                                        type = productItem.Type;
-
-                                        //items.Add(productItem);
-                                        db.productItems.Add(productItem);
-
-                                        countNameInInvoice++;
-
-                                    } while ((excelSheet.Range[$"AR{countNameInInvoice}"].Value) != null);
-                                    countNameInInvoice = 25;
-                                }
-                            }
-
+                    else if (excelSheet.Range["AQ25"].Value == null
+                        && excelSheet.Range["AQ27"].Value == null
+                        && excelSheet.Range["AQ15"].Value == null)
+                    {
+                        return;
+                    }
+                    else
+                    {
+                        char x;
+                        if (excelSheet.Range["G22"].Value == null)
+                        {
+                            x = 'F';
                         }
-
-                        else if (nameList == "КП" || nameList == "КП НДС 0%")
+                        else
                         {
+                            x = 'G';
+                        }
+                        customerInfo = CustomerProcessor(excelSheet.Range[$"{x}22"].Value);
+                        //customerInfos.Add(customerInfo);
+                        if (excelSheet.Range["AQ25"].Value == null)
+                        {
+                            int countNameInInvoice = 27;
                             do
                             {
-                                //excelSheet = excelWorkBook.Worksheets[nameList];
+                                ProductItem productItem = new ProductItem()
+                                {
+                                    Acct = excelSheet.Range["B16"].Value.Substring(17, 11),
+                                    Date = Convert.ToDateTime(excelSheet.Range["B16"].Value.Substring(32, 10)),
+                                    Customer = excelSheet.Range[$"{x}22"].Value,
+                                    PartNumber = excelSheet.Range[$"AQ{countNameInInvoice}"].Value,
+                                    Quanity = Convert.ToInt32(excelSheet.Range[$"AR{countNameInInvoice}"].Value),
+                                    Price = Convert.ToDouble(excelSheet.Range[$"AS{countNameInInvoice}"].Value),
+                                    Type = nameList,
+
+                                };
+                                productItem.Sum = productItem.Price * productItem.Quanity;
+                                Sum += productItem.Sum;
+                                customer = productItem.Customer;
+                                acct = productItem.Acct;
+                                date = productItem.Date;
+                                type = productItem.Type;
+
+                                //items.Add(productItem);
+                                db.productItems.Add(productItem);
+                                db.SaveChanges();
+                                countNameInInvoice++;
+                            } while ((excelSheet.Range[$"AR{countNameInInvoice}"].Value) != null);
+                            countNameInInvoice = 27;
+                        }
+                        else
+                        {
+                            int countNameInInvoice = 25;
+                            do
+                            {
                                 ProductItem productItem = new ProductItem();
-                                productItem.Customer = null;
-                                productItem.Acct = excelSheet.Range["B6"].Value.Substring(7, 11);
-                                productItem.Date = Convert.ToDateTime(excelSheet.Range["B7"].Value.Substring(3, 10));
-                                productItem.PartNumber = excelSheet.Range[$"AQ{countNameInKP}"].Value;
-                                productItem.Quanity = Convert.ToInt32(excelSheet.Range[$"AR{countNameInKP}"].Value);
-                                productItem.Price = Convert.ToDouble(excelSheet.Range[$"AS{countNameInKP}"].Value);
+                                productItem.Acct = excelSheet.Range["B16"].Value.Substring(17, 11);
+                                productItem.Date = Convert.ToDateTime(excelSheet.Range["B16"].Value.Substring(32, 10));
+                                productItem.Customer = excelSheet.Range[$"{x}22"].Value;
+                                productItem.PartNumber = excelSheet.Range[$"AQ{countNameInInvoice}"].Value;
+                                productItem.Quanity = Convert.ToInt32(excelSheet.Range[$"AR{countNameInInvoice}"].Value);
+                                productItem.Price = Convert.ToDouble(excelSheet.Range[$"AS{countNameInInvoice}"].Value);
                                 productItem.Sum = productItem.Price * productItem.Quanity;
                                 productItem.Type = nameList;
                                 Sum += productItem.Sum;
@@ -168,28 +169,78 @@ namespace WindowsFormsApp1
 
                                 //items.Add(productItem);
                                 db.productItems.Add(productItem);
+                                db.SaveChanges();
 
-                                countNameInKP++;
-                            } while ((excelSheet.Range[$"AR{countNameInKP}"].Value) != null);
-                            countNameInKP = 15;
-                        }
-                        Invoice invoice = new Invoice();
-                        invoice.Acct = acct;
-                        invoice.Customer = customer;
-                        invoice.Date = date;
-                        invoice.Sum = Sum;
-                        invoice.Type = type;
-                        db.invoices.Add(invoice);
-                        if (customerInfo.Customer != null)
-                        {
-                            db.customerInfos.Add(customerInfo);
+                                countNameInInvoice++;
 
+                            } while ((excelSheet.Range[$"AR{countNameInInvoice}"].Value) != null);
+                            countNameInInvoice = 25;
                         }
-                        excelWorkBook.Close(false, Type.Missing, Type.Missing);
-                        excelApp.Quit();
+                    }
+                }
+
+                else if (nameList == "КП" || nameList == "КП НДС 0%")
+                {
+                    do
+                    {
+                        //excelSheet = excelWorkBook.Worksheets[nameList];
+                        ProductItem productItem = new ProductItem();
+                        productItem.Customer = null;
+                        productItem.Acct = excelSheet.Range["B6"].Value.Substring(7, 11);
+                        productItem.Date = Convert.ToDateTime(excelSheet.Range["B7"].Value.Substring(3, 10));
+                        productItem.PartNumber = excelSheet.Range[$"AQ{countNameInKP}"].Value;
+                        productItem.Quanity = Convert.ToInt32(excelSheet.Range[$"AR{countNameInKP}"].Value);
+                        productItem.Price = Convert.ToDouble(excelSheet.Range[$"AS{countNameInKP}"].Value);
+                        productItem.Sum = productItem.Price * productItem.Quanity;
+                        productItem.Type = nameList;
+                        Sum += productItem.Sum;
+                        customer = productItem.Customer;
+                        acct = productItem.Acct;
+                        date = productItem.Date;
+                        type = productItem.Type;
+
+                        //items.Add(productItem);
+                        db.productItems.Add(productItem);
                         db.SaveChanges();
+                        countNameInKP++;
+                    } while ((excelSheet.Range[$"AR{countNameInKP}"].Value) != null);
+                    countNameInKP = 15;
+                }
+                Invoice invoice = new Invoice();
+                invoice.Acct = acct;
+                invoice.Customer = customer;
+                invoice.Date = date;
+                invoice.Sum = Sum;
+                invoice.Type = type;
+                db.invoices.Add(invoice);
+                db.SaveChanges();
+                if (customerInfo.Customer != null)
+                {
+                    db.customerInfos.Add(customerInfo);
+                    try
+                    {
+                        db.SaveChanges();
+                    }
+                    catch (System.Data.DataException de)
+                    {
+                        Exception innerException = de;
+                        while (innerException.InnerException != null)
+                        {
+                            innerException = innerException.InnerException;
+                        }
 
 
+                        if (innerException.Message.Contains("Unique_constraint_name"))
+                        {
+                            return;
+                        }
+                    }
+                    excelWorkBook.Close(false, Type.Missing, Type.Missing);
+                    excelApp.Quit();
+                    //db.SaveChanges();
+
+
+                }
             }
         }
 
@@ -229,6 +280,13 @@ namespace WindowsFormsApp1
             Regex regexClear2 = new Regex(RegularFormular.Clear2);
             customerRawData = regexClear2.Replace(customerRawData, string.Empty, 1);
             customerInfo.Adress += customerRawData;
+            customerInfo.Tel = customerInfo.Tel.TrimStart('.');
+            customerInfo.Tel = customerInfo.Tel.TrimStart(':');
+            customerInfo.Tel = customerInfo.Tel.Trim();
+            customerInfo.Adress = customerInfo.Adress.TrimStart(',');
+            customerInfo.Adress = customerInfo.Adress.Trim();
+
+
             //Попытаться разделить метод на несколько
             return customerInfo;
         }
