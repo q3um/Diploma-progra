@@ -6,18 +6,28 @@ using System.Text;
 using System.Text.RegularExpressions;
 using System.Threading.Tasks;
 using Excel = Microsoft.Office.Interop.Excel;
+using System.Data.Entity;
 
 
 namespace WindowsFormsApp1
 {
     class Parser
     {
-
-        public void ProductItemProcessor(string fileName, List<ProductItem> items, List<CustomerInfo> customerInfos)
+        public void SaveData(ProductItem productItem, ref double sum, ref string customer, ref string acct, ref DateTime date, ref string type)
         {
+            productItem.Sum = productItem.Price * productItem.Quanity;
+            sum += productItem.Sum;
+            customer = productItem.Customer;
+            acct = productItem.Acct;
+            date = productItem.Date;
+            type = productItem.Type;
+        }
+        public void ProductItemProcessor(string fileName)
+        {
+            List<ProductItem> items = new List<ProductItem>();
+
             using (ProductItemContext db = new ProductItemContext())
             {
-
                 Excel.Application excelApp = new Excel.Application();
                 Excel.Workbook excelWorkBook;
                 Excel.Worksheet excelSheet;
@@ -26,8 +36,8 @@ namespace WindowsFormsApp1
                 excelWorkBook = excelApp.Workbooks.Open(fileName);
                 string nameList = (excelApp.Sheets[1] as Excel.Worksheet).Name;
                 excelSheet = excelWorkBook.Worksheets[nameList];
-                CustomerInfo customerInfo = new CustomerInfo();
-                double Sum = 0;
+                Customer customerInfo = new Customer();
+                double sum = 0;
                 string acct = string.Empty;
                 string customer = string.Empty;
                 DateTime date = default;
@@ -40,27 +50,20 @@ namespace WindowsFormsApp1
                         do
                         {
                             //excelSheet = excelWorkBook.Worksheets[nameList];
-                            ProductItem productItem = new ProductItem();
-                            productItem.Customer = null;
                             Regex regexAcct = new Regex(RegularFormular.AcctInKpInvoice);
-                            productItem.Acct = regexAcct.Match(excelSheet.Range["B16"].Value).Value;
                             Regex regexDate = new Regex(RegularFormular.DateInKPSheet);
-                            productItem.Date = Convert.ToDateTime(regexDate.Match(excelSheet.Range["B16"].Value).Value);
-                            productItem.PartNumber = excelSheet.Range[$"AQ{countNameInInvoice}"].Value;
-                            productItem.Quanity = Convert.ToInt32(excelSheet.Range[$"AR{countNameInInvoice}"].Value);
-                            productItem.Price = Convert.ToDouble(excelSheet.Range[$"AS{countNameInInvoice}"].Value);
-                            productItem.Sum = productItem.Price * productItem.Quanity;
-                            productItem.Type = "КП";
-                            Sum += productItem.Sum;
-                            customer = productItem.Customer;
-                            acct = productItem.Acct;
-                            date = productItem.Date;
-                            type = productItem.Type;
-
-
-                            //items.Add(productItem);
-                            db.productItems.Add(productItem);
-                            db.SaveChanges();
+                            ProductItem productItem = new ProductItem()
+                            {
+                                Customer = null,
+                                Acct = regexAcct.Match(excelSheet.Range["B16"].Value).Value,
+                                Date = Convert.ToDateTime(regexDate.Match(excelSheet.Range["B16"].Value).Value),
+                                PartNumber = excelSheet.Range[$"AQ{countNameInInvoice}"].Value,
+                                Quanity = Convert.ToInt32(excelSheet.Range[$"AR{countNameInInvoice}"].Value),
+                                Price = Convert.ToDouble(excelSheet.Range[$"AS{countNameInInvoice}"].Value),
+                            };
+                            SaveData(productItem, ref sum, ref customer, ref acct, ref date, ref type);
+                            items.Add(productItem);
+                            //db.ProductItems.Add(productItem);
                             countNameInInvoice++;
                         } while ((excelSheet.Range[$"AR{countNameInInvoice}"].Value) != null);
                         countNameInInvoice = 27;
@@ -68,6 +71,7 @@ namespace WindowsFormsApp1
                     else if (excelSheet.Range["B5"].Value != null)
                     {
                         customerInfo = CustomerProcessor(excelSheet.Range[$"G11"].Value);
+
                         int countNameInInvoice = 16;
                         do
                         {
@@ -82,17 +86,10 @@ namespace WindowsFormsApp1
                                 Type = nameList,
 
                             };
-                            productItem.Sum = productItem.Price * productItem.Quanity;
-                            Sum += productItem.Sum;
-                            customer = productItem.Customer;
-                            acct = productItem.Acct;
-                            date = productItem.Date;
-                            type = productItem.Type;
+                            SaveData(productItem, ref sum, ref customer, ref acct, ref date, ref type);
 
-
-                            //items.Add(productItem);
-                            db.productItems.Add(productItem);
-                            db.SaveChanges();
+                            items.Add(productItem);
+                            //db.ProductItems.Add(productItem);
                             countNameInInvoice++;
                         } while ((excelSheet.Range[$"AR{countNameInInvoice}"].Value) != null);
                         countNameInInvoice = 16;
@@ -133,16 +130,9 @@ namespace WindowsFormsApp1
                                     Type = nameList,
 
                                 };
-                                productItem.Sum = productItem.Price * productItem.Quanity;
-                                Sum += productItem.Sum;
-                                customer = productItem.Customer;
-                                acct = productItem.Acct;
-                                date = productItem.Date;
-                                type = productItem.Type;
-
-                                //items.Add(productItem);
-                                db.productItems.Add(productItem);
-                                db.SaveChanges();
+                                SaveData(productItem, ref sum, ref customer, ref acct, ref date, ref type);
+                                items.Add(productItem);
+                                //db.ProductItems.Add(productItem);
                                 countNameInInvoice++;
                             } while ((excelSheet.Range[$"AR{countNameInInvoice}"].Value) != null);
                             countNameInInvoice = 27;
@@ -152,24 +142,20 @@ namespace WindowsFormsApp1
                             int countNameInInvoice = 25;
                             do
                             {
-                                ProductItem productItem = new ProductItem();
-                                productItem.Acct = excelSheet.Range["B16"].Value.Substring(17, 11);
-                                productItem.Date = Convert.ToDateTime(excelSheet.Range["B16"].Value.Substring(32, 10));
-                                productItem.Customer = excelSheet.Range[$"{x}22"].Value;
-                                productItem.PartNumber = excelSheet.Range[$"AQ{countNameInInvoice}"].Value;
-                                productItem.Quanity = Convert.ToInt32(excelSheet.Range[$"AR{countNameInInvoice}"].Value);
-                                productItem.Price = Convert.ToDouble(excelSheet.Range[$"AS{countNameInInvoice}"].Value);
-                                productItem.Sum = productItem.Price * productItem.Quanity;
-                                productItem.Type = nameList;
-                                Sum += productItem.Sum;
-                                customer = productItem.Customer;
-                                acct = productItem.Acct;
-                                date = productItem.Date;
-                                type = productItem.Type;
+                                ProductItem productItem = new ProductItem()
+                                {
+                                    Acct = excelSheet.Range["B16"].Value.Substring(17, 11),
+                                    Date = Convert.ToDateTime(excelSheet.Range["B16"].Value.Substring(32, 10)),
+                                    Customer = excelSheet.Range[$"{x}22"].Value,
+                                    PartNumber = excelSheet.Range[$"AQ{countNameInInvoice}"].Value,
+                                    Quanity = Convert.ToInt32(excelSheet.Range[$"AR{countNameInInvoice}"].Value),
+                                    Price = Convert.ToDouble(excelSheet.Range[$"AS{countNameInInvoice}"].Value),
+                                    Type = nameList
+                                };
+                                SaveData(productItem, ref sum, ref customer, ref acct, ref date, ref type);
 
-                                //items.Add(productItem);
-                                db.productItems.Add(productItem);
-                                db.SaveChanges();
+                                items.Add(productItem);
+                                //db.ProductItems.Add(productItem);
 
                                 countNameInInvoice++;
 
@@ -184,80 +170,71 @@ namespace WindowsFormsApp1
                     do
                     {
                         //excelSheet = excelWorkBook.Worksheets[nameList];
-                        ProductItem productItem = new ProductItem();
-                        productItem.Customer = null;
-                        productItem.Acct = excelSheet.Range["B6"].Value.Substring(7, 11);
-                        productItem.Date = Convert.ToDateTime(excelSheet.Range["B7"].Value.Substring(3, 10));
-                        productItem.PartNumber = excelSheet.Range[$"AQ{countNameInKP}"].Value;
-                        productItem.Quanity = Convert.ToInt32(excelSheet.Range[$"AR{countNameInKP}"].Value);
-                        productItem.Price = Convert.ToDouble(excelSheet.Range[$"AS{countNameInKP}"].Value);
-                        productItem.Sum = productItem.Price * productItem.Quanity;
-                        productItem.Type = nameList;
-                        Sum += productItem.Sum;
-                        customer = productItem.Customer;
-                        acct = productItem.Acct;
-                        date = productItem.Date;
-                        type = productItem.Type;
+                        ProductItem productItem = new ProductItem()
+                        {
+                            Customer = null,
+                            Acct = excelSheet.Range["B6"].Value.Substring(7, 11),
+                            Date = Convert.ToDateTime(excelSheet.Range["B7"].Value.Substring(3, 10)),
+                            PartNumber = excelSheet.Range[$"AQ{countNameInKP}"].Value,
+                            Quanity = Convert.ToInt32(excelSheet.Range[$"AR{countNameInKP}"].Value),
+                            Price = Convert.ToDouble(excelSheet.Range[$"AS{countNameInKP}"].Value),
+                            Type = nameList,
+                        };
+                        SaveData(productItem, ref sum, ref customer, ref acct, ref date, ref type);
 
-                        //items.Add(productItem);
-                        db.productItems.Add(productItem);
-                        db.SaveChanges();
+                        items.Add(productItem);
+                        //db.ProductItems.Add(productItem);
                         countNameInKP++;
                     } while ((excelSheet.Range[$"AR{countNameInKP}"].Value) != null);
                     countNameInKP = 15;
                 }
-                Invoice invoice = new Invoice();
-                invoice.Acct = acct;
-                invoice.Customer = customer;
-                invoice.Date = date;
-                invoice.Sum = Sum;
-                invoice.Type = type;
-                db.invoices.Add(invoice);
-                db.SaveChanges();
-                if (customerInfo.Customer != null)
+                foreach (var item in items)
                 {
-                    db.customerInfos.Add(customerInfo);
-                    try
-                    {
-                        db.SaveChanges();
-                    }
-                    catch (System.Data.DataException de)
-                    {
-                        Exception innerException = de;
-                        while (innerException.InnerException != null)
-                        {
-                            innerException = innerException.InnerException;
-                        }
-
-
-                        if (innerException.Message.Contains("Unique_constraint_name"))
-                        {
-                            return;
-                        }
-                    }
-                    excelWorkBook.Close(false, Type.Missing, Type.Missing);
-                    excelApp.Quit();
-                    //db.SaveChanges();
-
-
+                    db.ProductItems.Add(item);
                 }
+                Invoice invoice = new Invoice()
+                {
+                    Acct = acct,
+                    Company = customer,
+                    Date = date,
+                    Sum = sum,
+                    Type = type,
+                    Customer = customerInfo,
+                };
+                foreach (var item in db.Customers)
+                {
+                    if (customerInfo.CustomerFull == item.CustomerFull)
+                    {
+                        invoice.Customer = item;
+                    }
+                }
+
+                db.Invoices.Add(invoice);
+                db.SaveChanges();
+
+                excelWorkBook.Close(false, Type.Missing, Type.Missing);
+                excelApp.Quit();
             }
         }
 
-        public CustomerInfo CustomerProcessor(string fullCustomerInfo)
+        public Customer CustomerProcessor(string fullCustomerInfo)
         {
 
             String customerRawData = fullCustomerInfo;
-            CustomerInfo customerInfo = new CustomerInfo(); //Сделать все через инициализатор. Сформировать объект после того, как все данные будут найдены
 
-            customerInfo.Customer = customerRawData;
+            string companyName;
+            string inn;
+            string adress;
+            string tel;
+            string customerFull;
+            customerFull = customerRawData;
 
             Regex regexCompanyName = new Regex(RegularFormular.CompanyNamePattern);
-            customerInfo.CompanyName = regexCompanyName.Match(customerRawData).Value;
+            companyName = regexCompanyName.Match(customerRawData).Value;
             customerRawData = regexCompanyName.Replace(customerRawData, string.Empty, 1);
 
             Regex regexInnOrBin = new Regex(RegularFormular.InnOrBinnPattern);
-            customerInfo.Inn = regexInnOrBin.Match(customerRawData).Value; //Результаты сохранять в отдельные переменные. Перед выходом из метода все это отгрузить в объект CustomerInfo
+            inn = regexInnOrBin.Match(customerRawData).Value;
             customerRawData = regexInnOrBin.Replace(customerRawData, string.Empty, 1);
             Regex regexclearRnn = new Regex(RegularFormular.ClearRnnPattern);
             customerRawData = regexclearRnn.Replace(customerRawData, string.Empty, 1);
@@ -266,11 +243,11 @@ namespace WindowsFormsApp1
             customerRawData = regexCleanKpp.Replace(customerRawData, string.Empty, 1);
 
             Regex regexAdress = new Regex(RegularFormular.IndexPattern);
-            customerInfo.Adress = regexAdress.Match(customerRawData).Value;
+            adress = regexAdress.Match(customerRawData).Value;
             customerRawData = regexAdress.Replace(customerRawData, string.Empty, 1);
 
             Regex regexTel = new Regex(RegularFormular.TelephonPattern);
-            customerInfo.Tel = regexTel.Match(customerRawData).Value;
+            tel = regexTel.Match(customerRawData).Value;
             customerRawData = regexTel.Replace(customerRawData, string.Empty, 1);
             customerRawData = regexTel.Replace(customerRawData, string.Empty, 1);
 
@@ -279,121 +256,22 @@ namespace WindowsFormsApp1
 
             Regex regexClear2 = new Regex(RegularFormular.Clear2);
             customerRawData = regexClear2.Replace(customerRawData, string.Empty, 1);
-            customerInfo.Adress += customerRawData;
-            customerInfo.Tel = customerInfo.Tel.TrimStart('.');
-            customerInfo.Tel = customerInfo.Tel.TrimStart(':');
-            customerInfo.Tel = customerInfo.Tel.Trim();
-            customerInfo.Adress = customerInfo.Adress.TrimStart(',');
-            customerInfo.Adress = customerInfo.Adress.Trim();
-
-
+            adress += customerRawData;
+            tel = tel.TrimStart('.');
+            tel = tel.TrimStart(':');
+            tel = tel.Trim();
+            adress = adress.TrimStart(',');
+            adress = adress.Trim();
+            Customer customerInfo = new Customer()
+            {
+                Adress = adress,
+                CompanyName = companyName,
+                CustomerFull = customerFull,
+                Inn = inn,
+                Tel = tel
+            };
             //Попытаться разделить метод на несколько
             return customerInfo;
-        }
-
-        public void ReadCustomerInSheets(string fileName, ref string customer)
-        {
-            Excel.Application excelApp = new Excel.Application();
-            Excel.Workbook excelWorkBook;
-            Excel.Worksheet excelSheet;
-
-            excelWorkBook = excelApp.Workbooks.Open(fileName);
-            string nameList = (excelApp.Sheets[1] as Excel.Worksheet).Name;
-
-            if (nameList == "НДС внутри" || nameList == "НДС сверху" || nameList == "НДС 0%")
-            {
-                excelSheet = excelWorkBook.Worksheets[nameList];
-                customer = (excelSheet.Range["G22"].Value) ?? string.Empty;
-            }
-            else
-            {
-                excelApp.Quit();
-            }
-            excelApp.Quit();
-        }
-
-        public void CustomerProcessorToTxt()
-        {
-            List<CustomerInfo> customerInfoList = new List<CustomerInfo>();
-            string[] fileList = Directory.GetFiles(@"C:\Users\asus\Desktop\Parsing\ToParseCSV", "*.xlsm", SearchOption.AllDirectories);
-            String customer;
-            foreach (string fileToRead in fileList)
-            {
-                if (fileToRead.Contains("~$"))
-                {
-                    continue;
-                }
-                CustomerInfo customerInfo = new CustomerInfo();
-
-                customer = String.Empty;
-                ReadCustomerInSheets(fileToRead, ref customer);
-                customerInfo.Customer = customer;
-
-                Regex regexCompanyName = new Regex(RegularFormular.CompanyNamePattern);
-                customerInfo.CompanyName = regexCompanyName.Match(customer).Value;
-                customer = regexCompanyName.Replace(customer, string.Empty, 1);
-
-                Regex regexInnOrBin = new Regex(RegularFormular.InnOrBinnPattern);
-                customerInfo.Inn = regexInnOrBin.Match(customer).Value;
-                customer = regexInnOrBin.Replace(customer, string.Empty, 1);
-                Regex regexclearRnn = new Regex(RegularFormular.ClearRnnPattern);
-                customer = regexclearRnn.Replace(customer, string.Empty, 1);
-
-
-
-                Regex regexCleanKpp = new Regex(RegularFormular.ClearKppPattern);
-                customer = regexCleanKpp.Replace(customer, string.Empty, 1);
-
-                Regex regexAdress = new Regex(RegularFormular.IndexPattern);
-                customerInfo.Adress = regexAdress.Match(customer).Value;
-                customer = regexAdress.Replace(customer, string.Empty, 1);
-
-                Regex regexTel = new Regex(RegularFormular.TelephonPattern);
-                customerInfo.Tel = regexTel.Match(customer).Value;
-                customer = regexTel.Replace(customer, string.Empty, 1);
-                customer = regexTel.Replace(customer, string.Empty, 1);
-
-                Regex regexClear = new Regex(RegularFormular.Clear);
-                customer = regexClear.Replace(customer, string.Empty, 1);
-
-                Regex regexClear2 = new Regex(RegularFormular.Clear2);
-                customer = regexClear2.Replace(customer, string.Empty, 1);
-                customerInfo.Adress += customer;
-                customerInfoList.Add(customerInfo);
-            }
-            StreamWriter streamWriter = new StreamWriter(@"C:\Users\asus\Desktop\Parsing\ToParseCSV\result.txt");
-            foreach (var item in customerInfoList)
-            {
-                streamWriter.WriteLine($"Изначальная строка: {item.Customer}");
-                streamWriter.WriteLine($"Название компании: {item.CompanyName}");
-                streamWriter.WriteLine($"ИНН: {item.Inn}");
-                streamWriter.WriteLine($"Адресс: {item.Adress}");
-                streamWriter.WriteLine($"Телефон: {item.Tel}");
-                streamWriter.WriteLine("========================================");
-            }
-            ////for (int i = 0; i < CSV_String.Count; i++)
-            ////{
-            ////    streamWriter.WriteLine(CSV_String[i]);
-            ////}
-            streamWriter.Close();
-            Console.WriteLine("Complete");
-        }
-
-
-
-        public void PrintProductItems(List<ProductItem> items)
-        {
-            foreach (var item in items)
-            {
-                Console.WriteLine($"{item.Type} {item.Acct} {item.Date} {item.Customer} {item.PartNumber} {item.Quanity} {item.Price} {item.Sum}");
-            }
-        }
-        public void PrintProductCustomerInfos(List<CustomerInfo> customerInfos)
-        {
-            foreach (var item in customerInfos)
-            {
-                Console.WriteLine($"{item.Customer}\n{item.CompanyName}\n{item.Adress}\n{item.Inn}\n{item.Tel}");
-            }
         }
     }
 }

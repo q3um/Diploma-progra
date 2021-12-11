@@ -8,16 +8,20 @@ using System.ComponentModel.DataAnnotations;
 
 namespace WindowsFormsApp1
 {
-    class CustomerInfo
+    class Customer
     {
         public int Id { get; set; }
         public string CompanyName { get; set; }
-        [Required]
-        [StringLength(30)]
-        [Index("Ix_Inn", IsUnique =true)]
         public string Inn { get; set; }
         public string Adress { get; set; }
         public string Tel { get; set; }
-        public string Customer { get; set; }
+        public string CustomerFull { get; set; }
+
+        public virtual ICollection<Invoice> Invoices { get; set; }
+
+        public override string ToString()
+        {
+            return CompanyName;
+        }
     }
 }

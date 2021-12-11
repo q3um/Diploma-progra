@@ -12,23 +12,22 @@ using System.Windows.Forms;
 using Cyriller;
 using Cyriller.Model;
 using Excel = Microsoft.Office.Interop.Excel;
+using System.Data.Entity;
 
 namespace WindowsFormsApp1
 {
     public partial class Form1 : Form
     {
-        List<ProductItem> items = new List<ProductItem>();
-        BindingList<GridRow> data = new BindingList<GridRow>();
         Parser parser = new Parser();
-        List<CustomerInfo> customerInfos = new List<CustomerInfo>();
 
 
         public Form1()
         {
             InitializeComponent();
+
         }
 
- 
+
         private void buttExport_Click(object sender, EventArgs e)
         {
             Task task = Task.Factory.StartNew(() =>
@@ -110,7 +109,7 @@ namespace WindowsFormsApp1
                         {
                             return;
                         }
-                        parser.ProductItemProcessor(filename, items, customerInfos);
+                        parser.ProductItemProcessor(filename);
                     });
 
                     stopWatch.Stop();
@@ -134,7 +133,7 @@ namespace WindowsFormsApp1
                 }
                 Task task = Task.Factory.StartNew(() =>
                 {
-                    parser.ProductItemProcessor(dlg.FileName, items, customerInfos);
+                    parser.ProductItemProcessor(dlg.FileName);
                 });
             }
 
@@ -238,7 +237,7 @@ namespace WindowsFormsApp1
                 if (FilterName.Text.IsNullOrEmpty() && FilterCustomer.Text.IsNullOrEmpty() && FilterInvoice.Text.IsNullOrEmpty()
                     && monthCalendar1.SelectionStart == monthCalendar1.TodayDate)
                 {
-                    var data = (from d in db.productItems
+                    var data = (from d in db.ProductItems
                                 where d.Price > PriceMore &&
                                 d.Price < PriceSmaller
                                 select d);
@@ -247,7 +246,7 @@ namespace WindowsFormsApp1
                 if (FilterName.Text.IsNullOrEmpty() && FilterCustomer.Text.IsNullOrEmpty() && FilterInvoice.Text.IsNullOrEmpty()
                     && monthCalendar1.SelectionStart != monthCalendar1.TodayDate)
                 {
-                    var data = (from d in db.productItems
+                    var data = (from d in db.ProductItems
                                 where d.Price > PriceMore &&
                                 d.Price < PriceSmaller &&
                                 monthCalendar1.SelectionStart <= d.Date &&
@@ -258,7 +257,7 @@ namespace WindowsFormsApp1
                 else if (FilterName.Text.IsNotNullOrEmpty() && FilterCustomer.Text.IsNullOrEmpty() && FilterInvoice.Text.IsNullOrEmpty()
                     && monthCalendar1.SelectionStart == monthCalendar1.TodayDate)
                 {
-                    var data = (from d in db.productItems
+                    var data = (from d in db.ProductItems
                                 where d.Price > PriceMore &&
                                 d.Price < PriceSmaller &&
                                 d.PartNumber.Contains(PartNumber)
@@ -268,7 +267,7 @@ namespace WindowsFormsApp1
                 else if (FilterName.Text.IsNotNullOrEmpty() && FilterCustomer.Text.IsNullOrEmpty() && FilterInvoice.Text.IsNullOrEmpty()
                     && monthCalendar1.SelectionStart != monthCalendar1.TodayDate)
                 {
-                    var data = (from d in db.productItems
+                    var data = (from d in db.ProductItems
                                 where d.Price > PriceMore &&
                                 d.Price < PriceSmaller &&
                                 d.PartNumber.Contains(PartNumber) &&
@@ -281,7 +280,7 @@ namespace WindowsFormsApp1
                     && monthCalendar1.SelectionStart == monthCalendar1.TodayDate)
                 {
 
-                    var data = (from d in db.productItems
+                    var data = (from d in db.ProductItems
                                 where d.Price > PriceMore &&
                                 d.Price < PriceSmaller &&
                                 d.PartNumber.Contains(PartNumber) &&
@@ -293,7 +292,7 @@ namespace WindowsFormsApp1
                     && monthCalendar1.SelectionStart != monthCalendar1.TodayDate)
                 {
 
-                    var data = (from d in db.productItems
+                    var data = (from d in db.ProductItems
                                 where d.Price > PriceMore &&
                                 d.Price < PriceSmaller &&
                                 d.PartNumber.Contains(PartNumber) &&
@@ -306,7 +305,7 @@ namespace WindowsFormsApp1
                 else if (FilterName.Text.IsNotNullOrEmpty() && FilterCustomer.Text.IsNotNullOrEmpty() && FilterInvoice.Text.IsNotNullOrEmpty())
                 {
 
-                    var data = (from d in db.productItems
+                    var data = (from d in db.ProductItems
                                 where d.Price > PriceMore &&
                                 d.Price < PriceSmaller &&
 
@@ -320,7 +319,7 @@ namespace WindowsFormsApp1
                 else if (FilterName.Text.IsNullOrEmpty() && FilterCustomer.Text.IsNotNullOrEmpty() && FilterInvoice.Text.IsNullOrEmpty()
                     && monthCalendar1.SelectionStart == monthCalendar1.TodayDate)
                 {
-                    var data = (from d in db.productItems
+                    var data = (from d in db.ProductItems
                                 where d.Price > PriceMore &&
                                 d.Price < PriceSmaller &&
 
@@ -332,7 +331,7 @@ namespace WindowsFormsApp1
                 else if (FilterName.Text.IsNullOrEmpty() && FilterCustomer.Text.IsNotNullOrEmpty() && FilterInvoice.Text.IsNullOrEmpty()
                     && monthCalendar1.SelectionStart != monthCalendar1.TodayDate)
                 {
-                    var data = (from d in db.productItems
+                    var data = (from d in db.ProductItems
                                 where d.Price > PriceMore &&
                                 d.Price < PriceSmaller &&
 
@@ -346,7 +345,7 @@ namespace WindowsFormsApp1
                 else if (FilterName.Text.IsNullOrEmpty() && FilterCustomer.Text.IsNotNullOrEmpty() && FilterInvoice.Text.IsNotNullOrEmpty())
                 {
 
-                    var data = (from d in db.productItems
+                    var data = (from d in db.ProductItems
                                 where d.Price > PriceMore &&
                                 d.Price < PriceSmaller &&
 
@@ -359,7 +358,7 @@ namespace WindowsFormsApp1
                 else if (FilterName.Text.IsNotNullOrEmpty() && FilterCustomer.Text.IsNullOrEmpty() && FilterInvoice.Text.IsNotNullOrEmpty())
                 {
 
-                    var data = (from d in db.productItems
+                    var data = (from d in db.ProductItems
                                 where d.Price > PriceMore &&
                                 d.Price < PriceSmaller &&
 
@@ -368,11 +367,12 @@ namespace WindowsFormsApp1
 
                                 select d);
                     dataGridView1.DataSource = data.ToList();
+
                 }
                 else if (FilterName.Text.IsNullOrEmpty() && FilterCustomer.Text.IsNullOrEmpty() && FilterInvoice.Text.IsNotNullOrEmpty())
                 {
 
-                    var data = (from d in db.productItems
+                    var data = (from d in db.ProductItems
                                 where d.Price > PriceMore &&
                                 d.Price < PriceSmaller &&
 
@@ -427,19 +427,22 @@ namespace WindowsFormsApp1
                 string type = FilterType.Text;
                 string Customer = FilterCustomerInvoice.Text;
                 string Invoice = FilterInvoceInvoice.Text;
+
                 if (FilterType.Text.IsNullOrEmpty() && FilterCustomerInvoice.Text.IsNullOrEmpty() && FilterInvoceInvoice.Text.IsNullOrEmpty()
                     && monthCalendar2.SelectionStart == monthCalendar2.TodayDate)
                 {
-                    var data = (from d in db.invoices
+
+                    var data = (from d in db.Invoices
                                 where d.Sum > SumMore &&
                                 d.Sum < SumSmaller
                                 select d);
+
                     dataGridView2.DataSource = data.ToList();
                 }
                 if (FilterType.Text.IsNullOrEmpty() && FilterCustomerInvoice.Text.IsNullOrEmpty() && FilterInvoceInvoice.Text.IsNullOrEmpty()
                     && monthCalendar2.SelectionStart != monthCalendar2.TodayDate)
                 {
-                    var data = (from d in db.invoices
+                    var data = (from d in db.Invoices
                                 where d.Sum > SumMore &&
                                 d.Sum < SumSmaller &&
                                 monthCalendar2.SelectionStart <= d.Date &&
@@ -450,7 +453,7 @@ namespace WindowsFormsApp1
                 else if (FilterType.Text.IsNotNullOrEmpty() && FilterCustomerInvoice.Text.IsNullOrEmpty() && FilterInvoceInvoice.Text.IsNullOrEmpty()
                     && monthCalendar2.SelectionStart == monthCalendar2.TodayDate)
                 {
-                    var data = (from d in db.invoices
+                    var data = (from d in db.Invoices
                                 where d.Sum > SumMore &&
                                 d.Sum < SumSmaller &&
                                 d.Type.Contains(type)
@@ -460,7 +463,7 @@ namespace WindowsFormsApp1
                 else if (FilterType.Text.IsNotNullOrEmpty() && FilterCustomerInvoice.Text.IsNullOrEmpty() && FilterInvoceInvoice.Text.IsNullOrEmpty()
                     && monthCalendar2.SelectionStart != monthCalendar2.TodayDate)
                 {
-                    var data = (from d in db.invoices
+                    var data = (from d in db.Invoices
                                 where d.Sum > SumMore &&
                                 d.Sum < SumSmaller &&
                                 d.Type.Contains(type) &&
@@ -473,11 +476,11 @@ namespace WindowsFormsApp1
                     && monthCalendar2.SelectionStart == monthCalendar2.TodayDate)
                 {
 
-                    var data = (from d in db.invoices
+                    var data = (from d in db.Invoices
                                 where d.Sum > SumMore &&
                                 d.Sum < SumSmaller &&
                                 d.Type.Contains(type) &&
-                                d.Customer.Contains(Customer)
+                                d.Company.Contains(Customer)
                                 select d);
                     dataGridView2.DataSource = data.ToList();
                 }
@@ -485,11 +488,11 @@ namespace WindowsFormsApp1
                     && monthCalendar2.SelectionStart != monthCalendar2.TodayDate)
                 {
 
-                    var data = (from d in db.invoices
+                    var data = (from d in db.Invoices
                                 where d.Sum > SumMore &&
                                 d.Sum < SumSmaller &&
                                 d.Type.Contains(type) &&
-                                d.Customer.Contains(Customer) &&
+                                d.Company.Contains(Customer) &&
                                 monthCalendar2.SelectionStart <= d.Date &&
                                 monthCalendar2.SelectionEnd >= d.Date
                                 select d);
@@ -498,12 +501,12 @@ namespace WindowsFormsApp1
                 else if (FilterType.Text.IsNotNullOrEmpty() && FilterCustomerInvoice.Text.IsNotNullOrEmpty() && FilterInvoceInvoice.Text.IsNotNullOrEmpty())
                 {
 
-                    var data = (from d in db.invoices
+                    var data = (from d in db.Invoices
                                 where d.Sum > SumMore &&
                                 d.Sum < SumSmaller &&
 
                                 d.Type.Contains(type) &&
-                                d.Customer.Contains(Customer) &&
+                                d.Company.Contains(Customer) &&
                                 d.Acct == Invoice
 
                                 select d);
@@ -512,11 +515,11 @@ namespace WindowsFormsApp1
                 else if (FilterType.Text.IsNullOrEmpty() && FilterCustomerInvoice.Text.IsNotNullOrEmpty() && FilterInvoceInvoice.Text.IsNullOrEmpty()
                     && monthCalendar2.SelectionStart == monthCalendar2.TodayDate)
                 {
-                    var data = (from d in db.invoices
+                    var data = (from d in db.Invoices
                                 where d.Sum > SumMore &&
                                 d.Sum < SumSmaller &&
-
-                                d.Customer.Contains(Customer)
+                                
+                                d.Company.Contains(Customer)
 
                                 select d);
                     dataGridView2.DataSource = data.ToList();
@@ -524,11 +527,11 @@ namespace WindowsFormsApp1
                 else if (FilterType.Text.IsNullOrEmpty() && FilterCustomerInvoice.Text.IsNotNullOrEmpty() && FilterInvoceInvoice.Text.IsNullOrEmpty()
                     && monthCalendar2.SelectionStart != monthCalendar2.TodayDate)
                 {
-                    var data = (from d in db.invoices
+                    var data = (from d in db.Invoices
                                 where d.Sum > SumMore &&
                                 d.Sum < SumSmaller &&
 
-                                d.Customer.Contains(Customer) &&
+                                d.Company.Contains(Customer) &&
                                 monthCalendar1.SelectionStart <= d.Date &&
                                 monthCalendar1.SelectionEnd >= d.Date
 
@@ -538,11 +541,11 @@ namespace WindowsFormsApp1
                 else if (FilterType.Text.IsNullOrEmpty() && FilterCustomerInvoice.Text.IsNotNullOrEmpty() && FilterInvoceInvoice.Text.IsNotNullOrEmpty())
                 {
 
-                    var data = (from d in db.invoices
+                    var data = (from d in db.Invoices
                                 where d.Sum > SumMore &&
                                 d.Sum < SumSmaller &&
 
-                                d.Customer.Contains(Customer) &&
+                                d.Company.Contains(Customer) &&
                                 d.Acct == Invoice
 
                                 select d);
@@ -551,7 +554,7 @@ namespace WindowsFormsApp1
                 else if (FilterType.Text.IsNotNullOrEmpty() && FilterCustomerInvoice.Text.IsNullOrEmpty() && FilterInvoceInvoice.Text.IsNotNullOrEmpty())
                 {
 
-                    var data = (from d in db.invoices
+                    var data = (from d in db.Invoices
                                 where d.Sum > SumMore &&
                                 d.Sum < SumSmaller &&
 
@@ -564,7 +567,7 @@ namespace WindowsFormsApp1
                 else if (FilterType.Text.IsNullOrEmpty() && FilterCustomerInvoice.Text.IsNullOrEmpty() && FilterInvoceInvoice.Text.IsNotNullOrEmpty())
                 {
 
-                    var data = (from d in db.invoices
+                    var data = (from d in db.Invoices
                                 where d.Sum > SumMore &&
                                 d.Sum < SumSmaller &&
 
@@ -580,77 +583,84 @@ namespace WindowsFormsApp1
 
         private void buttFilterSearchCustomer_Click(object sender, EventArgs e)
         {
-            
-                string customerName = FilterCustomerName.Text;
-                string inn = FilterCustomerINN.Text;
-                string adress = FilterCustomerAdress.Text;
-                using (ProductItemContext db = new ProductItemContext())
+            string customerName = FilterCustomerName.Text;
+            string inn = FilterCustomerINN.Text;
+            string adress = FilterCustomerAdress.Text;
+            int id = int.Parse(FilterCustomerId.Text);
+            using (ProductItemContext db = new ProductItemContext())
+            {
+                if (FilterCustomerId.Text.IsNotNullOrEmpty())
                 {
-
-                    if (FilterCustomerName.Text.IsNullOrEmpty() && FilterCustomerINN.Text.IsNotNullOrEmpty() && FilterCustomerAdress.Text.IsNullOrEmpty())
-                    {
-                        var data = (from d in db.customerInfos
-                                    where d.Inn.Contains(inn)
-                                    select d);
-                        dataGridView3.DataSource = data.ToList();
-                    }
-                    if (FilterCustomerName.Text.IsNotNullOrEmpty() && FilterCustomerINN.Text.IsNullOrEmpty() && FilterCustomerAdress.Text.IsNullOrEmpty())
-                    {
-                        var data = (from d in db.customerInfos
-                                    where d.CompanyName.Contains(customerName)
-                                    select d);
-                        dataGridView3.DataSource = data.ToList();
-                    }
-                    if (FilterCustomerName.Text.IsNullOrEmpty() && FilterCustomerINN.Text.IsNullOrEmpty() && FilterCustomerAdress.Text.IsNotNullOrEmpty())
-                    {
-                        var data = (from d in db.customerInfos
-                                    where d.Adress.Contains(adress)
-                                    select d);
-                        dataGridView3.DataSource = data.ToList();
-                    }
-                    if (FilterCustomerName.Text.IsNullOrEmpty() && FilterCustomerINN.Text.IsNullOrEmpty() && FilterCustomerAdress.Text.IsNullOrEmpty())
-                    {
-                        var data = (from d in db.customerInfos select d);
-                        dataGridView3.DataSource = data.ToList();
-                    }
-                    if (FilterCustomerName.Text.IsNotNullOrEmpty() && FilterCustomerINN.Text.IsNotNullOrEmpty() && FilterCustomerAdress.Text.IsNullOrEmpty())
-                    {
-                        var data = (from d in db.customerInfos
-                                    where d.Inn.Contains(inn) &&
-                                    d.CompanyName.Contains(customerName)
-                                    select d);
-                        dataGridView3.DataSource = data.ToList();
-                    }
-                    if (FilterCustomerName.Text.IsNotNullOrEmpty() && FilterCustomerINN.Text.IsNotNullOrEmpty() && FilterCustomerAdress.Text.IsNotNullOrEmpty())
-                    {
-                        var data = (from d in db.customerInfos
-                                    where d.Inn.Contains(inn) &&
-                                    d.CompanyName.Contains(customerName) &&
-                                    d.Adress.Contains(adress)
-                                    select d);
-                        dataGridView3.DataSource = data.ToList();
-                    }
-                    if (FilterCustomerName.Text.IsNullOrEmpty() && FilterCustomerINN.Text.IsNotNullOrEmpty() && FilterCustomerAdress.Text.IsNotNullOrEmpty())
-                    {
-                        var data = (from d in db.customerInfos
-                                    where d.Inn.Contains(inn) &&
-                                    d.Adress.Contains(adress)
-                                    select d);
-                        dataGridView3.DataSource = data.ToList();
-                    }
-                    if (FilterCustomerName.Text.IsNotNullOrEmpty() && FilterCustomerINN.Text.IsNullOrEmpty() && FilterCustomerAdress.Text.IsNotNullOrEmpty())
-                    {
-                        var data = (from d in db.customerInfos
-                                    where d.CompanyName.Contains(customerName) &&
-                                    d.Adress.Contains(adress)
-                                    select d);
-                        dataGridView3.DataSource = data.ToList();
-                    }
+                    var data = (from d in db.Customers
+                                where d.Id == id
+                                select d);
+                    dataGridView3.DataSource = data.ToList();
                 }
-            
+
+                if (FilterCustomerName.Text.IsNullOrEmpty() && FilterCustomerINN.Text.IsNotNullOrEmpty() && FilterCustomerAdress.Text.IsNullOrEmpty())
+                {
+                    var data = (from d in db.Customers
+                                where d.Inn.Contains(inn)
+                                select d);
+                    dataGridView3.DataSource = data.ToList();
+                }
+                
+                if (FilterCustomerName.Text.IsNotNullOrEmpty() && FilterCustomerINN.Text.IsNullOrEmpty() && FilterCustomerAdress.Text.IsNullOrEmpty())
+                {
+                    var data = (from d in db.Customers
+                                where d.CompanyName.Contains(customerName)
+                                select d);
+                    dataGridView3.DataSource = data.ToList();
+                }
+                if (FilterCustomerName.Text.IsNullOrEmpty() && FilterCustomerINN.Text.IsNullOrEmpty() && FilterCustomerAdress.Text.IsNotNullOrEmpty())
+                {
+                    var data = (from d in db.Customers
+                                where d.Adress.Contains(adress)
+                                select d);
+                    dataGridView3.DataSource = data.ToList();
+                }
+                if (FilterCustomerName.Text.IsNullOrEmpty() && FilterCustomerINN.Text.IsNullOrEmpty() && FilterCustomerAdress.Text.IsNullOrEmpty()&&FilterCustomerId.Text.IsNullOrEmpty())
+                {
+                    var data = (from d in db.Customers select d);
+                    dataGridView3.DataSource = data.ToList();
+                }
+                if (FilterCustomerName.Text.IsNotNullOrEmpty() && FilterCustomerINN.Text.IsNotNullOrEmpty() && FilterCustomerAdress.Text.IsNullOrEmpty())
+                {
+                    var data = (from d in db.Customers
+                                where d.Inn.Contains(inn) &&
+                                d.CompanyName.Contains(customerName)
+                                select d);
+                    dataGridView3.DataSource = data.ToList();
+                }
+                if (FilterCustomerName.Text.IsNotNullOrEmpty() && FilterCustomerINN.Text.IsNotNullOrEmpty() && FilterCustomerAdress.Text.IsNotNullOrEmpty())
+                {
+                    var data = (from d in db.Customers
+                                where d.Inn.Contains(inn) &&
+                                d.CompanyName.Contains(customerName) &&
+                                d.Adress.Contains(adress)
+                                select d);
+                    dataGridView3.DataSource = data.ToList();
+                }
+                if (FilterCustomerName.Text.IsNullOrEmpty() && FilterCustomerINN.Text.IsNotNullOrEmpty() && FilterCustomerAdress.Text.IsNotNullOrEmpty())
+                {
+                    var data = (from d in db.Customers
+                                where d.Inn.Contains(inn) &&
+                                d.Adress.Contains(adress)
+                                select d);
+                    dataGridView3.DataSource = data.ToList();
+                }
+                if (FilterCustomerName.Text.IsNotNullOrEmpty() && FilterCustomerINN.Text.IsNullOrEmpty() && FilterCustomerAdress.Text.IsNotNullOrEmpty())
+                {
+                    var data = (from d in db.Customers
+                                where d.CompanyName.Contains(customerName) &&
+                                d.Adress.Contains(adress)
+                                select d);
+                    dataGridView3.DataSource = data.ToList();
+                }
+            }
         }
 
-   
+
 
         private void buttExportInvoice_Click(object sender, EventArgs e)
         {
@@ -678,5 +688,31 @@ namespace WindowsFormsApp1
                 exApp.Visible = true;
             });
         }
+
+        private void butExportInCustomer_Click(object sender, EventArgs e)
+        {
+            Task task = Task.Factory.StartNew(() =>
+            {
+                Excel.Application exApp = new Excel.Application();
+                exApp.Workbooks.Add();
+                Excel.Worksheet wsh = (Excel.Worksheet)exApp.ActiveSheet;
+
+                for (int i = 0; i <= dataGridView3.Rows.Count - 1; i++)
+                {
+                    for (int j = 0; j <= dataGridView3.Columns.Count - 2; j++)
+                    {
+                        if (dataGridView3[j, i].Value == null)
+                        {
+                            wsh.Cells[i + 1, j + 1] = "";
+                        }
+                        else
+                            wsh.Cells[i + 1, j + 1] = dataGridView3[j, i].Value.ToString();
+                    }
+                }
+                wsh.Cells[dataGridView3.Rows.Count + 1, 1] = $"Количество покупателей {dataGridView3.Rows.Count}";
+                exApp.Visible = true;
+            });
+        }
+
     }
 }

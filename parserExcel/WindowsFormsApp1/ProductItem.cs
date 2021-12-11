@@ -20,5 +20,7 @@ namespace WindowsFormsApp1
         public DateTime Date { get; set; }
         public string Type { get; set; }
         public string note { get; set; }
+
+        
     }
 }

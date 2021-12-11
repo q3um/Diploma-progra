@@ -11,8 +11,8 @@ namespace WindowsFormsApp1
     {
         public ProductItemContext() : base(nameOrConnectionString: "DBConnection") { }
 
-        public DbSet<ProductItem> productItems { get; set; }
-        public DbSet<Invoice> invoices { get; set; }
-        public DbSet<CustomerInfo> customerInfos { get; set; }
+        public DbSet<ProductItem> ProductItems { get; set; }
+        public DbSet<Invoice> Invoices { get; set; }
+        public DbSet<Customer> Customers { get; set; }
     }
 }

@@ -74,11 +74,13 @@ namespace WindowsFormsApp1
             this.button3 = new System.Windows.Forms.Button();
             this.button4 = new System.Windows.Forms.Button();
             this.panel3 = new System.Windows.Forms.Panel();
+            this.label61 = new System.Windows.Forms.Label();
+            this.FilterCustomerId = new System.Windows.Forms.TextBox();
             this.label58 = new System.Windows.Forms.Label();
             this.FilterCustomerAdress = new System.Windows.Forms.TextBox();
             this.label57 = new System.Windows.Forms.Label();
             this.buttFilterSearchCustomer = new System.Windows.Forms.Button();
-            this.button22 = new System.Windows.Forms.Button();
+            this.butExportInCustomer = new System.Windows.Forms.Button();
             this.label59 = new System.Windows.Forms.Label();
             this.label60 = new System.Windows.Forms.Label();
             this.FilterCustomerINN = new System.Windows.Forms.TextBox();
@@ -198,6 +200,8 @@ namespace WindowsFormsApp1
             this.button21 = new System.Windows.Forms.Button();
             this.buttInvoice = new System.Windows.Forms.Button();
             this.buttExit = new System.Windows.Forms.Button();
+            this.dataGridViewComboBoxColumn1 = new System.Windows.Forms.DataGridViewComboBoxColumn();
+            this.dataGridViewComboBoxColumn2 = new System.Windows.Forms.DataGridViewComboBoxColumn();
             this.tabControl1.SuspendLayout();
             this.tabFiltersItems.SuspendLayout();
             this.panel1.SuspendLayout();
@@ -470,12 +474,13 @@ namespace WindowsFormsApp1
             | System.Windows.Forms.AnchorStyles.Right)));
             this.dataGridView2.AutoSizeColumnsMode = System.Windows.Forms.DataGridViewAutoSizeColumnsMode.Fill;
             this.dataGridView2.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            this.dataGridView2.Location = new System.Drawing.Point(325, 7);
+            this.dataGridView2.Location = new System.Drawing.Point(325, 3);
             this.dataGridView2.Name = "dataGridView2";
             this.dataGridView2.RowHeadersWidth = 51;
             this.dataGridView2.RowTemplate.Height = 24;
             this.dataGridView2.Size = new System.Drawing.Size(920, 647);
             this.dataGridView2.TabIndex = 4;
+            this.dataGridView2.Tag = "";
             // 
             // button1
             // 
@@ -487,6 +492,7 @@ namespace WindowsFormsApp1
             this.button1.TabIndex = 3;
             this.button1.Text = "Добавить файл";
             this.button1.UseVisualStyleBackColor = true;
+            this.button1.Click += new System.EventHandler(this.buttAddFile_Click);
             // 
             // button2
             // 
@@ -498,6 +504,7 @@ namespace WindowsFormsApp1
             this.button2.TabIndex = 2;
             this.button2.Text = "Добавить папку";
             this.button2.UseVisualStyleBackColor = true;
+            this.button2.Click += new System.EventHandler(this.buttAddFolder_Click);
             // 
             // panel2
             // 
@@ -674,6 +681,7 @@ namespace WindowsFormsApp1
             this.button3.TabIndex = 8;
             this.button3.Text = "Добавить файл";
             this.button3.UseVisualStyleBackColor = true;
+            this.button3.Click += new System.EventHandler(this.buttAddFile_Click);
             // 
             // button4
             // 
@@ -685,14 +693,17 @@ namespace WindowsFormsApp1
             this.button4.TabIndex = 7;
             this.button4.Text = "Добавить папку";
             this.button4.UseVisualStyleBackColor = true;
+            this.button4.Click += new System.EventHandler(this.buttAddFolder_Click);
             // 
             // panel3
             // 
+            this.panel3.Controls.Add(this.label61);
+            this.panel3.Controls.Add(this.FilterCustomerId);
             this.panel3.Controls.Add(this.label58);
             this.panel3.Controls.Add(this.FilterCustomerAdress);
             this.panel3.Controls.Add(this.label57);
             this.panel3.Controls.Add(this.buttFilterSearchCustomer);
-            this.panel3.Controls.Add(this.button22);
+            this.panel3.Controls.Add(this.butExportInCustomer);
             this.panel3.Controls.Add(this.label59);
             this.panel3.Controls.Add(this.label60);
             this.panel3.Controls.Add(this.FilterCustomerINN);
@@ -701,6 +712,22 @@ namespace WindowsFormsApp1
             this.panel3.Name = "panel3";
             this.panel3.Size = new System.Drawing.Size(311, 581);
             this.panel3.TabIndex = 6;
+            // 
+            // label61
+            // 
+            this.label61.AutoSize = true;
+            this.label61.Location = new System.Drawing.Point(15, 205);
+            this.label61.Name = "label61";
+            this.label61.Size = new System.Drawing.Size(50, 20);
+            this.label61.TabIndex = 49;
+            this.label61.Text = "По Id";
+            // 
+            // FilterCustomerId
+            // 
+            this.FilterCustomerId.Location = new System.Drawing.Point(18, 230);
+            this.FilterCustomerId.Name = "FilterCustomerId";
+            this.FilterCustomerId.Size = new System.Drawing.Size(257, 26);
+            this.FilterCustomerId.TabIndex = 50;
             // 
             // label58
             // 
@@ -739,16 +766,17 @@ namespace WindowsFormsApp1
             this.buttFilterSearchCustomer.UseVisualStyleBackColor = true;
             this.buttFilterSearchCustomer.Click += new System.EventHandler(this.buttFilterSearchCustomer_Click);
             // 
-            // button22
+            // butExportInCustomer
             // 
-            this.button22.Anchor = System.Windows.Forms.AnchorStyles.None;
-            this.button22.Location = new System.Drawing.Point(19, 535);
-            this.button22.Margin = new System.Windows.Forms.Padding(4);
-            this.button22.Name = "button22";
-            this.button22.Size = new System.Drawing.Size(258, 32);
-            this.button22.TabIndex = 35;
-            this.button22.Text = "Сформировать отчет";
-            this.button22.UseVisualStyleBackColor = true;
+            this.butExportInCustomer.Anchor = System.Windows.Forms.AnchorStyles.None;
+            this.butExportInCustomer.Location = new System.Drawing.Point(19, 535);
+            this.butExportInCustomer.Margin = new System.Windows.Forms.Padding(4);
+            this.butExportInCustomer.Name = "butExportInCustomer";
+            this.butExportInCustomer.Size = new System.Drawing.Size(258, 32);
+            this.butExportInCustomer.TabIndex = 35;
+            this.butExportInCustomer.Text = "Сформировать отчет";
+            this.butExportInCustomer.UseVisualStyleBackColor = true;
+            this.butExportInCustomer.Click += new System.EventHandler(this.butExportInCustomer_Click);
             // 
             // label59
             // 
@@ -2083,6 +2111,27 @@ namespace WindowsFormsApp1
             this.buttExit.UseVisualStyleBackColor = true;
             this.buttExit.Click += new System.EventHandler(this.buttExit_Click);
             // 
+            // dataGridViewComboBoxColumn1
+            // 
+            this.dataGridViewComboBoxColumn1.DataPropertyName = "Customer";
+            this.dataGridViewComboBoxColumn1.HeaderText = "Customer";
+            this.dataGridViewComboBoxColumn1.MinimumWidth = 6;
+            this.dataGridViewComboBoxColumn1.Name = "dataGridViewComboBoxColumn1";
+            this.dataGridViewComboBoxColumn1.Resizable = System.Windows.Forms.DataGridViewTriState.True;
+            this.dataGridViewComboBoxColumn1.SortMode = System.Windows.Forms.DataGridViewColumnSortMode.Automatic;
+            this.dataGridViewComboBoxColumn1.Width = 867;
+            // 
+            // dataGridViewComboBoxColumn2
+            // 
+            this.dataGridViewComboBoxColumn2.DataPropertyName = "Customer";
+            this.dataGridViewComboBoxColumn2.DisplayStyle = System.Windows.Forms.DataGridViewComboBoxDisplayStyle.Nothing;
+            this.dataGridViewComboBoxColumn2.HeaderText = "Column1";
+            this.dataGridViewComboBoxColumn2.MinimumWidth = 6;
+            this.dataGridViewComboBoxColumn2.Name = "dataGridViewComboBoxColumn2";
+            this.dataGridViewComboBoxColumn2.Resizable = System.Windows.Forms.DataGridViewTriState.True;
+            this.dataGridViewComboBoxColumn2.SortMode = System.Windows.Forms.DataGridViewColumnSortMode.Automatic;
+            this.dataGridViewComboBoxColumn2.Width = 867;
+            // 
             // Form1
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(9F, 18F);
@@ -2285,21 +2334,33 @@ namespace WindowsFormsApp1
         private System.Windows.Forms.TextBox FilterType;
         private System.Windows.Forms.Label label55;
         private System.Windows.Forms.Label label56;
-        private System.Windows.Forms.Button button3;
-        private System.Windows.Forms.Button button4;
         private System.Windows.Forms.Panel panel3;
         private System.Windows.Forms.Label label58;
         private System.Windows.Forms.TextBox FilterCustomerAdress;
         private System.Windows.Forms.Label label57;
         private System.Windows.Forms.Button buttFilterSearchCustomer;
-        private System.Windows.Forms.Button button22;
+        private System.Windows.Forms.Button butExportInCustomer;
         private System.Windows.Forms.Label label59;
         private System.Windows.Forms.Label label60;
         private System.Windows.Forms.TextBox FilterCustomerINN;
         private System.Windows.Forms.TextBox FilterCustomerName;
         private System.Windows.Forms.DataGridView dataGridView3;
+        private System.Windows.Forms.DataGridViewComboBoxColumn dataGridViewComboBoxColumn1;
+        private System.Windows.Forms.DataGridViewComboBoxColumn dataGridViewComboBoxColumn2;
+        private System.Windows.Forms.DataGridViewTextBoxColumn idDataGridViewTextBoxColumn;
+        private System.Windows.Forms.DataGridViewTextBoxColumn companyDataGridViewTextBoxColumn;
+        private System.Windows.Forms.DataGridViewTextBoxColumn sumDataGridViewTextBoxColumn;
+        private System.Windows.Forms.DataGridViewTextBoxColumn acctDataGridViewTextBoxColumn;
+        private System.Windows.Forms.DataGridViewTextBoxColumn dateDataGridViewTextBoxColumn;
+        private System.Windows.Forms.DataGridViewTextBoxColumn typeDataGridViewTextBoxColumn;
+        private System.Windows.Forms.DataGridViewTextBoxColumn customerIdDataGridViewTextBoxColumn;
+        private System.Windows.Forms.DataGridViewTextBoxColumn customerDataGridViewTextBoxColumn;
         private System.Windows.Forms.Button button1;
         private System.Windows.Forms.Button button2;
+        private System.Windows.Forms.Button button3;
+        private System.Windows.Forms.Button button4;
+        private System.Windows.Forms.Label label61;
+        private System.Windows.Forms.TextBox FilterCustomerId;
     }
 }
 
