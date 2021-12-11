@@ -14,5 +14,6 @@ namespace WindowsFormsApp1
         public DbSet<ProductItem> ProductItems { get; set; }
         public DbSet<Invoice> Invoices { get; set; }
         public DbSet<Customer> Customers { get; set; }
+        public DbSet<InvoicesAndCustomer> InvoicesAndCustomers { get; set; }
     }
 }

@@ -29,6 +29,7 @@ namespace WindowsFormsApp1
         /// </summary>
         private void InitializeComponent()
         {
+            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(Form1));
             this.tabControl1 = new System.Windows.Forms.TabControl();
             this.tabFiltersItems = new System.Windows.Forms.TabPage();
             this.panel1 = new System.Windows.Forms.Panel();
@@ -74,8 +75,6 @@ namespace WindowsFormsApp1
             this.button3 = new System.Windows.Forms.Button();
             this.button4 = new System.Windows.Forms.Button();
             this.panel3 = new System.Windows.Forms.Panel();
-            this.label61 = new System.Windows.Forms.Label();
-            this.FilterCustomerId = new System.Windows.Forms.TextBox();
             this.label58 = new System.Windows.Forms.Label();
             this.FilterCustomerAdress = new System.Windows.Forms.TextBox();
             this.label57 = new System.Windows.Forms.Label();
@@ -86,7 +85,7 @@ namespace WindowsFormsApp1
             this.FilterCustomerINN = new System.Windows.Forms.TextBox();
             this.FilterCustomerName = new System.Windows.Forms.TextBox();
             this.dataGridView3 = new System.Windows.Forms.DataGridView();
-            this.tabDocuments = new System.Windows.Forms.TabPage();
+            this.tabContractRF = new System.Windows.Forms.TabPage();
             this.tableLayoutPanel1 = new System.Windows.Forms.TableLayoutPanel();
             this.BIK = new System.Windows.Forms.TextBox();
             this.KPP = new System.Windows.Forms.TextBox();
@@ -114,48 +113,46 @@ namespace WindowsFormsApp1
             this.dateTimePicker1 = new System.Windows.Forms.DateTimePicker();
             this.groupBox1 = new System.Windows.Forms.GroupBox();
             this.buttClearForm = new System.Windows.Forms.Button();
-            this.button7 = new System.Windows.Forms.Button();
-            this.button6 = new System.Windows.Forms.Button();
+            this.butContrRF60 = new System.Windows.Forms.Button();
             this.butContrRF100 = new System.Windows.Forms.Button();
-            this.tabPage2 = new System.Windows.Forms.TabPage();
+            this.tabSpecRF = new System.Windows.Forms.TabPage();
             this.tableLayoutPanel3 = new System.Windows.Forms.TableLayoutPanel();
-            this.textBox38 = new System.Windows.Forms.TextBox();
+            this.NumberContractTextBox = new System.Windows.Forms.TextBox();
             this.label42 = new System.Windows.Forms.Label();
             this.label18 = new System.Windows.Forms.Label();
-            this.textBox26 = new System.Windows.Forms.TextBox();
+            this.CompanyNameSpecRFtextBox = new System.Windows.Forms.TextBox();
             this.label20 = new System.Windows.Forms.Label();
-            this.textBox20 = new System.Windows.Forms.TextBox();
+            this.DolgnostSpecRFTextBox = new System.Windows.Forms.TextBox();
             this.label21 = new System.Windows.Forms.Label();
-            this.textBox25 = new System.Windows.Forms.TextBox();
+            this.FIOSpecRFtextBox = new System.Windows.Forms.TextBox();
             this.label23 = new System.Windows.Forms.Label();
-            this.textBox24 = new System.Windows.Forms.TextBox();
+            this.AdressSpecRFtextBox = new System.Windows.Forms.TextBox();
             this.label24 = new System.Windows.Forms.Label();
-            this.textBox27 = new System.Windows.Forms.TextBox();
+            this.InnSpecRFtextBox = new System.Windows.Forms.TextBox();
             this.label29 = new System.Windows.Forms.Label();
-            this.textBox18 = new System.Windows.Forms.TextBox();
+            this.KppSpecRFtextBox = new System.Windows.Forms.TextBox();
             this.label25 = new System.Windows.Forms.Label();
-            this.textBox23 = new System.Windows.Forms.TextBox();
+            this.BankSpecRFtextBox = new System.Windows.Forms.TextBox();
             this.label26 = new System.Windows.Forms.Label();
-            this.textBox17 = new System.Windows.Forms.TextBox();
+            this.BikSpecRFtextBox = new System.Windows.Forms.TextBox();
             this.label30 = new System.Windows.Forms.Label();
             this.dateTimePicker2 = new System.Windows.Forms.DateTimePicker();
             this.label27 = new System.Windows.Forms.Label();
-            this.textBox22 = new System.Windows.Forms.TextBox();
+            this.RSspecTextBox = new System.Windows.Forms.TextBox();
             this.label28 = new System.Windows.Forms.Label();
-            this.textBox21 = new System.Windows.Forms.TextBox();
+            this.KSspecTextBox = new System.Windows.Forms.TextBox();
             this.groupBox3 = new System.Windows.Forms.GroupBox();
-            this.button16 = new System.Windows.Forms.Button();
-            this.button11 = new System.Windows.Forms.Button();
-            this.button12 = new System.Windows.Forms.Button();
-            this.button13 = new System.Windows.Forms.Button();
-            this.tabPage1 = new System.Windows.Forms.TabPage();
+            this.buttClearFormSpecRF = new System.Windows.Forms.Button();
+            this.buttSpecRF60 = new System.Windows.Forms.Button();
+            this.buttSpecRF100 = new System.Windows.Forms.Button();
+            this.tabContractKZ = new System.Windows.Forms.TabPage();
             this.tableLayoutPanel2 = new System.Windows.Forms.TableLayoutPanel();
-            this.textBox19 = new System.Windows.Forms.TextBox();
-            this.textBox29 = new System.Windows.Forms.TextBox();
-            this.textBox30 = new System.Windows.Forms.TextBox();
-            this.textBox33 = new System.Windows.Forms.TextBox();
-            this.textBox34 = new System.Windows.Forms.TextBox();
-            this.textBox35 = new System.Windows.Forms.TextBox();
+            this.BikContractKZtextBox = new System.Windows.Forms.TextBox();
+            this.NaOsnovaniiContractKZtextBox = new System.Windows.Forms.TextBox();
+            this.DolgnostContractKZtextBox = new System.Windows.Forms.TextBox();
+            this.BankContractKZtextBox = new System.Windows.Forms.TextBox();
+            this.AdressContractKZtextBox = new System.Windows.Forms.TextBox();
+            this.FIOContractKZtextBox = new System.Windows.Forms.TextBox();
             this.label22 = new System.Windows.Forms.Label();
             this.label31 = new System.Windows.Forms.Label();
             this.label32 = new System.Windows.Forms.Label();
@@ -164,44 +161,46 @@ namespace WindowsFormsApp1
             this.label35 = new System.Windows.Forms.Label();
             this.label36 = new System.Windows.Forms.Label();
             this.label37 = new System.Windows.Forms.Label();
-            this.textBox36 = new System.Windows.Forms.TextBox();
+            this.CompanyNameContractKZtextBox = new System.Windows.Forms.TextBox();
             this.label41 = new System.Windows.Forms.Label();
-            this.textBox37 = new System.Windows.Forms.TextBox();
+            this.BINContractKZtextBox = new System.Windows.Forms.TextBox();
             this.dateTimePicker3 = new System.Windows.Forms.DateTimePicker();
             this.groupBox2 = new System.Windows.Forms.GroupBox();
-            this.button15 = new System.Windows.Forms.Button();
-            this.button8 = new System.Windows.Forms.Button();
-            this.button9 = new System.Windows.Forms.Button();
-            this.button10 = new System.Windows.Forms.Button();
-            this.tabPage3 = new System.Windows.Forms.TabPage();
+            this.buttClearFormKZ = new System.Windows.Forms.Button();
+            this.buttContractKZ60 = new System.Windows.Forms.Button();
+            this.buttContractKZ100 = new System.Windows.Forms.Button();
+            this.tabSpecKZ = new System.Windows.Forms.TabPage();
             this.tableLayoutPanel4 = new System.Windows.Forms.TableLayoutPanel();
             this.label39 = new System.Windows.Forms.Label();
-            this.textBox44 = new System.Windows.Forms.TextBox();
+            this.CompanyNameSpecKZtextBox = new System.Windows.Forms.TextBox();
             this.label38 = new System.Windows.Forms.Label();
             this.label40 = new System.Windows.Forms.Label();
-            this.textBox31 = new System.Windows.Forms.TextBox();
-            this.textBox39 = new System.Windows.Forms.TextBox();
+            this.ContactNumberSpecKZtextBox = new System.Windows.Forms.TextBox();
+            this.DolgnostSpecKZtextBox = new System.Windows.Forms.TextBox();
             this.label43 = new System.Windows.Forms.Label();
-            this.textBox43 = new System.Windows.Forms.TextBox();
+            this.FioSpecKZtextBox = new System.Windows.Forms.TextBox();
             this.label45 = new System.Windows.Forms.Label();
-            this.textBox42 = new System.Windows.Forms.TextBox();
+            this.AdressSpecKZtextBox = new System.Windows.Forms.TextBox();
             this.label46 = new System.Windows.Forms.Label();
-            this.textBox45 = new System.Windows.Forms.TextBox();
+            this.BinSpecKZtextBox = new System.Windows.Forms.TextBox();
             this.label47 = new System.Windows.Forms.Label();
-            this.textBox41 = new System.Windows.Forms.TextBox();
+            this.BankSpecKZtextBox = new System.Windows.Forms.TextBox();
             this.label48 = new System.Windows.Forms.Label();
-            this.textBox28 = new System.Windows.Forms.TextBox();
+            this.BikSpecKZtextBox = new System.Windows.Forms.TextBox();
             this.label50 = new System.Windows.Forms.Label();
             this.dateTimePicker4 = new System.Windows.Forms.DateTimePicker();
             this.groupBox4 = new System.Windows.Forms.GroupBox();
-            this.button18 = new System.Windows.Forms.Button();
-            this.button19 = new System.Windows.Forms.Button();
-            this.button20 = new System.Windows.Forms.Button();
-            this.button21 = new System.Windows.Forms.Button();
+            this.buttClearFormSpecKZ = new System.Windows.Forms.Button();
+            this.buttSpecKZ60 = new System.Windows.Forms.Button();
+            this.buttSpecKZ100 = new System.Windows.Forms.Button();
             this.buttInvoice = new System.Windows.Forms.Button();
             this.buttExit = new System.Windows.Forms.Button();
             this.dataGridViewComboBoxColumn1 = new System.Windows.Forms.DataGridViewComboBoxColumn();
             this.dataGridViewComboBoxColumn2 = new System.Windows.Forms.DataGridViewComboBoxColumn();
+            this.label61 = new System.Windows.Forms.Label();
+            this.DateContractSpecRFtextBox = new System.Windows.Forms.TextBox();
+            this.label62 = new System.Windows.Forms.Label();
+            this.ContracDatetextBox = new System.Windows.Forms.TextBox();
             this.tabControl1.SuspendLayout();
             this.tabFiltersItems.SuspendLayout();
             this.panel1.SuspendLayout();
@@ -212,16 +211,16 @@ namespace WindowsFormsApp1
             this.tabCustomer.SuspendLayout();
             this.panel3.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dataGridView3)).BeginInit();
-            this.tabDocuments.SuspendLayout();
+            this.tabContractRF.SuspendLayout();
             this.tableLayoutPanel1.SuspendLayout();
             this.groupBox1.SuspendLayout();
-            this.tabPage2.SuspendLayout();
+            this.tabSpecRF.SuspendLayout();
             this.tableLayoutPanel3.SuspendLayout();
             this.groupBox3.SuspendLayout();
-            this.tabPage1.SuspendLayout();
+            this.tabContractKZ.SuspendLayout();
             this.tableLayoutPanel2.SuspendLayout();
             this.groupBox2.SuspendLayout();
-            this.tabPage3.SuspendLayout();
+            this.tabSpecKZ.SuspendLayout();
             this.tableLayoutPanel4.SuspendLayout();
             this.groupBox4.SuspendLayout();
             this.SuspendLayout();
@@ -234,10 +233,10 @@ namespace WindowsFormsApp1
             this.tabControl1.Controls.Add(this.tabFiltersItems);
             this.tabControl1.Controls.Add(this.tabFiltersInvoices);
             this.tabControl1.Controls.Add(this.tabCustomer);
-            this.tabControl1.Controls.Add(this.tabDocuments);
-            this.tabControl1.Controls.Add(this.tabPage2);
-            this.tabControl1.Controls.Add(this.tabPage1);
-            this.tabControl1.Controls.Add(this.tabPage3);
+            this.tabControl1.Controls.Add(this.tabContractRF);
+            this.tabControl1.Controls.Add(this.tabSpecRF);
+            this.tabControl1.Controls.Add(this.tabContractKZ);
+            this.tabControl1.Controls.Add(this.tabSpecKZ);
             this.tabControl1.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F);
             this.tabControl1.ItemSize = new System.Drawing.Size(139, 40);
             this.tabControl1.Location = new System.Drawing.Point(13, 7);
@@ -697,8 +696,6 @@ namespace WindowsFormsApp1
             // 
             // panel3
             // 
-            this.panel3.Controls.Add(this.label61);
-            this.panel3.Controls.Add(this.FilterCustomerId);
             this.panel3.Controls.Add(this.label58);
             this.panel3.Controls.Add(this.FilterCustomerAdress);
             this.panel3.Controls.Add(this.label57);
@@ -712,22 +709,6 @@ namespace WindowsFormsApp1
             this.panel3.Name = "panel3";
             this.panel3.Size = new System.Drawing.Size(311, 581);
             this.panel3.TabIndex = 6;
-            // 
-            // label61
-            // 
-            this.label61.AutoSize = true;
-            this.label61.Location = new System.Drawing.Point(15, 205);
-            this.label61.Name = "label61";
-            this.label61.Size = new System.Drawing.Size(50, 20);
-            this.label61.TabIndex = 49;
-            this.label61.Text = "По Id";
-            // 
-            // FilterCustomerId
-            // 
-            this.FilterCustomerId.Location = new System.Drawing.Point(18, 230);
-            this.FilterCustomerId.Name = "FilterCustomerId";
-            this.FilterCustomerId.Size = new System.Drawing.Size(257, 26);
-            this.FilterCustomerId.TabIndex = 50;
             // 
             // label58
             // 
@@ -824,20 +805,20 @@ namespace WindowsFormsApp1
             this.dataGridView3.Size = new System.Drawing.Size(920, 647);
             this.dataGridView3.TabIndex = 5;
             // 
-            // tabDocuments
+            // tabContractRF
             // 
-            this.tabDocuments.BackColor = System.Drawing.Color.WhiteSmoke;
-            this.tabDocuments.Controls.Add(this.tableLayoutPanel1);
-            this.tabDocuments.Controls.Add(this.groupBox1);
-            this.tabDocuments.Font = new System.Drawing.Font("Microsoft Sans Serif", 10.2F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
-            this.tabDocuments.Location = new System.Drawing.Point(4, 44);
-            this.tabDocuments.Margin = new System.Windows.Forms.Padding(4);
-            this.tabDocuments.Name = "tabDocuments";
-            this.tabDocuments.Padding = new System.Windows.Forms.Padding(4);
-            this.tabDocuments.RightToLeft = System.Windows.Forms.RightToLeft.No;
-            this.tabDocuments.Size = new System.Drawing.Size(1249, 662);
-            this.tabDocuments.TabIndex = 0;
-            this.tabDocuments.Text = "Договор РФ";
+            this.tabContractRF.BackColor = System.Drawing.Color.WhiteSmoke;
+            this.tabContractRF.Controls.Add(this.tableLayoutPanel1);
+            this.tabContractRF.Controls.Add(this.groupBox1);
+            this.tabContractRF.Font = new System.Drawing.Font("Microsoft Sans Serif", 10.2F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
+            this.tabContractRF.Location = new System.Drawing.Point(4, 44);
+            this.tabContractRF.Margin = new System.Windows.Forms.Padding(4);
+            this.tabContractRF.Name = "tabContractRF";
+            this.tabContractRF.Padding = new System.Windows.Forms.Padding(4);
+            this.tabContractRF.RightToLeft = System.Windows.Forms.RightToLeft.No;
+            this.tabContractRF.Size = new System.Drawing.Size(1249, 662);
+            this.tabContractRF.TabIndex = 0;
+            this.tabContractRF.Text = "Договор РФ";
             // 
             // tableLayoutPanel1
             // 
@@ -1126,8 +1107,7 @@ namespace WindowsFormsApp1
             // 
             this.groupBox1.BackColor = System.Drawing.Color.White;
             this.groupBox1.Controls.Add(this.buttClearForm);
-            this.groupBox1.Controls.Add(this.button7);
-            this.groupBox1.Controls.Add(this.button6);
+            this.groupBox1.Controls.Add(this.butContrRF60);
             this.groupBox1.Controls.Add(this.butContrRF100);
             this.groupBox1.Location = new System.Drawing.Point(7, 7);
             this.groupBox1.Name = "groupBox1";
@@ -1138,7 +1118,7 @@ namespace WindowsFormsApp1
             // 
             // buttClearForm
             // 
-            this.buttClearForm.Location = new System.Drawing.Point(43, 282);
+            this.buttClearForm.Location = new System.Drawing.Point(43, 207);
             this.buttClearForm.Name = "buttClearForm";
             this.buttClearForm.Size = new System.Drawing.Size(195, 43);
             this.buttClearForm.TabIndex = 3;
@@ -1146,23 +1126,15 @@ namespace WindowsFormsApp1
             this.buttClearForm.UseVisualStyleBackColor = true;
             this.buttClearForm.Click += new System.EventHandler(this.buttClearForm_Click);
             // 
-            // button7
+            // butContrRF60
             // 
-            this.button7.Location = new System.Drawing.Point(43, 207);
-            this.button7.Name = "button7";
-            this.button7.Size = new System.Drawing.Size(195, 43);
-            this.button7.TabIndex = 2;
-            this.button7.Text = "Выбрать счет";
-            this.button7.UseVisualStyleBackColor = true;
-            // 
-            // button6
-            // 
-            this.button6.Location = new System.Drawing.Point(43, 131);
-            this.button6.Name = "button6";
-            this.button6.Size = new System.Drawing.Size(195, 43);
-            this.button6.TabIndex = 1;
-            this.button6.Text = "60% предоплата";
-            this.button6.UseVisualStyleBackColor = true;
+            this.butContrRF60.Location = new System.Drawing.Point(43, 131);
+            this.butContrRF60.Name = "butContrRF60";
+            this.butContrRF60.Size = new System.Drawing.Size(195, 43);
+            this.butContrRF60.TabIndex = 1;
+            this.butContrRF60.Text = "60% предоплата";
+            this.butContrRF60.UseVisualStyleBackColor = true;
+            this.butContrRF60.Click += new System.EventHandler(this.butContrRF60_Click);
             // 
             // butContrRF100
             // 
@@ -1174,17 +1146,17 @@ namespace WindowsFormsApp1
             this.butContrRF100.UseVisualStyleBackColor = true;
             this.butContrRF100.Click += new System.EventHandler(this.butContrRF100_Click);
             // 
-            // tabPage2
+            // tabSpecRF
             // 
-            this.tabPage2.BackColor = System.Drawing.Color.WhiteSmoke;
-            this.tabPage2.Controls.Add(this.tableLayoutPanel3);
-            this.tabPage2.Controls.Add(this.groupBox3);
-            this.tabPage2.Location = new System.Drawing.Point(4, 44);
-            this.tabPage2.Name = "tabPage2";
-            this.tabPage2.Padding = new System.Windows.Forms.Padding(3);
-            this.tabPage2.Size = new System.Drawing.Size(1249, 662);
-            this.tabPage2.TabIndex = 3;
-            this.tabPage2.Text = "Спецификация РФ";
+            this.tabSpecRF.BackColor = System.Drawing.Color.WhiteSmoke;
+            this.tabSpecRF.Controls.Add(this.tableLayoutPanel3);
+            this.tabSpecRF.Controls.Add(this.groupBox3);
+            this.tabSpecRF.Location = new System.Drawing.Point(4, 44);
+            this.tabSpecRF.Name = "tabSpecRF";
+            this.tabSpecRF.Padding = new System.Windows.Forms.Padding(3);
+            this.tabSpecRF.Size = new System.Drawing.Size(1249, 662);
+            this.tabSpecRF.TabIndex = 3;
+            this.tabSpecRF.Text = "Спецификация РФ";
             // 
             // tableLayoutPanel3
             // 
@@ -1193,30 +1165,32 @@ namespace WindowsFormsApp1
             this.tableLayoutPanel3.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 25F));
             this.tableLayoutPanel3.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 25F));
             this.tableLayoutPanel3.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 25F));
-            this.tableLayoutPanel3.Controls.Add(this.textBox38, 1, 0);
+            this.tableLayoutPanel3.Controls.Add(this.DateContractSpecRFtextBox, 3, 0);
+            this.tableLayoutPanel3.Controls.Add(this.NumberContractTextBox, 1, 0);
             this.tableLayoutPanel3.Controls.Add(this.label42, 0, 0);
             this.tableLayoutPanel3.Controls.Add(this.label18, 0, 1);
-            this.tableLayoutPanel3.Controls.Add(this.textBox26, 1, 1);
-            this.tableLayoutPanel3.Controls.Add(this.label20, 2, 0);
-            this.tableLayoutPanel3.Controls.Add(this.textBox20, 3, 0);
+            this.tableLayoutPanel3.Controls.Add(this.CompanyNameSpecRFtextBox, 1, 1);
             this.tableLayoutPanel3.Controls.Add(this.label21, 0, 2);
-            this.tableLayoutPanel3.Controls.Add(this.textBox25, 1, 2);
+            this.tableLayoutPanel3.Controls.Add(this.FIOSpecRFtextBox, 1, 2);
             this.tableLayoutPanel3.Controls.Add(this.label23, 0, 3);
-            this.tableLayoutPanel3.Controls.Add(this.textBox24, 1, 3);
+            this.tableLayoutPanel3.Controls.Add(this.AdressSpecRFtextBox, 1, 3);
             this.tableLayoutPanel3.Controls.Add(this.label24, 0, 5);
-            this.tableLayoutPanel3.Controls.Add(this.textBox27, 1, 5);
+            this.tableLayoutPanel3.Controls.Add(this.InnSpecRFtextBox, 1, 5);
             this.tableLayoutPanel3.Controls.Add(this.label29, 2, 5);
-            this.tableLayoutPanel3.Controls.Add(this.textBox18, 3, 5);
+            this.tableLayoutPanel3.Controls.Add(this.KppSpecRFtextBox, 3, 5);
             this.tableLayoutPanel3.Controls.Add(this.label25, 0, 6);
-            this.tableLayoutPanel3.Controls.Add(this.textBox23, 1, 6);
+            this.tableLayoutPanel3.Controls.Add(this.BankSpecRFtextBox, 1, 6);
             this.tableLayoutPanel3.Controls.Add(this.label26, 0, 7);
-            this.tableLayoutPanel3.Controls.Add(this.textBox17, 1, 7);
+            this.tableLayoutPanel3.Controls.Add(this.BikSpecRFtextBox, 1, 7);
             this.tableLayoutPanel3.Controls.Add(this.label30, 2, 7);
             this.tableLayoutPanel3.Controls.Add(this.dateTimePicker2, 3, 7);
             this.tableLayoutPanel3.Controls.Add(this.label27, 0, 8);
-            this.tableLayoutPanel3.Controls.Add(this.textBox22, 1, 8);
+            this.tableLayoutPanel3.Controls.Add(this.RSspecTextBox, 1, 8);
             this.tableLayoutPanel3.Controls.Add(this.label28, 0, 9);
-            this.tableLayoutPanel3.Controls.Add(this.textBox21, 1, 9);
+            this.tableLayoutPanel3.Controls.Add(this.KSspecTextBox, 1, 9);
+            this.tableLayoutPanel3.Controls.Add(this.label20, 2, 1);
+            this.tableLayoutPanel3.Controls.Add(this.DolgnostSpecRFTextBox, 3, 1);
+            this.tableLayoutPanel3.Controls.Add(this.label61, 2, 0);
             this.tableLayoutPanel3.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F);
             this.tableLayoutPanel3.Location = new System.Drawing.Point(309, 7);
             this.tableLayoutPanel3.Name = "tableLayoutPanel3";
@@ -1235,13 +1209,13 @@ namespace WindowsFormsApp1
             this.tableLayoutPanel3.Size = new System.Drawing.Size(913, 569);
             this.tableLayoutPanel3.TabIndex = 3;
             // 
-            // textBox38
+            // NumberContractTextBox
             // 
-            this.textBox38.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Left | System.Windows.Forms.AnchorStyles.Right)));
-            this.textBox38.Location = new System.Drawing.Point(231, 12);
-            this.textBox38.Name = "textBox38";
-            this.textBox38.Size = new System.Drawing.Size(222, 26);
-            this.textBox38.TabIndex = 26;
+            this.NumberContractTextBox.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Left | System.Windows.Forms.AnchorStyles.Right)));
+            this.NumberContractTextBox.Location = new System.Drawing.Point(231, 12);
+            this.NumberContractTextBox.Name = "NumberContractTextBox";
+            this.NumberContractTextBox.Size = new System.Drawing.Size(222, 26);
+            this.NumberContractTextBox.TabIndex = 26;
             // 
             // label42
             // 
@@ -1265,32 +1239,31 @@ namespace WindowsFormsApp1
             this.label18.Text = "Название компании";
             this.label18.TextAlign = System.Drawing.ContentAlignment.TopRight;
             // 
-            // textBox26
+            // CompanyNameSpecRFtextBox
             // 
-            this.textBox26.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Left | System.Windows.Forms.AnchorStyles.Right)));
-            this.tableLayoutPanel3.SetColumnSpan(this.textBox26, 3);
-            this.textBox26.Location = new System.Drawing.Point(231, 63);
-            this.textBox26.Name = "textBox26";
-            this.textBox26.Size = new System.Drawing.Size(679, 26);
-            this.textBox26.TabIndex = 12;
+            this.CompanyNameSpecRFtextBox.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Left | System.Windows.Forms.AnchorStyles.Right)));
+            this.CompanyNameSpecRFtextBox.Location = new System.Drawing.Point(231, 63);
+            this.CompanyNameSpecRFtextBox.Name = "CompanyNameSpecRFtextBox";
+            this.CompanyNameSpecRFtextBox.Size = new System.Drawing.Size(222, 26);
+            this.CompanyNameSpecRFtextBox.TabIndex = 12;
             // 
             // label20
             // 
             this.label20.Anchor = System.Windows.Forms.AnchorStyles.Right;
             this.label20.AutoSize = true;
-            this.label20.Location = new System.Drawing.Point(541, 5);
+            this.label20.Location = new System.Drawing.Point(541, 56);
             this.label20.Name = "label20";
             this.label20.Size = new System.Drawing.Size(140, 40);
             this.label20.TabIndex = 1;
             this.label20.Text = "Должность представителя";
             // 
-            // textBox20
+            // DolgnostSpecRFTextBox
             // 
-            this.textBox20.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Left | System.Windows.Forms.AnchorStyles.Right)));
-            this.textBox20.Location = new System.Drawing.Point(687, 12);
-            this.textBox20.Name = "textBox20";
-            this.textBox20.Size = new System.Drawing.Size(223, 26);
-            this.textBox20.TabIndex = 20;
+            this.DolgnostSpecRFTextBox.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Left | System.Windows.Forms.AnchorStyles.Right)));
+            this.DolgnostSpecRFTextBox.Location = new System.Drawing.Point(687, 63);
+            this.DolgnostSpecRFTextBox.Name = "DolgnostSpecRFTextBox";
+            this.DolgnostSpecRFTextBox.Size = new System.Drawing.Size(223, 26);
+            this.DolgnostSpecRFTextBox.TabIndex = 20;
             // 
             // label21
             // 
@@ -1303,14 +1276,14 @@ namespace WindowsFormsApp1
             this.label21.Text = "ФИО представителя";
             this.label21.TextAlign = System.Drawing.ContentAlignment.TopRight;
             // 
-            // textBox25
+            // FIOSpecRFtextBox
             // 
-            this.textBox25.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Left | System.Windows.Forms.AnchorStyles.Right)));
-            this.tableLayoutPanel3.SetColumnSpan(this.textBox25, 3);
-            this.textBox25.Location = new System.Drawing.Point(231, 114);
-            this.textBox25.Name = "textBox25";
-            this.textBox25.Size = new System.Drawing.Size(679, 26);
-            this.textBox25.TabIndex = 13;
+            this.FIOSpecRFtextBox.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Left | System.Windows.Forms.AnchorStyles.Right)));
+            this.tableLayoutPanel3.SetColumnSpan(this.FIOSpecRFtextBox, 3);
+            this.FIOSpecRFtextBox.Location = new System.Drawing.Point(231, 114);
+            this.FIOSpecRFtextBox.Name = "FIOSpecRFtextBox";
+            this.FIOSpecRFtextBox.Size = new System.Drawing.Size(679, 26);
+            this.FIOSpecRFtextBox.TabIndex = 13;
             // 
             // label23
             // 
@@ -1323,18 +1296,18 @@ namespace WindowsFormsApp1
             this.label23.Text = "Юридический адрес";
             this.label23.TextAlign = System.Drawing.ContentAlignment.TopRight;
             // 
-            // textBox24
+            // AdressSpecRFtextBox
             // 
-            this.textBox24.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
+            this.AdressSpecRFtextBox.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
             | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
-            this.tableLayoutPanel3.SetColumnSpan(this.textBox24, 3);
-            this.textBox24.Location = new System.Drawing.Point(231, 156);
-            this.textBox24.Multiline = true;
-            this.textBox24.Name = "textBox24";
-            this.tableLayoutPanel3.SetRowSpan(this.textBox24, 2);
-            this.textBox24.Size = new System.Drawing.Size(679, 96);
-            this.textBox24.TabIndex = 14;
+            this.tableLayoutPanel3.SetColumnSpan(this.AdressSpecRFtextBox, 3);
+            this.AdressSpecRFtextBox.Location = new System.Drawing.Point(231, 156);
+            this.AdressSpecRFtextBox.Multiline = true;
+            this.AdressSpecRFtextBox.Name = "AdressSpecRFtextBox";
+            this.tableLayoutPanel3.SetRowSpan(this.AdressSpecRFtextBox, 2);
+            this.AdressSpecRFtextBox.Size = new System.Drawing.Size(679, 96);
+            this.AdressSpecRFtextBox.TabIndex = 14;
             // 
             // label24
             // 
@@ -1347,13 +1320,13 @@ namespace WindowsFormsApp1
             this.label24.Text = "ИНН";
             this.label24.TextAlign = System.Drawing.ContentAlignment.TopRight;
             // 
-            // textBox27
+            // InnSpecRFtextBox
             // 
-            this.textBox27.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Left | System.Windows.Forms.AnchorStyles.Right)));
-            this.textBox27.Location = new System.Drawing.Point(231, 267);
-            this.textBox27.Name = "textBox27";
-            this.textBox27.Size = new System.Drawing.Size(222, 26);
-            this.textBox27.TabIndex = 19;
+            this.InnSpecRFtextBox.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Left | System.Windows.Forms.AnchorStyles.Right)));
+            this.InnSpecRFtextBox.Location = new System.Drawing.Point(231, 267);
+            this.InnSpecRFtextBox.Name = "InnSpecRFtextBox";
+            this.InnSpecRFtextBox.Size = new System.Drawing.Size(222, 26);
+            this.InnSpecRFtextBox.TabIndex = 19;
             // 
             // label29
             // 
@@ -1365,13 +1338,13 @@ namespace WindowsFormsApp1
             this.label29.TabIndex = 5;
             this.label29.Text = "КПП";
             // 
-            // textBox18
+            // KppSpecRFtextBox
             // 
-            this.textBox18.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Left | System.Windows.Forms.AnchorStyles.Right)));
-            this.textBox18.Location = new System.Drawing.Point(687, 267);
-            this.textBox18.Name = "textBox18";
-            this.textBox18.Size = new System.Drawing.Size(223, 26);
-            this.textBox18.TabIndex = 22;
+            this.KppSpecRFtextBox.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Left | System.Windows.Forms.AnchorStyles.Right)));
+            this.KppSpecRFtextBox.Location = new System.Drawing.Point(687, 267);
+            this.KppSpecRFtextBox.Name = "KppSpecRFtextBox";
+            this.KppSpecRFtextBox.Size = new System.Drawing.Size(223, 26);
+            this.KppSpecRFtextBox.TabIndex = 22;
             // 
             // label25
             // 
@@ -1384,14 +1357,14 @@ namespace WindowsFormsApp1
             this.label25.Text = "Банк";
             this.label25.TextAlign = System.Drawing.ContentAlignment.TopRight;
             // 
-            // textBox23
+            // BankSpecRFtextBox
             // 
-            this.textBox23.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Left | System.Windows.Forms.AnchorStyles.Right)));
-            this.tableLayoutPanel3.SetColumnSpan(this.textBox23, 3);
-            this.textBox23.Location = new System.Drawing.Point(231, 318);
-            this.textBox23.Name = "textBox23";
-            this.textBox23.Size = new System.Drawing.Size(679, 26);
-            this.textBox23.TabIndex = 15;
+            this.BankSpecRFtextBox.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Left | System.Windows.Forms.AnchorStyles.Right)));
+            this.tableLayoutPanel3.SetColumnSpan(this.BankSpecRFtextBox, 3);
+            this.BankSpecRFtextBox.Location = new System.Drawing.Point(231, 318);
+            this.BankSpecRFtextBox.Name = "BankSpecRFtextBox";
+            this.BankSpecRFtextBox.Size = new System.Drawing.Size(679, 26);
+            this.BankSpecRFtextBox.TabIndex = 15;
             // 
             // label26
             // 
@@ -1404,13 +1377,13 @@ namespace WindowsFormsApp1
             this.label26.Text = "БИК";
             this.label26.TextAlign = System.Drawing.ContentAlignment.TopRight;
             // 
-            // textBox17
+            // BikSpecRFtextBox
             // 
-            this.textBox17.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Left | System.Windows.Forms.AnchorStyles.Right)));
-            this.textBox17.Location = new System.Drawing.Point(231, 369);
-            this.textBox17.Name = "textBox17";
-            this.textBox17.Size = new System.Drawing.Size(222, 26);
-            this.textBox17.TabIndex = 23;
+            this.BikSpecRFtextBox.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Left | System.Windows.Forms.AnchorStyles.Right)));
+            this.BikSpecRFtextBox.Location = new System.Drawing.Point(231, 369);
+            this.BikSpecRFtextBox.Name = "BikSpecRFtextBox";
+            this.BikSpecRFtextBox.Size = new System.Drawing.Size(222, 26);
+            this.BikSpecRFtextBox.TabIndex = 23;
             // 
             // label30
             // 
@@ -1441,14 +1414,14 @@ namespace WindowsFormsApp1
             this.label27.Text = "Рассчетный счет";
             this.label27.TextAlign = System.Drawing.ContentAlignment.TopRight;
             // 
-            // textBox22
+            // RSspecTextBox
             // 
-            this.textBox22.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Left | System.Windows.Forms.AnchorStyles.Right)));
-            this.tableLayoutPanel3.SetColumnSpan(this.textBox22, 2);
-            this.textBox22.Location = new System.Drawing.Point(231, 420);
-            this.textBox22.Name = "textBox22";
-            this.textBox22.Size = new System.Drawing.Size(450, 26);
-            this.textBox22.TabIndex = 17;
+            this.RSspecTextBox.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Left | System.Windows.Forms.AnchorStyles.Right)));
+            this.tableLayoutPanel3.SetColumnSpan(this.RSspecTextBox, 2);
+            this.RSspecTextBox.Location = new System.Drawing.Point(231, 420);
+            this.RSspecTextBox.Name = "RSspecTextBox";
+            this.RSspecTextBox.Size = new System.Drawing.Size(450, 26);
+            this.RSspecTextBox.TabIndex = 17;
             // 
             // label28
             // 
@@ -1461,22 +1434,21 @@ namespace WindowsFormsApp1
             this.label28.Text = "Корреспондентский счет";
             this.label28.TextAlign = System.Drawing.ContentAlignment.TopRight;
             // 
-            // textBox21
+            // KSspecTextBox
             // 
-            this.textBox21.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Left | System.Windows.Forms.AnchorStyles.Right)));
-            this.tableLayoutPanel3.SetColumnSpan(this.textBox21, 2);
-            this.textBox21.Location = new System.Drawing.Point(231, 471);
-            this.textBox21.Name = "textBox21";
-            this.textBox21.Size = new System.Drawing.Size(450, 26);
-            this.textBox21.TabIndex = 18;
+            this.KSspecTextBox.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Left | System.Windows.Forms.AnchorStyles.Right)));
+            this.tableLayoutPanel3.SetColumnSpan(this.KSspecTextBox, 2);
+            this.KSspecTextBox.Location = new System.Drawing.Point(231, 471);
+            this.KSspecTextBox.Name = "KSspecTextBox";
+            this.KSspecTextBox.Size = new System.Drawing.Size(450, 26);
+            this.KSspecTextBox.TabIndex = 18;
             // 
             // groupBox3
             // 
             this.groupBox3.BackColor = System.Drawing.Color.White;
-            this.groupBox3.Controls.Add(this.button16);
-            this.groupBox3.Controls.Add(this.button11);
-            this.groupBox3.Controls.Add(this.button12);
-            this.groupBox3.Controls.Add(this.button13);
+            this.groupBox3.Controls.Add(this.buttClearFormSpecRF);
+            this.groupBox3.Controls.Add(this.buttSpecRF60);
+            this.groupBox3.Controls.Add(this.buttSpecRF100);
             this.groupBox3.Font = new System.Drawing.Font("Microsoft Sans Serif", 10.2F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
             this.groupBox3.Location = new System.Drawing.Point(6, 7);
             this.groupBox3.Name = "groupBox3";
@@ -1485,53 +1457,47 @@ namespace WindowsFormsApp1
             this.groupBox3.TabStop = false;
             this.groupBox3.Text = "Функции";
             // 
-            // button16
+            // buttClearFormSpecRF
             // 
-            this.button16.Location = new System.Drawing.Point(44, 282);
-            this.button16.Name = "button16";
-            this.button16.Size = new System.Drawing.Size(195, 43);
-            this.button16.TabIndex = 7;
-            this.button16.Text = "Очистить форму";
-            this.button16.UseVisualStyleBackColor = true;
+            this.buttClearFormSpecRF.Location = new System.Drawing.Point(43, 207);
+            this.buttClearFormSpecRF.Name = "buttClearFormSpecRF";
+            this.buttClearFormSpecRF.Size = new System.Drawing.Size(195, 43);
+            this.buttClearFormSpecRF.TabIndex = 7;
+            this.buttClearFormSpecRF.Text = "Очистить форму";
+            this.buttClearFormSpecRF.UseVisualStyleBackColor = true;
+            this.buttClearFormSpecRF.Click += new System.EventHandler(this.buttClearFormSpecRF_Click);
             // 
-            // button11
+            // buttSpecRF60
             // 
-            this.button11.Location = new System.Drawing.Point(44, 207);
-            this.button11.Name = "button11";
-            this.button11.Size = new System.Drawing.Size(195, 43);
-            this.button11.TabIndex = 5;
-            this.button11.Text = "Выбрать счет";
-            this.button11.UseVisualStyleBackColor = true;
+            this.buttSpecRF60.Location = new System.Drawing.Point(44, 131);
+            this.buttSpecRF60.Name = "buttSpecRF60";
+            this.buttSpecRF60.Size = new System.Drawing.Size(195, 43);
+            this.buttSpecRF60.TabIndex = 4;
+            this.buttSpecRF60.Text = "60% предоплата";
+            this.buttSpecRF60.UseVisualStyleBackColor = true;
+            this.buttSpecRF60.Click += new System.EventHandler(this.buttSpecRF60_Click);
             // 
-            // button12
+            // buttSpecRF100
             // 
-            this.button12.Location = new System.Drawing.Point(44, 131);
-            this.button12.Name = "button12";
-            this.button12.Size = new System.Drawing.Size(195, 43);
-            this.button12.TabIndex = 4;
-            this.button12.Text = "60% предоплата";
-            this.button12.UseVisualStyleBackColor = true;
+            this.buttSpecRF100.Location = new System.Drawing.Point(42, 56);
+            this.buttSpecRF100.Name = "buttSpecRF100";
+            this.buttSpecRF100.Size = new System.Drawing.Size(195, 43);
+            this.buttSpecRF100.TabIndex = 3;
+            this.buttSpecRF100.Text = "100% предоплата";
+            this.buttSpecRF100.UseVisualStyleBackColor = true;
+            this.buttSpecRF100.Click += new System.EventHandler(this.buttSpecRF100_Click);
             // 
-            // button13
+            // tabContractKZ
             // 
-            this.button13.Location = new System.Drawing.Point(42, 56);
-            this.button13.Name = "button13";
-            this.button13.Size = new System.Drawing.Size(195, 43);
-            this.button13.TabIndex = 3;
-            this.button13.Text = "100% предоплата";
-            this.button13.UseVisualStyleBackColor = true;
-            // 
-            // tabPage1
-            // 
-            this.tabPage1.BackColor = System.Drawing.Color.WhiteSmoke;
-            this.tabPage1.Controls.Add(this.tableLayoutPanel2);
-            this.tabPage1.Controls.Add(this.groupBox2);
-            this.tabPage1.Location = new System.Drawing.Point(4, 44);
-            this.tabPage1.Name = "tabPage1";
-            this.tabPage1.Padding = new System.Windows.Forms.Padding(3);
-            this.tabPage1.Size = new System.Drawing.Size(1249, 662);
-            this.tabPage1.TabIndex = 2;
-            this.tabPage1.Text = "Договор Казахстан";
+            this.tabContractKZ.BackColor = System.Drawing.Color.WhiteSmoke;
+            this.tabContractKZ.Controls.Add(this.tableLayoutPanel2);
+            this.tabContractKZ.Controls.Add(this.groupBox2);
+            this.tabContractKZ.Location = new System.Drawing.Point(4, 44);
+            this.tabContractKZ.Name = "tabContractKZ";
+            this.tabContractKZ.Padding = new System.Windows.Forms.Padding(3);
+            this.tabContractKZ.Size = new System.Drawing.Size(1249, 662);
+            this.tabContractKZ.TabIndex = 2;
+            this.tabContractKZ.Text = "Договор Казахстан";
             // 
             // tableLayoutPanel2
             // 
@@ -1540,12 +1506,12 @@ namespace WindowsFormsApp1
             this.tableLayoutPanel2.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 25F));
             this.tableLayoutPanel2.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 25F));
             this.tableLayoutPanel2.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 25F));
-            this.tableLayoutPanel2.Controls.Add(this.textBox19, 1, 7);
-            this.tableLayoutPanel2.Controls.Add(this.textBox29, 3, 1);
-            this.tableLayoutPanel2.Controls.Add(this.textBox30, 1, 1);
-            this.tableLayoutPanel2.Controls.Add(this.textBox33, 1, 6);
-            this.tableLayoutPanel2.Controls.Add(this.textBox34, 1, 3);
-            this.tableLayoutPanel2.Controls.Add(this.textBox35, 1, 2);
+            this.tableLayoutPanel2.Controls.Add(this.BikContractKZtextBox, 1, 7);
+            this.tableLayoutPanel2.Controls.Add(this.NaOsnovaniiContractKZtextBox, 3, 1);
+            this.tableLayoutPanel2.Controls.Add(this.DolgnostContractKZtextBox, 1, 1);
+            this.tableLayoutPanel2.Controls.Add(this.BankContractKZtextBox, 1, 6);
+            this.tableLayoutPanel2.Controls.Add(this.AdressContractKZtextBox, 1, 3);
+            this.tableLayoutPanel2.Controls.Add(this.FIOContractKZtextBox, 1, 2);
             this.tableLayoutPanel2.Controls.Add(this.label22, 0, 0);
             this.tableLayoutPanel2.Controls.Add(this.label31, 0, 1);
             this.tableLayoutPanel2.Controls.Add(this.label32, 0, 2);
@@ -1554,9 +1520,9 @@ namespace WindowsFormsApp1
             this.tableLayoutPanel2.Controls.Add(this.label35, 0, 5);
             this.tableLayoutPanel2.Controls.Add(this.label36, 0, 6);
             this.tableLayoutPanel2.Controls.Add(this.label37, 0, 7);
-            this.tableLayoutPanel2.Controls.Add(this.textBox36, 1, 0);
+            this.tableLayoutPanel2.Controls.Add(this.CompanyNameContractKZtextBox, 1, 0);
             this.tableLayoutPanel2.Controls.Add(this.label41, 2, 7);
-            this.tableLayoutPanel2.Controls.Add(this.textBox37, 1, 5);
+            this.tableLayoutPanel2.Controls.Add(this.BINContractKZtextBox, 1, 5);
             this.tableLayoutPanel2.Controls.Add(this.dateTimePicker3, 3, 7);
             this.tableLayoutPanel2.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F);
             this.tableLayoutPanel2.Location = new System.Drawing.Point(309, 7);
@@ -1576,60 +1542,60 @@ namespace WindowsFormsApp1
             this.tableLayoutPanel2.Size = new System.Drawing.Size(913, 569);
             this.tableLayoutPanel2.TabIndex = 2;
             // 
-            // textBox19
+            // BikContractKZtextBox
             // 
-            this.textBox19.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Left | System.Windows.Forms.AnchorStyles.Right)));
-            this.textBox19.Location = new System.Drawing.Point(231, 369);
-            this.textBox19.Name = "textBox19";
-            this.textBox19.Size = new System.Drawing.Size(222, 26);
-            this.textBox19.TabIndex = 23;
+            this.BikContractKZtextBox.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Left | System.Windows.Forms.AnchorStyles.Right)));
+            this.BikContractKZtextBox.Location = new System.Drawing.Point(231, 369);
+            this.BikContractKZtextBox.Name = "BikContractKZtextBox";
+            this.BikContractKZtextBox.Size = new System.Drawing.Size(222, 26);
+            this.BikContractKZtextBox.TabIndex = 23;
             // 
-            // textBox29
+            // NaOsnovaniiContractKZtextBox
             // 
-            this.textBox29.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Left | System.Windows.Forms.AnchorStyles.Right)));
-            this.textBox29.Location = new System.Drawing.Point(687, 63);
-            this.textBox29.Name = "textBox29";
-            this.textBox29.Size = new System.Drawing.Size(223, 26);
-            this.textBox29.TabIndex = 21;
+            this.NaOsnovaniiContractKZtextBox.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Left | System.Windows.Forms.AnchorStyles.Right)));
+            this.NaOsnovaniiContractKZtextBox.Location = new System.Drawing.Point(687, 63);
+            this.NaOsnovaniiContractKZtextBox.Name = "NaOsnovaniiContractKZtextBox";
+            this.NaOsnovaniiContractKZtextBox.Size = new System.Drawing.Size(223, 26);
+            this.NaOsnovaniiContractKZtextBox.TabIndex = 21;
             // 
-            // textBox30
+            // DolgnostContractKZtextBox
             // 
-            this.textBox30.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Left | System.Windows.Forms.AnchorStyles.Right)));
-            this.textBox30.Location = new System.Drawing.Point(231, 63);
-            this.textBox30.Name = "textBox30";
-            this.textBox30.Size = new System.Drawing.Size(222, 26);
-            this.textBox30.TabIndex = 20;
+            this.DolgnostContractKZtextBox.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Left | System.Windows.Forms.AnchorStyles.Right)));
+            this.DolgnostContractKZtextBox.Location = new System.Drawing.Point(231, 63);
+            this.DolgnostContractKZtextBox.Name = "DolgnostContractKZtextBox";
+            this.DolgnostContractKZtextBox.Size = new System.Drawing.Size(222, 26);
+            this.DolgnostContractKZtextBox.TabIndex = 20;
             // 
-            // textBox33
+            // BankContractKZtextBox
             // 
-            this.textBox33.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Left | System.Windows.Forms.AnchorStyles.Right)));
-            this.tableLayoutPanel2.SetColumnSpan(this.textBox33, 3);
-            this.textBox33.Location = new System.Drawing.Point(231, 318);
-            this.textBox33.Name = "textBox33";
-            this.textBox33.Size = new System.Drawing.Size(679, 26);
-            this.textBox33.TabIndex = 15;
+            this.BankContractKZtextBox.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Left | System.Windows.Forms.AnchorStyles.Right)));
+            this.tableLayoutPanel2.SetColumnSpan(this.BankContractKZtextBox, 3);
+            this.BankContractKZtextBox.Location = new System.Drawing.Point(231, 318);
+            this.BankContractKZtextBox.Name = "BankContractKZtextBox";
+            this.BankContractKZtextBox.Size = new System.Drawing.Size(679, 26);
+            this.BankContractKZtextBox.TabIndex = 15;
             // 
-            // textBox34
+            // AdressContractKZtextBox
             // 
-            this.textBox34.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
+            this.AdressContractKZtextBox.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
             | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
-            this.tableLayoutPanel2.SetColumnSpan(this.textBox34, 3);
-            this.textBox34.Location = new System.Drawing.Point(231, 156);
-            this.textBox34.Multiline = true;
-            this.textBox34.Name = "textBox34";
-            this.tableLayoutPanel2.SetRowSpan(this.textBox34, 2);
-            this.textBox34.Size = new System.Drawing.Size(679, 96);
-            this.textBox34.TabIndex = 14;
+            this.tableLayoutPanel2.SetColumnSpan(this.AdressContractKZtextBox, 3);
+            this.AdressContractKZtextBox.Location = new System.Drawing.Point(231, 156);
+            this.AdressContractKZtextBox.Multiline = true;
+            this.AdressContractKZtextBox.Name = "AdressContractKZtextBox";
+            this.tableLayoutPanel2.SetRowSpan(this.AdressContractKZtextBox, 2);
+            this.AdressContractKZtextBox.Size = new System.Drawing.Size(679, 96);
+            this.AdressContractKZtextBox.TabIndex = 14;
             // 
-            // textBox35
+            // FIOContractKZtextBox
             // 
-            this.textBox35.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Left | System.Windows.Forms.AnchorStyles.Right)));
-            this.tableLayoutPanel2.SetColumnSpan(this.textBox35, 3);
-            this.textBox35.Location = new System.Drawing.Point(231, 114);
-            this.textBox35.Name = "textBox35";
-            this.textBox35.Size = new System.Drawing.Size(679, 26);
-            this.textBox35.TabIndex = 13;
+            this.FIOContractKZtextBox.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Left | System.Windows.Forms.AnchorStyles.Right)));
+            this.tableLayoutPanel2.SetColumnSpan(this.FIOContractKZtextBox, 3);
+            this.FIOContractKZtextBox.Location = new System.Drawing.Point(231, 114);
+            this.FIOContractKZtextBox.Name = "FIOContractKZtextBox";
+            this.FIOContractKZtextBox.Size = new System.Drawing.Size(679, 26);
+            this.FIOContractKZtextBox.TabIndex = 13;
             // 
             // label22
             // 
@@ -1718,14 +1684,14 @@ namespace WindowsFormsApp1
             this.label37.Text = "БИК";
             this.label37.TextAlign = System.Drawing.ContentAlignment.TopRight;
             // 
-            // textBox36
+            // CompanyNameContractKZtextBox
             // 
-            this.textBox36.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Left | System.Windows.Forms.AnchorStyles.Right)));
-            this.tableLayoutPanel2.SetColumnSpan(this.textBox36, 3);
-            this.textBox36.Location = new System.Drawing.Point(231, 12);
-            this.textBox36.Name = "textBox36";
-            this.textBox36.Size = new System.Drawing.Size(679, 26);
-            this.textBox36.TabIndex = 12;
+            this.CompanyNameContractKZtextBox.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Left | System.Windows.Forms.AnchorStyles.Right)));
+            this.tableLayoutPanel2.SetColumnSpan(this.CompanyNameContractKZtextBox, 3);
+            this.CompanyNameContractKZtextBox.Location = new System.Drawing.Point(231, 12);
+            this.CompanyNameContractKZtextBox.Name = "CompanyNameContractKZtextBox";
+            this.CompanyNameContractKZtextBox.Size = new System.Drawing.Size(679, 26);
+            this.CompanyNameContractKZtextBox.TabIndex = 12;
             // 
             // label41
             // 
@@ -1737,13 +1703,13 @@ namespace WindowsFormsApp1
             this.label41.TabIndex = 16;
             this.label41.Text = "Дата";
             // 
-            // textBox37
+            // BINContractKZtextBox
             // 
-            this.textBox37.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Left | System.Windows.Forms.AnchorStyles.Right)));
-            this.textBox37.Location = new System.Drawing.Point(231, 267);
-            this.textBox37.Name = "textBox37";
-            this.textBox37.Size = new System.Drawing.Size(222, 26);
-            this.textBox37.TabIndex = 19;
+            this.BINContractKZtextBox.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Left | System.Windows.Forms.AnchorStyles.Right)));
+            this.BINContractKZtextBox.Location = new System.Drawing.Point(231, 267);
+            this.BINContractKZtextBox.Name = "BINContractKZtextBox";
+            this.BINContractKZtextBox.Size = new System.Drawing.Size(222, 26);
+            this.BINContractKZtextBox.TabIndex = 19;
             // 
             // dateTimePicker3
             // 
@@ -1756,10 +1722,9 @@ namespace WindowsFormsApp1
             // groupBox2
             // 
             this.groupBox2.BackColor = System.Drawing.Color.White;
-            this.groupBox2.Controls.Add(this.button15);
-            this.groupBox2.Controls.Add(this.button8);
-            this.groupBox2.Controls.Add(this.button9);
-            this.groupBox2.Controls.Add(this.button10);
+            this.groupBox2.Controls.Add(this.buttClearFormKZ);
+            this.groupBox2.Controls.Add(this.buttContractKZ60);
+            this.groupBox2.Controls.Add(this.buttContractKZ100);
             this.groupBox2.Font = new System.Drawing.Font("Microsoft Sans Serif", 10.2F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
             this.groupBox2.Location = new System.Drawing.Point(6, 7);
             this.groupBox2.Name = "groupBox2";
@@ -1768,53 +1733,47 @@ namespace WindowsFormsApp1
             this.groupBox2.TabStop = false;
             this.groupBox2.Text = "Функции";
             // 
-            // button15
+            // buttClearFormKZ
             // 
-            this.button15.Location = new System.Drawing.Point(44, 282);
-            this.button15.Name = "button15";
-            this.button15.Size = new System.Drawing.Size(195, 43);
-            this.button15.TabIndex = 6;
-            this.button15.Text = "Очистить форму";
-            this.button15.UseVisualStyleBackColor = true;
+            this.buttClearFormKZ.Location = new System.Drawing.Point(43, 207);
+            this.buttClearFormKZ.Name = "buttClearFormKZ";
+            this.buttClearFormKZ.Size = new System.Drawing.Size(195, 43);
+            this.buttClearFormKZ.TabIndex = 6;
+            this.buttClearFormKZ.Text = "Очистить форму";
+            this.buttClearFormKZ.UseVisualStyleBackColor = true;
+            this.buttClearFormKZ.Click += new System.EventHandler(this.buttClearFormKZ_Click);
             // 
-            // button8
+            // buttContractKZ60
             // 
-            this.button8.Location = new System.Drawing.Point(44, 207);
-            this.button8.Name = "button8";
-            this.button8.Size = new System.Drawing.Size(195, 43);
-            this.button8.TabIndex = 5;
-            this.button8.Text = "Выбрать счет";
-            this.button8.UseVisualStyleBackColor = true;
+            this.buttContractKZ60.Location = new System.Drawing.Point(44, 131);
+            this.buttContractKZ60.Name = "buttContractKZ60";
+            this.buttContractKZ60.Size = new System.Drawing.Size(195, 43);
+            this.buttContractKZ60.TabIndex = 4;
+            this.buttContractKZ60.Text = "60% предоплата";
+            this.buttContractKZ60.UseVisualStyleBackColor = true;
+            this.buttContractKZ60.Click += new System.EventHandler(this.buttContractKZ60_Click);
             // 
-            // button9
+            // buttContractKZ100
             // 
-            this.button9.Location = new System.Drawing.Point(44, 131);
-            this.button9.Name = "button9";
-            this.button9.Size = new System.Drawing.Size(195, 43);
-            this.button9.TabIndex = 4;
-            this.button9.Text = "60% предоплата";
-            this.button9.UseVisualStyleBackColor = true;
+            this.buttContractKZ100.Location = new System.Drawing.Point(42, 56);
+            this.buttContractKZ100.Name = "buttContractKZ100";
+            this.buttContractKZ100.Size = new System.Drawing.Size(195, 43);
+            this.buttContractKZ100.TabIndex = 3;
+            this.buttContractKZ100.Text = "100% предоплата";
+            this.buttContractKZ100.UseVisualStyleBackColor = true;
+            this.buttContractKZ100.Click += new System.EventHandler(this.buttContractKZ100_Click);
             // 
-            // button10
+            // tabSpecKZ
             // 
-            this.button10.Location = new System.Drawing.Point(42, 56);
-            this.button10.Name = "button10";
-            this.button10.Size = new System.Drawing.Size(195, 43);
-            this.button10.TabIndex = 3;
-            this.button10.Text = "100% предоплата";
-            this.button10.UseVisualStyleBackColor = true;
-            // 
-            // tabPage3
-            // 
-            this.tabPage3.BackColor = System.Drawing.Color.WhiteSmoke;
-            this.tabPage3.Controls.Add(this.tableLayoutPanel4);
-            this.tabPage3.Controls.Add(this.groupBox4);
-            this.tabPage3.Location = new System.Drawing.Point(4, 44);
-            this.tabPage3.Name = "tabPage3";
-            this.tabPage3.Padding = new System.Windows.Forms.Padding(3);
-            this.tabPage3.Size = new System.Drawing.Size(1249, 662);
-            this.tabPage3.TabIndex = 4;
-            this.tabPage3.Text = "Спецификация Казахстан";
+            this.tabSpecKZ.BackColor = System.Drawing.Color.WhiteSmoke;
+            this.tabSpecKZ.Controls.Add(this.tableLayoutPanel4);
+            this.tabSpecKZ.Controls.Add(this.groupBox4);
+            this.tabSpecKZ.Location = new System.Drawing.Point(4, 44);
+            this.tabSpecKZ.Name = "tabSpecKZ";
+            this.tabSpecKZ.Padding = new System.Windows.Forms.Padding(3);
+            this.tabSpecKZ.Size = new System.Drawing.Size(1249, 662);
+            this.tabSpecKZ.TabIndex = 4;
+            this.tabSpecKZ.Text = "Спецификация Казахстан";
             // 
             // tableLayoutPanel4
             // 
@@ -1824,23 +1783,25 @@ namespace WindowsFormsApp1
             this.tableLayoutPanel4.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 25F));
             this.tableLayoutPanel4.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 25F));
             this.tableLayoutPanel4.Controls.Add(this.label39, 0, 1);
-            this.tableLayoutPanel4.Controls.Add(this.textBox44, 1, 1);
+            this.tableLayoutPanel4.Controls.Add(this.CompanyNameSpecKZtextBox, 1, 1);
             this.tableLayoutPanel4.Controls.Add(this.label38, 0, 0);
-            this.tableLayoutPanel4.Controls.Add(this.label40, 2, 0);
-            this.tableLayoutPanel4.Controls.Add(this.textBox31, 1, 0);
-            this.tableLayoutPanel4.Controls.Add(this.textBox39, 3, 0);
+            this.tableLayoutPanel4.Controls.Add(this.ContactNumberSpecKZtextBox, 1, 0);
             this.tableLayoutPanel4.Controls.Add(this.label43, 0, 2);
-            this.tableLayoutPanel4.Controls.Add(this.textBox43, 1, 2);
+            this.tableLayoutPanel4.Controls.Add(this.FioSpecKZtextBox, 1, 2);
             this.tableLayoutPanel4.Controls.Add(this.label45, 0, 3);
-            this.tableLayoutPanel4.Controls.Add(this.textBox42, 1, 3);
+            this.tableLayoutPanel4.Controls.Add(this.AdressSpecKZtextBox, 1, 3);
             this.tableLayoutPanel4.Controls.Add(this.label46, 0, 5);
-            this.tableLayoutPanel4.Controls.Add(this.textBox45, 1, 5);
+            this.tableLayoutPanel4.Controls.Add(this.BinSpecKZtextBox, 1, 5);
             this.tableLayoutPanel4.Controls.Add(this.label47, 0, 6);
-            this.tableLayoutPanel4.Controls.Add(this.textBox41, 1, 6);
+            this.tableLayoutPanel4.Controls.Add(this.BankSpecKZtextBox, 1, 6);
             this.tableLayoutPanel4.Controls.Add(this.label48, 0, 7);
-            this.tableLayoutPanel4.Controls.Add(this.textBox28, 1, 7);
+            this.tableLayoutPanel4.Controls.Add(this.BikSpecKZtextBox, 1, 7);
             this.tableLayoutPanel4.Controls.Add(this.label50, 2, 7);
             this.tableLayoutPanel4.Controls.Add(this.dateTimePicker4, 3, 7);
+            this.tableLayoutPanel4.Controls.Add(this.label40, 2, 1);
+            this.tableLayoutPanel4.Controls.Add(this.DolgnostSpecKZtextBox, 3, 1);
+            this.tableLayoutPanel4.Controls.Add(this.label62, 2, 0);
+            this.tableLayoutPanel4.Controls.Add(this.ContracDatetextBox, 3, 0);
             this.tableLayoutPanel4.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F);
             this.tableLayoutPanel4.Location = new System.Drawing.Point(309, 7);
             this.tableLayoutPanel4.Name = "tableLayoutPanel4";
@@ -1870,14 +1831,13 @@ namespace WindowsFormsApp1
             this.label39.Text = "Название компании";
             this.label39.TextAlign = System.Drawing.ContentAlignment.TopRight;
             // 
-            // textBox44
+            // CompanyNameSpecKZtextBox
             // 
-            this.textBox44.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Left | System.Windows.Forms.AnchorStyles.Right)));
-            this.tableLayoutPanel4.SetColumnSpan(this.textBox44, 3);
-            this.textBox44.Location = new System.Drawing.Point(231, 63);
-            this.textBox44.Name = "textBox44";
-            this.textBox44.Size = new System.Drawing.Size(679, 26);
-            this.textBox44.TabIndex = 12;
+            this.CompanyNameSpecKZtextBox.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Left | System.Windows.Forms.AnchorStyles.Right)));
+            this.CompanyNameSpecKZtextBox.Location = new System.Drawing.Point(231, 63);
+            this.CompanyNameSpecKZtextBox.Name = "CompanyNameSpecKZtextBox";
+            this.CompanyNameSpecKZtextBox.Size = new System.Drawing.Size(222, 26);
+            this.CompanyNameSpecKZtextBox.TabIndex = 12;
             // 
             // label38
             // 
@@ -1894,27 +1854,27 @@ namespace WindowsFormsApp1
             // 
             this.label40.Anchor = System.Windows.Forms.AnchorStyles.Right;
             this.label40.AutoSize = true;
-            this.label40.Location = new System.Drawing.Point(541, 5);
+            this.label40.Location = new System.Drawing.Point(541, 56);
             this.label40.Name = "label40";
             this.label40.Size = new System.Drawing.Size(140, 40);
             this.label40.TabIndex = 1;
             this.label40.Text = "Должность представителя";
             // 
-            // textBox31
+            // ContactNumberSpecKZtextBox
             // 
-            this.textBox31.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Left | System.Windows.Forms.AnchorStyles.Right)));
-            this.textBox31.Location = new System.Drawing.Point(231, 12);
-            this.textBox31.Name = "textBox31";
-            this.textBox31.Size = new System.Drawing.Size(222, 26);
-            this.textBox31.TabIndex = 26;
+            this.ContactNumberSpecKZtextBox.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Left | System.Windows.Forms.AnchorStyles.Right)));
+            this.ContactNumberSpecKZtextBox.Location = new System.Drawing.Point(231, 12);
+            this.ContactNumberSpecKZtextBox.Name = "ContactNumberSpecKZtextBox";
+            this.ContactNumberSpecKZtextBox.Size = new System.Drawing.Size(222, 26);
+            this.ContactNumberSpecKZtextBox.TabIndex = 26;
             // 
-            // textBox39
+            // DolgnostSpecKZtextBox
             // 
-            this.textBox39.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Left | System.Windows.Forms.AnchorStyles.Right)));
-            this.textBox39.Location = new System.Drawing.Point(687, 12);
-            this.textBox39.Name = "textBox39";
-            this.textBox39.Size = new System.Drawing.Size(223, 26);
-            this.textBox39.TabIndex = 20;
+            this.DolgnostSpecKZtextBox.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Left | System.Windows.Forms.AnchorStyles.Right)));
+            this.DolgnostSpecKZtextBox.Location = new System.Drawing.Point(687, 63);
+            this.DolgnostSpecKZtextBox.Name = "DolgnostSpecKZtextBox";
+            this.DolgnostSpecKZtextBox.Size = new System.Drawing.Size(223, 26);
+            this.DolgnostSpecKZtextBox.TabIndex = 20;
             // 
             // label43
             // 
@@ -1927,14 +1887,14 @@ namespace WindowsFormsApp1
             this.label43.Text = "ФИО представителя";
             this.label43.TextAlign = System.Drawing.ContentAlignment.TopRight;
             // 
-            // textBox43
+            // FioSpecKZtextBox
             // 
-            this.textBox43.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Left | System.Windows.Forms.AnchorStyles.Right)));
-            this.tableLayoutPanel4.SetColumnSpan(this.textBox43, 3);
-            this.textBox43.Location = new System.Drawing.Point(231, 114);
-            this.textBox43.Name = "textBox43";
-            this.textBox43.Size = new System.Drawing.Size(679, 26);
-            this.textBox43.TabIndex = 13;
+            this.FioSpecKZtextBox.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Left | System.Windows.Forms.AnchorStyles.Right)));
+            this.tableLayoutPanel4.SetColumnSpan(this.FioSpecKZtextBox, 3);
+            this.FioSpecKZtextBox.Location = new System.Drawing.Point(231, 114);
+            this.FioSpecKZtextBox.Name = "FioSpecKZtextBox";
+            this.FioSpecKZtextBox.Size = new System.Drawing.Size(679, 26);
+            this.FioSpecKZtextBox.TabIndex = 13;
             // 
             // label45
             // 
@@ -1947,18 +1907,18 @@ namespace WindowsFormsApp1
             this.label45.Text = "Юридический адрес";
             this.label45.TextAlign = System.Drawing.ContentAlignment.TopRight;
             // 
-            // textBox42
+            // AdressSpecKZtextBox
             // 
-            this.textBox42.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
+            this.AdressSpecKZtextBox.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
             | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
-            this.tableLayoutPanel4.SetColumnSpan(this.textBox42, 3);
-            this.textBox42.Location = new System.Drawing.Point(231, 156);
-            this.textBox42.Multiline = true;
-            this.textBox42.Name = "textBox42";
-            this.tableLayoutPanel4.SetRowSpan(this.textBox42, 2);
-            this.textBox42.Size = new System.Drawing.Size(679, 96);
-            this.textBox42.TabIndex = 14;
+            this.tableLayoutPanel4.SetColumnSpan(this.AdressSpecKZtextBox, 3);
+            this.AdressSpecKZtextBox.Location = new System.Drawing.Point(231, 156);
+            this.AdressSpecKZtextBox.Multiline = true;
+            this.AdressSpecKZtextBox.Name = "AdressSpecKZtextBox";
+            this.tableLayoutPanel4.SetRowSpan(this.AdressSpecKZtextBox, 2);
+            this.AdressSpecKZtextBox.Size = new System.Drawing.Size(679, 96);
+            this.AdressSpecKZtextBox.TabIndex = 14;
             // 
             // label46
             // 
@@ -1971,13 +1931,13 @@ namespace WindowsFormsApp1
             this.label46.Text = "БИН/РНН";
             this.label46.TextAlign = System.Drawing.ContentAlignment.TopRight;
             // 
-            // textBox45
+            // BinSpecKZtextBox
             // 
-            this.textBox45.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Left | System.Windows.Forms.AnchorStyles.Right)));
-            this.textBox45.Location = new System.Drawing.Point(231, 267);
-            this.textBox45.Name = "textBox45";
-            this.textBox45.Size = new System.Drawing.Size(222, 26);
-            this.textBox45.TabIndex = 19;
+            this.BinSpecKZtextBox.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Left | System.Windows.Forms.AnchorStyles.Right)));
+            this.BinSpecKZtextBox.Location = new System.Drawing.Point(231, 267);
+            this.BinSpecKZtextBox.Name = "BinSpecKZtextBox";
+            this.BinSpecKZtextBox.Size = new System.Drawing.Size(222, 26);
+            this.BinSpecKZtextBox.TabIndex = 19;
             // 
             // label47
             // 
@@ -1990,14 +1950,14 @@ namespace WindowsFormsApp1
             this.label47.Text = "Банк";
             this.label47.TextAlign = System.Drawing.ContentAlignment.TopRight;
             // 
-            // textBox41
+            // BankSpecKZtextBox
             // 
-            this.textBox41.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Left | System.Windows.Forms.AnchorStyles.Right)));
-            this.tableLayoutPanel4.SetColumnSpan(this.textBox41, 3);
-            this.textBox41.Location = new System.Drawing.Point(231, 318);
-            this.textBox41.Name = "textBox41";
-            this.textBox41.Size = new System.Drawing.Size(679, 26);
-            this.textBox41.TabIndex = 15;
+            this.BankSpecKZtextBox.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Left | System.Windows.Forms.AnchorStyles.Right)));
+            this.tableLayoutPanel4.SetColumnSpan(this.BankSpecKZtextBox, 3);
+            this.BankSpecKZtextBox.Location = new System.Drawing.Point(231, 318);
+            this.BankSpecKZtextBox.Name = "BankSpecKZtextBox";
+            this.BankSpecKZtextBox.Size = new System.Drawing.Size(679, 26);
+            this.BankSpecKZtextBox.TabIndex = 15;
             // 
             // label48
             // 
@@ -2010,13 +1970,13 @@ namespace WindowsFormsApp1
             this.label48.Text = "БИК";
             this.label48.TextAlign = System.Drawing.ContentAlignment.TopRight;
             // 
-            // textBox28
+            // BikSpecKZtextBox
             // 
-            this.textBox28.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Left | System.Windows.Forms.AnchorStyles.Right)));
-            this.textBox28.Location = new System.Drawing.Point(231, 369);
-            this.textBox28.Name = "textBox28";
-            this.textBox28.Size = new System.Drawing.Size(222, 26);
-            this.textBox28.TabIndex = 23;
+            this.BikSpecKZtextBox.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Left | System.Windows.Forms.AnchorStyles.Right)));
+            this.BikSpecKZtextBox.Location = new System.Drawing.Point(231, 369);
+            this.BikSpecKZtextBox.Name = "BikSpecKZtextBox";
+            this.BikSpecKZtextBox.Size = new System.Drawing.Size(222, 26);
+            this.BikSpecKZtextBox.TabIndex = 23;
             // 
             // label50
             // 
@@ -2039,10 +1999,9 @@ namespace WindowsFormsApp1
             // groupBox4
             // 
             this.groupBox4.BackColor = System.Drawing.Color.White;
-            this.groupBox4.Controls.Add(this.button18);
-            this.groupBox4.Controls.Add(this.button19);
-            this.groupBox4.Controls.Add(this.button20);
-            this.groupBox4.Controls.Add(this.button21);
+            this.groupBox4.Controls.Add(this.buttClearFormSpecKZ);
+            this.groupBox4.Controls.Add(this.buttSpecKZ60);
+            this.groupBox4.Controls.Add(this.buttSpecKZ100);
             this.groupBox4.Font = new System.Drawing.Font("Microsoft Sans Serif", 10.2F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
             this.groupBox4.Location = new System.Drawing.Point(6, 7);
             this.groupBox4.Name = "groupBox4";
@@ -2051,41 +2010,35 @@ namespace WindowsFormsApp1
             this.groupBox4.TabStop = false;
             this.groupBox4.Text = "Функции";
             // 
-            // button18
+            // buttClearFormSpecKZ
             // 
-            this.button18.Location = new System.Drawing.Point(44, 282);
-            this.button18.Name = "button18";
-            this.button18.Size = new System.Drawing.Size(195, 43);
-            this.button18.TabIndex = 6;
-            this.button18.Text = "Очистить форму";
-            this.button18.UseVisualStyleBackColor = true;
+            this.buttClearFormSpecKZ.Location = new System.Drawing.Point(43, 207);
+            this.buttClearFormSpecKZ.Name = "buttClearFormSpecKZ";
+            this.buttClearFormSpecKZ.Size = new System.Drawing.Size(195, 43);
+            this.buttClearFormSpecKZ.TabIndex = 6;
+            this.buttClearFormSpecKZ.Text = "Очистить форму";
+            this.buttClearFormSpecKZ.UseVisualStyleBackColor = true;
+            this.buttClearFormSpecKZ.Click += new System.EventHandler(this.buttClearFormSpecKZ_Click);
             // 
-            // button19
+            // buttSpecKZ60
             // 
-            this.button19.Location = new System.Drawing.Point(44, 207);
-            this.button19.Name = "button19";
-            this.button19.Size = new System.Drawing.Size(195, 43);
-            this.button19.TabIndex = 5;
-            this.button19.Text = "Выбрать счет";
-            this.button19.UseVisualStyleBackColor = true;
+            this.buttSpecKZ60.Location = new System.Drawing.Point(44, 131);
+            this.buttSpecKZ60.Name = "buttSpecKZ60";
+            this.buttSpecKZ60.Size = new System.Drawing.Size(195, 43);
+            this.buttSpecKZ60.TabIndex = 4;
+            this.buttSpecKZ60.Text = "60% предоплата";
+            this.buttSpecKZ60.UseVisualStyleBackColor = true;
+            this.buttSpecKZ60.Click += new System.EventHandler(this.buttSpecKZ60_Click);
             // 
-            // button20
+            // buttSpecKZ100
             // 
-            this.button20.Location = new System.Drawing.Point(44, 131);
-            this.button20.Name = "button20";
-            this.button20.Size = new System.Drawing.Size(195, 43);
-            this.button20.TabIndex = 4;
-            this.button20.Text = "60% предоплата";
-            this.button20.UseVisualStyleBackColor = true;
-            // 
-            // button21
-            // 
-            this.button21.Location = new System.Drawing.Point(42, 56);
-            this.button21.Name = "button21";
-            this.button21.Size = new System.Drawing.Size(195, 43);
-            this.button21.TabIndex = 3;
-            this.button21.Text = "100% предоплата";
-            this.button21.UseVisualStyleBackColor = true;
+            this.buttSpecKZ100.Location = new System.Drawing.Point(42, 56);
+            this.buttSpecKZ100.Name = "buttSpecKZ100";
+            this.buttSpecKZ100.Size = new System.Drawing.Size(195, 43);
+            this.buttSpecKZ100.TabIndex = 3;
+            this.buttSpecKZ100.Text = "100% предоплата";
+            this.buttSpecKZ100.UseVisualStyleBackColor = true;
+            this.buttSpecKZ100.Click += new System.EventHandler(this.buttSpecKZ100_Click);
             // 
             // buttInvoice
             // 
@@ -2132,6 +2085,43 @@ namespace WindowsFormsApp1
             this.dataGridViewComboBoxColumn2.SortMode = System.Windows.Forms.DataGridViewColumnSortMode.Automatic;
             this.dataGridViewComboBoxColumn2.Width = 867;
             // 
+            // label61
+            // 
+            this.label61.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Left | System.Windows.Forms.AnchorStyles.Right)));
+            this.label61.AutoSize = true;
+            this.label61.Location = new System.Drawing.Point(459, 15);
+            this.label61.Name = "label61";
+            this.label61.Size = new System.Drawing.Size(222, 20);
+            this.label61.TabIndex = 27;
+            this.label61.Text = "От";
+            this.label61.TextAlign = System.Drawing.ContentAlignment.TopRight;
+            // 
+            // DateContractSpecRFtextBox
+            // 
+            this.DateContractSpecRFtextBox.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Left | System.Windows.Forms.AnchorStyles.Right)));
+            this.DateContractSpecRFtextBox.Location = new System.Drawing.Point(687, 12);
+            this.DateContractSpecRFtextBox.Name = "DateContractSpecRFtextBox";
+            this.DateContractSpecRFtextBox.Size = new System.Drawing.Size(223, 26);
+            this.DateContractSpecRFtextBox.TabIndex = 28;
+            // 
+            // label62
+            // 
+            this.label62.Anchor = System.Windows.Forms.AnchorStyles.Right;
+            this.label62.AutoSize = true;
+            this.label62.Location = new System.Drawing.Point(649, 15);
+            this.label62.Name = "label62";
+            this.label62.Size = new System.Drawing.Size(32, 20);
+            this.label62.TabIndex = 27;
+            this.label62.Text = "От";
+            // 
+            // ContracDatetextBox
+            // 
+            this.ContracDatetextBox.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Left | System.Windows.Forms.AnchorStyles.Right)));
+            this.ContracDatetextBox.Location = new System.Drawing.Point(687, 12);
+            this.ContracDatetextBox.Name = "ContracDatetextBox";
+            this.ContracDatetextBox.Size = new System.Drawing.Size(223, 26);
+            this.ContracDatetextBox.TabIndex = 28;
+            // 
             // Form1
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(9F, 18F);
@@ -2141,6 +2131,7 @@ namespace WindowsFormsApp1
             this.Controls.Add(this.buttInvoice);
             this.Controls.Add(this.tabControl1);
             this.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
+            this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
             this.Margin = new System.Windows.Forms.Padding(4);
             this.MinimumSize = new System.Drawing.Size(1301, 780);
             this.Name = "Form1";
@@ -2158,19 +2149,19 @@ namespace WindowsFormsApp1
             this.panel3.ResumeLayout(false);
             this.panel3.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dataGridView3)).EndInit();
-            this.tabDocuments.ResumeLayout(false);
+            this.tabContractRF.ResumeLayout(false);
             this.tableLayoutPanel1.ResumeLayout(false);
             this.tableLayoutPanel1.PerformLayout();
             this.groupBox1.ResumeLayout(false);
-            this.tabPage2.ResumeLayout(false);
+            this.tabSpecRF.ResumeLayout(false);
             this.tableLayoutPanel3.ResumeLayout(false);
             this.tableLayoutPanel3.PerformLayout();
             this.groupBox3.ResumeLayout(false);
-            this.tabPage1.ResumeLayout(false);
+            this.tabContractKZ.ResumeLayout(false);
             this.tableLayoutPanel2.ResumeLayout(false);
             this.tableLayoutPanel2.PerformLayout();
             this.groupBox2.ResumeLayout(false);
-            this.tabPage3.ResumeLayout(false);
+            this.tabSpecKZ.ResumeLayout(false);
             this.tableLayoutPanel4.ResumeLayout(false);
             this.tableLayoutPanel4.PerformLayout();
             this.groupBox4.ResumeLayout(false);
@@ -2181,27 +2172,24 @@ namespace WindowsFormsApp1
         #endregion
 
         private System.Windows.Forms.TabControl tabControl1;
-        private System.Windows.Forms.TabPage tabDocuments;
+        private System.Windows.Forms.TabPage tabContractRF;
         private System.Windows.Forms.TabPage tabFiltersItems;
         private System.Windows.Forms.Button buttAddFile;
         private System.Windows.Forms.Button butAddFolder;
         private System.Windows.Forms.DataGridView dataGridView1;
-        private System.Windows.Forms.TabPage tabPage1;
-        private System.Windows.Forms.TabPage tabPage2;
+        private System.Windows.Forms.TabPage tabContractKZ;
+        private System.Windows.Forms.TabPage tabSpecRF;
         private System.Windows.Forms.Button buttInvoice;
         private System.Windows.Forms.Button buttExit;
         private System.Windows.Forms.GroupBox groupBox1;
-        private System.Windows.Forms.Button button7;
-        private System.Windows.Forms.Button button6;
+        private System.Windows.Forms.Button butContrRF60;
         private System.Windows.Forms.Button butContrRF100;
         private System.Windows.Forms.GroupBox groupBox2;
-        private System.Windows.Forms.Button button8;
-        private System.Windows.Forms.Button button9;
-        private System.Windows.Forms.Button button10;
+        private System.Windows.Forms.Button buttContractKZ60;
+        private System.Windows.Forms.Button buttContractKZ100;
         private System.Windows.Forms.GroupBox groupBox3;
-        private System.Windows.Forms.Button button11;
-        private System.Windows.Forms.Button button12;
-        private System.Windows.Forms.Button button13;
+        private System.Windows.Forms.Button buttSpecRF60;
+        private System.Windows.Forms.Button buttSpecRF100;
         private System.Windows.Forms.TableLayoutPanel tableLayoutPanel1;
         private System.Windows.Forms.Label label7;
         private System.Windows.Forms.Label label8;
@@ -2228,40 +2216,40 @@ namespace WindowsFormsApp1
         private System.Windows.Forms.DateTimePicker dateTimePicker1;
         private System.Windows.Forms.TextBox Adress;
         private System.Windows.Forms.Button buttClearForm;
-        private System.Windows.Forms.Button button15;
-        private System.Windows.Forms.Button button16;
+        private System.Windows.Forms.Button buttClearFormKZ;
+        private System.Windows.Forms.Button buttClearFormSpecRF;
         private System.Windows.Forms.TableLayoutPanel tableLayoutPanel3;
-        private System.Windows.Forms.TextBox textBox38;
+        private System.Windows.Forms.TextBox NumberContractTextBox;
         private System.Windows.Forms.Label label42;
         private System.Windows.Forms.Label label18;
-        private System.Windows.Forms.TextBox textBox26;
+        private System.Windows.Forms.TextBox CompanyNameSpecRFtextBox;
         private System.Windows.Forms.Label label20;
-        private System.Windows.Forms.TextBox textBox20;
+        private System.Windows.Forms.TextBox DolgnostSpecRFTextBox;
         private System.Windows.Forms.Label label21;
-        private System.Windows.Forms.TextBox textBox25;
+        private System.Windows.Forms.TextBox FIOSpecRFtextBox;
         private System.Windows.Forms.Label label23;
-        private System.Windows.Forms.TextBox textBox24;
+        private System.Windows.Forms.TextBox AdressSpecRFtextBox;
         private System.Windows.Forms.Label label24;
-        private System.Windows.Forms.TextBox textBox27;
+        private System.Windows.Forms.TextBox InnSpecRFtextBox;
         private System.Windows.Forms.Label label29;
-        private System.Windows.Forms.TextBox textBox18;
+        private System.Windows.Forms.TextBox KppSpecRFtextBox;
         private System.Windows.Forms.Label label25;
-        private System.Windows.Forms.TextBox textBox23;
+        private System.Windows.Forms.TextBox BankSpecRFtextBox;
         private System.Windows.Forms.Label label26;
-        private System.Windows.Forms.TextBox textBox17;
+        private System.Windows.Forms.TextBox BikSpecRFtextBox;
         private System.Windows.Forms.Label label30;
         private System.Windows.Forms.DateTimePicker dateTimePicker2;
         private System.Windows.Forms.Label label27;
-        private System.Windows.Forms.TextBox textBox22;
+        private System.Windows.Forms.TextBox RSspecTextBox;
         private System.Windows.Forms.Label label28;
-        private System.Windows.Forms.TextBox textBox21;
+        private System.Windows.Forms.TextBox KSspecTextBox;
         private System.Windows.Forms.TableLayoutPanel tableLayoutPanel2;
-        private System.Windows.Forms.TextBox textBox19;
-        private System.Windows.Forms.TextBox textBox29;
-        private System.Windows.Forms.TextBox textBox30;
-        private System.Windows.Forms.TextBox textBox33;
-        private System.Windows.Forms.TextBox textBox34;
-        private System.Windows.Forms.TextBox textBox35;
+        private System.Windows.Forms.TextBox BikContractKZtextBox;
+        private System.Windows.Forms.TextBox NaOsnovaniiContractKZtextBox;
+        private System.Windows.Forms.TextBox DolgnostContractKZtextBox;
+        private System.Windows.Forms.TextBox BankContractKZtextBox;
+        private System.Windows.Forms.TextBox AdressContractKZtextBox;
+        private System.Windows.Forms.TextBox FIOContractKZtextBox;
         private System.Windows.Forms.Label label22;
         private System.Windows.Forms.Label label31;
         private System.Windows.Forms.Label label32;
@@ -2270,17 +2258,17 @@ namespace WindowsFormsApp1
         private System.Windows.Forms.Label label35;
         private System.Windows.Forms.Label label36;
         private System.Windows.Forms.Label label37;
-        private System.Windows.Forms.TextBox textBox36;
+        private System.Windows.Forms.TextBox CompanyNameContractKZtextBox;
         private System.Windows.Forms.Label label41;
-        private System.Windows.Forms.TextBox textBox37;
+        private System.Windows.Forms.TextBox BINContractKZtextBox;
         private System.Windows.Forms.DateTimePicker dateTimePicker3;
-        private System.Windows.Forms.TabPage tabPage3;
+        private System.Windows.Forms.TabPage tabSpecKZ;
         private System.Windows.Forms.TableLayoutPanel tableLayoutPanel4;
-        private System.Windows.Forms.TextBox textBox28;
-        private System.Windows.Forms.TextBox textBox39;
-        private System.Windows.Forms.TextBox textBox41;
-        private System.Windows.Forms.TextBox textBox42;
-        private System.Windows.Forms.TextBox textBox43;
+        private System.Windows.Forms.TextBox BikSpecKZtextBox;
+        private System.Windows.Forms.TextBox DolgnostSpecKZtextBox;
+        private System.Windows.Forms.TextBox BankSpecKZtextBox;
+        private System.Windows.Forms.TextBox AdressSpecKZtextBox;
+        private System.Windows.Forms.TextBox FioSpecKZtextBox;
         private System.Windows.Forms.Label label39;
         private System.Windows.Forms.Label label40;
         private System.Windows.Forms.Label label43;
@@ -2288,17 +2276,16 @@ namespace WindowsFormsApp1
         private System.Windows.Forms.Label label46;
         private System.Windows.Forms.Label label47;
         private System.Windows.Forms.Label label48;
-        private System.Windows.Forms.TextBox textBox44;
+        private System.Windows.Forms.TextBox CompanyNameSpecKZtextBox;
         private System.Windows.Forms.Label label50;
-        private System.Windows.Forms.TextBox textBox45;
+        private System.Windows.Forms.TextBox BinSpecKZtextBox;
         private System.Windows.Forms.DateTimePicker dateTimePicker4;
         private System.Windows.Forms.GroupBox groupBox4;
-        private System.Windows.Forms.Button button18;
-        private System.Windows.Forms.Button button19;
-        private System.Windows.Forms.Button button20;
-        private System.Windows.Forms.Button button21;
+        private System.Windows.Forms.Button buttClearFormSpecKZ;
+        private System.Windows.Forms.Button buttSpecKZ60;
+        private System.Windows.Forms.Button buttSpecKZ100;
         private System.Windows.Forms.Label label38;
-        private System.Windows.Forms.TextBox textBox31;
+        private System.Windows.Forms.TextBox ContactNumberSpecKZtextBox;
         private System.Windows.Forms.Panel panel1;
         private System.Windows.Forms.Label label44;
         private System.Windows.Forms.Button buttFilterSrch;
@@ -2359,8 +2346,10 @@ namespace WindowsFormsApp1
         private System.Windows.Forms.Button button2;
         private System.Windows.Forms.Button button3;
         private System.Windows.Forms.Button button4;
+        private System.Windows.Forms.TextBox DateContractSpecRFtextBox;
         private System.Windows.Forms.Label label61;
-        private System.Windows.Forms.TextBox FilterCustomerId;
+        private System.Windows.Forms.Label label62;
+        private System.Windows.Forms.TextBox ContracDatetextBox;
     }
 }
 

@@ -45,4 +45,7 @@ C:\diploma\Diploma-progra\parserExcel\WindowsFormsApp1\bin\Debug\System.ValueTup
 C:\diploma\Diploma-progra\parserExcel\WindowsFormsApp1\obj\Debug\ParserExc.csproj.CopyComplete
 C:\diploma\Diploma-progra\parserExcel\WindowsFormsApp1\obj\Debug\WindowsFormsApp1.exe
 C:\diploma\Diploma-progra\parserExcel\WindowsFormsApp1\obj\Debug\WindowsFormsApp1.pdb
-C:\diploma\Diploma-progra\parserExcel\WindowsFormsApp1\obj\Debug\ParserExc.csproj.AssemblyReference.cache
+C:\diploma\Diploma-progra\parserExcel\WindowsFormsApp1\bin\Debug\СпецификацияКЗ.docx
+C:\diploma\Diploma-progra\parserExcel\WindowsFormsApp1\bin\Debug\СпецификацияКЗ60.docx
+C:\diploma\Diploma-progra\parserExcel\WindowsFormsApp1\bin\Debug\СпецификацияРФ100.docx
+C:\diploma\Diploma-progra\parserExcel\WindowsFormsApp1\bin\Debug\СпецификацияРФ60.docx

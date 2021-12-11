@@ -195,7 +195,7 @@ namespace WindowsFormsApp1
                 Invoice invoice = new Invoice()
                 {
                     Acct = acct,
-                    Company = customer,
+                    //Company = customer,
                     Date = date,
                     Sum = sum,
                     Type = type,

@@ -1,12 +1,9 @@
 ﻿using System;
 using System.Collections.Generic;
-using System.ComponentModel;
 using System.Data;
 using System.Diagnostics;
-using System.Drawing;
 using System.IO;
 using System.Linq;
-using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
 using Cyriller;
@@ -431,130 +428,220 @@ namespace WindowsFormsApp1
                 if (FilterType.Text.IsNullOrEmpty() && FilterCustomerInvoice.Text.IsNullOrEmpty() && FilterInvoceInvoice.Text.IsNullOrEmpty()
                     && monthCalendar2.SelectionStart == monthCalendar2.TodayDate)
                 {
-
-                    var data = (from d in db.Invoices
+                    var data = (from d in db.Invoices.Include(a => a.Customer)
                                 where d.Sum > SumMore &&
                                 d.Sum < SumSmaller
                                 select d);
+                    dataGridView2.DataSource = data.ToList().Select(a => new InvoicesAndCustomer
+                    {
+                        Acct = a.Acct,
+                        Date = a.Date,
+                        Id = a.Id,
+                        Sum = a.Sum,
+                        Type = a.Type,
+                        CompanyName = a.Customer.CompanyName,
+                        Inn = a.Customer.Inn
+                    }).ToList();
 
-                    dataGridView2.DataSource = data.ToList();
+
                 }
                 if (FilterType.Text.IsNullOrEmpty() && FilterCustomerInvoice.Text.IsNullOrEmpty() && FilterInvoceInvoice.Text.IsNullOrEmpty()
                     && monthCalendar2.SelectionStart != monthCalendar2.TodayDate)
                 {
-                    var data = (from d in db.Invoices
+                    var data = (from d in db.Invoices.Include(a => a.Customer)
                                 where d.Sum > SumMore &&
                                 d.Sum < SumSmaller &&
                                 monthCalendar2.SelectionStart <= d.Date &&
                                 monthCalendar2.SelectionEnd >= d.Date
                                 select d);
-                    dataGridView2.DataSource = data.ToList();
+                    dataGridView2.DataSource = data.ToList().Select(a => new InvoicesAndCustomer
+                    {
+                        Acct = a.Acct,
+                        Date = a.Date,
+                        Id = a.Id,
+                        Sum = a.Sum,
+                        Type = a.Type,
+                        CompanyName = a.Customer.CompanyName,
+                        Inn = a.Customer.Inn
+                    }).ToList();
                 }
                 else if (FilterType.Text.IsNotNullOrEmpty() && FilterCustomerInvoice.Text.IsNullOrEmpty() && FilterInvoceInvoice.Text.IsNullOrEmpty()
                     && monthCalendar2.SelectionStart == monthCalendar2.TodayDate)
                 {
-                    var data = (from d in db.Invoices
+                    var data = (from d in db.Invoices.Include(a => a.Customer)
                                 where d.Sum > SumMore &&
                                 d.Sum < SumSmaller &&
                                 d.Type.Contains(type)
                                 select d);
-                    dataGridView2.DataSource = data.ToList();
+                    dataGridView2.DataSource = data.ToList().Select(a => new InvoicesAndCustomer
+                    {
+                        Acct = a.Acct,
+                        Date = a.Date,
+                        Id = a.Id,
+                        Sum = a.Sum,
+                        Type = a.Type,
+                        CompanyName = a.Customer.CompanyName,
+                        Inn = a.Customer.Inn
+                    }).ToList();
                 }
                 else if (FilterType.Text.IsNotNullOrEmpty() && FilterCustomerInvoice.Text.IsNullOrEmpty() && FilterInvoceInvoice.Text.IsNullOrEmpty()
                     && monthCalendar2.SelectionStart != monthCalendar2.TodayDate)
                 {
-                    var data = (from d in db.Invoices
+                    var data = (from d in db.Invoices.Include(a => a.Customer)
                                 where d.Sum > SumMore &&
                                 d.Sum < SumSmaller &&
                                 d.Type.Contains(type) &&
                                 monthCalendar2.SelectionStart <= d.Date &&
                                 monthCalendar2.SelectionEnd >= d.Date
                                 select d);
-                    dataGridView2.DataSource = data.ToList();
+                    dataGridView2.DataSource = data.ToList().Select(a => new InvoicesAndCustomer
+                    {
+                        Acct = a.Acct,
+                        Date = a.Date,
+                        Id = a.Id,
+                        Sum = a.Sum,
+                        Type = a.Type,
+                        CompanyName = a.Customer.CompanyName,
+                        Inn = a.Customer.Inn
+                    }).ToList();
                 }
                 else if (FilterType.Text.IsNotNullOrEmpty() && FilterCustomerInvoice.Text.IsNotNullOrEmpty() && FilterInvoceInvoice.Text.IsNullOrEmpty()
                     && monthCalendar2.SelectionStart == monthCalendar2.TodayDate)
                 {
 
-                    var data = (from d in db.Invoices
+                    var data = (from d in db.Invoices.Include(a => a.Customer)
                                 where d.Sum > SumMore &&
                                 d.Sum < SumSmaller &&
                                 d.Type.Contains(type) &&
-                                d.Company.Contains(Customer)
+                                d.Customer.CompanyName.Contains(Customer)
                                 select d);
-                    dataGridView2.DataSource = data.ToList();
+                    dataGridView2.DataSource = data.ToList().Select(a => new InvoicesAndCustomer
+                    {
+                        Acct = a.Acct,
+                        Date = a.Date,
+                        Id = a.Id,
+                        Sum = a.Sum,
+                        Type = a.Type,
+                        CompanyName = a.Customer.CompanyName,
+                        Inn = a.Customer.Inn
+                    }).ToList();
                 }
                 else if (FilterType.Text.IsNotNullOrEmpty() && FilterCustomerInvoice.Text.IsNotNullOrEmpty() && FilterInvoceInvoice.Text.IsNullOrEmpty()
                     && monthCalendar2.SelectionStart != monthCalendar2.TodayDate)
                 {
 
-                    var data = (from d in db.Invoices
+                    var data = (from d in db.Invoices.Include(a => a.Customer)
                                 where d.Sum > SumMore &&
                                 d.Sum < SumSmaller &&
                                 d.Type.Contains(type) &&
-                                d.Company.Contains(Customer) &&
+                                d.Customer.CompanyName.Contains(Customer) &&
                                 monthCalendar2.SelectionStart <= d.Date &&
                                 monthCalendar2.SelectionEnd >= d.Date
                                 select d);
-                    dataGridView2.DataSource = data.ToList();
+                    dataGridView2.DataSource = data.ToList().Select(a => new InvoicesAndCustomer
+                    {
+                        Acct = a.Acct,
+                        Date = a.Date,
+                        Id = a.Id,
+                        Sum = a.Sum,
+                        Type = a.Type,
+                        CompanyName = a.Customer.CompanyName,
+                        Inn = a.Customer.Inn
+                    }).ToList();
                 }
                 else if (FilterType.Text.IsNotNullOrEmpty() && FilterCustomerInvoice.Text.IsNotNullOrEmpty() && FilterInvoceInvoice.Text.IsNotNullOrEmpty())
                 {
 
-                    var data = (from d in db.Invoices
+                    var data = (from d in db.Invoices.Include(a => a.Customer)
                                 where d.Sum > SumMore &&
                                 d.Sum < SumSmaller &&
 
                                 d.Type.Contains(type) &&
-                                d.Company.Contains(Customer) &&
+                                d.Customer.CompanyName.Contains(Customer) &&
                                 d.Acct == Invoice
 
                                 select d);
-                    dataGridView2.DataSource = data.ToList();
+                    dataGridView2.DataSource = data.ToList().Select(a => new InvoicesAndCustomer
+                    {
+                        Acct = a.Acct,
+                        Date = a.Date,
+                        Id = a.Id,
+                        Sum = a.Sum,
+                        Type = a.Type,
+                        CompanyName = a.Customer.CompanyName,
+                        Inn = a.Customer.Inn
+                    }).ToList();
                 }
                 else if (FilterType.Text.IsNullOrEmpty() && FilterCustomerInvoice.Text.IsNotNullOrEmpty() && FilterInvoceInvoice.Text.IsNullOrEmpty()
                     && monthCalendar2.SelectionStart == monthCalendar2.TodayDate)
                 {
-                    var data = (from d in db.Invoices
+                    var data = (from d in db.Invoices.Include(a => a.Customer)
                                 where d.Sum > SumMore &&
                                 d.Sum < SumSmaller &&
-                                
-                                d.Company.Contains(Customer)
+
+                                d.Customer.CompanyName.Contains(Customer)
 
                                 select d);
-                    dataGridView2.DataSource = data.ToList();
+                    dataGridView2.DataSource = data.ToList().Select(a => new InvoicesAndCustomer
+                    {
+                        Acct = a.Acct,
+                        Date = a.Date,
+                        Id = a.Id,
+                        Sum = a.Sum,
+                        Type = a.Type,
+                        CompanyName = a.Customer.CompanyName,
+                        Inn = a.Customer.Inn
+                    }).ToList();
                 }
                 else if (FilterType.Text.IsNullOrEmpty() && FilterCustomerInvoice.Text.IsNotNullOrEmpty() && FilterInvoceInvoice.Text.IsNullOrEmpty()
                     && monthCalendar2.SelectionStart != monthCalendar2.TodayDate)
                 {
-                    var data = (from d in db.Invoices
+                    var data = (from d in db.Invoices.Include(a => a.Customer)
                                 where d.Sum > SumMore &&
                                 d.Sum < SumSmaller &&
 
-                                d.Company.Contains(Customer) &&
+                                d.Customer.CompanyName.Contains(Customer) &&
                                 monthCalendar1.SelectionStart <= d.Date &&
                                 monthCalendar1.SelectionEnd >= d.Date
 
                                 select d);
-                    dataGridView2.DataSource = data.ToList();
+                    dataGridView2.DataSource = data.ToList().Select(a => new InvoicesAndCustomer
+                    {
+                        Acct = a.Acct,
+                        Date = a.Date,
+                        Id = a.Id,
+                        Sum = a.Sum,
+                        Type = a.Type,
+                        CompanyName = a.Customer.CompanyName,
+                        Inn = a.Customer.Inn
+                    }).ToList();
                 }
                 else if (FilterType.Text.IsNullOrEmpty() && FilterCustomerInvoice.Text.IsNotNullOrEmpty() && FilterInvoceInvoice.Text.IsNotNullOrEmpty())
                 {
 
-                    var data = (from d in db.Invoices
+                    var data = (from d in db.Invoices.Include(a => a.Customer)
                                 where d.Sum > SumMore &&
                                 d.Sum < SumSmaller &&
 
-                                d.Company.Contains(Customer) &&
+                                d.Customer.CompanyName.Contains(Customer) &&
                                 d.Acct == Invoice
 
                                 select d);
-                    dataGridView2.DataSource = data.ToList();
+                    dataGridView2.DataSource = data.ToList().Select(a => new InvoicesAndCustomer
+                    {
+                        Acct = a.Acct,
+                        Date = a.Date,
+                        Id = a.Id,
+                        Sum = a.Sum,
+                        Type = a.Type,
+                        CompanyName = a.Customer.CompanyName,
+                        Inn = a.Customer.Inn
+                    }).ToList();
                 }
                 else if (FilterType.Text.IsNotNullOrEmpty() && FilterCustomerInvoice.Text.IsNullOrEmpty() && FilterInvoceInvoice.Text.IsNotNullOrEmpty())
                 {
 
-                    var data = (from d in db.Invoices
+                    var data = (from d in db.Invoices.Include(a => a.Customer)
                                 where d.Sum > SumMore &&
                                 d.Sum < SumSmaller &&
 
@@ -562,19 +649,37 @@ namespace WindowsFormsApp1
                                 d.Acct == Invoice
 
                                 select d);
-                    dataGridView2.DataSource = data.ToList();
+                    dataGridView2.DataSource = data.ToList().Select(a => new InvoicesAndCustomer
+                    {
+                        Acct = a.Acct,
+                        Date = a.Date,
+                        Id = a.Id,
+                        Sum = a.Sum,
+                        Type = a.Type,
+                        CompanyName = a.Customer.CompanyName,
+                        Inn = a.Customer.Inn
+                    }).ToList();
                 }
                 else if (FilterType.Text.IsNullOrEmpty() && FilterCustomerInvoice.Text.IsNullOrEmpty() && FilterInvoceInvoice.Text.IsNotNullOrEmpty())
                 {
 
-                    var data = (from d in db.Invoices
+                    var data = (from d in db.Invoices.Include(a => a.Customer)
                                 where d.Sum > SumMore &&
                                 d.Sum < SumSmaller &&
 
                                 d.Acct == Invoice
 
                                 select d);
-                    dataGridView2.DataSource = data.ToList();
+                    dataGridView2.DataSource = data.ToList().Select(a => new InvoicesAndCustomer
+                    {
+                        Acct = a.Acct,
+                        Date = a.Date,
+                        Id = a.Id,
+                        Sum = a.Sum,
+                        Type = a.Type,
+                        CompanyName = a.Customer.CompanyName,
+                        Inn = a.Customer.Inn
+                    }).ToList();
                 }
 
             }
@@ -586,16 +691,8 @@ namespace WindowsFormsApp1
             string customerName = FilterCustomerName.Text;
             string inn = FilterCustomerINN.Text;
             string adress = FilterCustomerAdress.Text;
-            int id = int.Parse(FilterCustomerId.Text);
             using (ProductItemContext db = new ProductItemContext())
             {
-                if (FilterCustomerId.Text.IsNotNullOrEmpty())
-                {
-                    var data = (from d in db.Customers
-                                where d.Id == id
-                                select d);
-                    dataGridView3.DataSource = data.ToList();
-                }
 
                 if (FilterCustomerName.Text.IsNullOrEmpty() && FilterCustomerINN.Text.IsNotNullOrEmpty() && FilterCustomerAdress.Text.IsNullOrEmpty())
                 {
@@ -604,7 +701,7 @@ namespace WindowsFormsApp1
                                 select d);
                     dataGridView3.DataSource = data.ToList();
                 }
-                
+
                 if (FilterCustomerName.Text.IsNotNullOrEmpty() && FilterCustomerINN.Text.IsNullOrEmpty() && FilterCustomerAdress.Text.IsNullOrEmpty())
                 {
                     var data = (from d in db.Customers
@@ -619,7 +716,7 @@ namespace WindowsFormsApp1
                                 select d);
                     dataGridView3.DataSource = data.ToList();
                 }
-                if (FilterCustomerName.Text.IsNullOrEmpty() && FilterCustomerINN.Text.IsNullOrEmpty() && FilterCustomerAdress.Text.IsNullOrEmpty()&&FilterCustomerId.Text.IsNullOrEmpty())
+                if (FilterCustomerName.Text.IsNullOrEmpty() && FilterCustomerINN.Text.IsNullOrEmpty() && FilterCustomerAdress.Text.IsNullOrEmpty())
                 {
                     var data = (from d in db.Customers select d);
                     dataGridView3.DataSource = data.ToList();
@@ -714,5 +811,387 @@ namespace WindowsFormsApp1
             });
         }
 
+        private void butContrRF60_Click(object sender, EventArgs e)
+        {
+            string fileInvoice = "";
+            OpenFileDialog dlg = new OpenFileDialog();
+            dlg.Filter = "Файлы эксель|*.xlsm|Все файлы|*.*";
+            dlg.Title = "Выберите счет для спецификации";
+            if (dlg.ShowDialog() == DialogResult.OK)
+            {
+                fileInvoice = dlg.FileName;
+            }
+            var helper = new wordHelper("ДоговорРФ60.docx");
+            var parserInvoice = new ParserInvoice(fileInvoice);
+            List<ProductItem> productItems = new List<ProductItem>();
+            Task task = Task.Factory.StartNew(() =>
+            {
+                parserInvoice.ProductItemProcessor(productItems);
+                double sum = 0;
+                double nds = 0;
+                foreach (var item in productItems)
+                {
+                    sum += item.Sum;
+                }
+                nds = sum * 20 / 120;
+                string sumProp = Сумма.Пропись(sum, Валюта.Рубли);
+                CyrNounCollection cyrNounCollection = new CyrNounCollection();
+                CyrAdjectiveCollection cyrAdjectiveCollection = new CyrAdjectiveCollection();
+                CyrPhrase cyrPhrase = new CyrPhrase(cyrNounCollection, cyrAdjectiveCollection);
+                CyrName cyrName = new CyrName();
+                CyrResult resultDolg = cyrPhrase.Decline(Dolgnost.Text, GetConditionsEnum.Similar);
+                CyrResult resultName = cyrName.Decline(FIO.Text);
+                string FioSokr = helper.FioSokr(FIO.Text);
+                string NumberContract = dateTimePicker1.Value.ToString("yyMdhm");
+                var items = new Dictionary<string, string>
+            {
+                {"{number}", NumberContract  },
+                {"{org}", Organization.Text  },
+                {"{dolg-rod}", resultDolg.Родительный  },
+                {"{fio-rod}", resultName.Родительный  },
+                {"{na-osnovanii}", NaOsnovanii.Text  },
+                {"{INN}", INN.Text  },
+                {"{KPP}", KPP.Text  },
+                {"{Adress}", Adress.Text  },
+                {"{Bank}", Bank.Text  },
+                {"{Bik}", BIK.Text  },
+                {"{DATE}", dateTimePicker1.Value.ToString("dd.MM.yyyy")  },
+                {"{dolg-im}", Dolgnost.Text  },
+                {"{fio-im}", FIO.Text  },
+                {"{fioSokr}", FioSokr  },
+                {"{r/s}", RS.Text },
+                {"{k/s}", KS.Text  },
+                {"{sumProp}", sumProp  },
+                {"{sum}", sum.ToString("F" + 2)  },
+                {"{nds}", nds.ToString("F" + 2)  },
+            };
+                helper.Process(items, productItems);
+            });
+        }
+
+        private void buttSpecRF100_Click(object sender, EventArgs e)
+        {
+            string fileInvoice = "";
+            OpenFileDialog dlg = new OpenFileDialog();
+            dlg.Filter = "Файлы эксель|*.xlsm|Все файлы|*.*";
+            dlg.Title = "Выберите счет для спецификации";
+            if (dlg.ShowDialog() == DialogResult.OK)
+            {
+                fileInvoice = dlg.FileName;
+            }
+            var helper = new wordHelper("СпецификацияРФ100.docx");
+            var parserInvoice = new ParserInvoice(fileInvoice);
+            List<ProductItem> productItems = new List<ProductItem>();
+            Task task = Task.Factory.StartNew(() =>
+            {
+                parserInvoice.ProductItemProcessor(productItems);
+                double sum = 0;
+                double nds = 0;
+                foreach (var item in productItems)
+                {
+                    sum += item.Sum;
+                }
+                nds = sum * 20 / 120;
+                string sumProp = Сумма.Пропись(sum, Валюта.Рубли);
+                string FioSokr = helper.FioSokr(FIOSpecRFtextBox.Text);
+                var items = new Dictionary<string, string>
+            {
+                {"{number}", NumberContractTextBox.Text  },
+                {"{org}", CompanyNameSpecRFtextBox.Text  },
+                {"{INN}", InnSpecRFtextBox.Text  },
+                {"{KPP}", KppSpecRFtextBox.Text  },
+                {"{Adress}", AdressSpecRFtextBox.Text  },
+                {"{Bank}", BankSpecRFtextBox.Text  },
+                {"{Bik}", BikSpecRFtextBox.Text  },
+                {"{DATE}", DateContractSpecRFtextBox.Text  },
+                {"{DATESpec}", dateTimePicker1.Value.ToString("dd.MM.yyyy")  },
+                {"{dolg-im}", DolgnostSpecRFTextBox.Text  },
+                {"{fioSokr}", FioSokr  },
+                {"{r/s}", RSspecTextBox.Text },
+                {"{k/s}", KSspecTextBox.Text  },
+                {"{sumProp}", sumProp  },
+                {"{sum}", sum.ToString("F" + 2)  },
+                {"{nds}", nds.ToString("F" + 2)  },
+            };
+                helper.ProcessSpec(items, productItems);
+            });
+        }
+
+        private void buttSpecRF60_Click(object sender, EventArgs e)
+        {
+            string fileInvoice = "";
+            OpenFileDialog dlg = new OpenFileDialog();
+            dlg.Filter = "Файлы эксель|*.xlsm|Все файлы|*.*";
+            dlg.Title = "Выберите счет для спецификации";
+            if (dlg.ShowDialog() == DialogResult.OK)
+            {
+                fileInvoice = dlg.FileName;
+            }
+            var helper = new wordHelper("СпецификацияРФ60.docx");
+            var parserInvoice = new ParserInvoice(fileInvoice);
+            List<ProductItem> productItems = new List<ProductItem>();
+            Task task = Task.Factory.StartNew(() =>
+            {
+                parserInvoice.ProductItemProcessor(productItems);
+                double sum = 0;
+                double nds = 0;
+                foreach (var item in productItems)
+                {
+                    sum += item.Sum;
+                }
+                nds = sum * 20 / 120;
+                string sumProp = Сумма.Пропись(sum, Валюта.Рубли);
+                string FioSokr = helper.FioSokr(FIOSpecRFtextBox.Text);
+                var items = new Dictionary<string, string>
+            {
+                {"{number}", NumberContractTextBox.Text  },
+                {"{org}", CompanyNameSpecRFtextBox.Text  },
+                {"{INN}", InnSpecRFtextBox.Text  },
+                {"{KPP}", KppSpecRFtextBox.Text  },
+                {"{Adress}", AdressSpecRFtextBox.Text  },
+                {"{Bank}", BankSpecRFtextBox.Text  },
+                {"{Bik}", BikSpecRFtextBox.Text  },
+                {"{DATE}", DateContractSpecRFtextBox.Text  },
+                {"{DATESpec}", dateTimePicker1.Value.ToString("dd.MM.yyyy")  },
+                {"{dolg-im}", DolgnostSpecRFTextBox.Text  },
+                {"{fioSokr}", FioSokr  },
+                {"{r/s}", RSspecTextBox.Text },
+                {"{k/s}", KSspecTextBox.Text  },
+                {"{sumProp}", sumProp  },
+                {"{sum}", sum.ToString("F" + 2)  },
+                {"{nds}", nds.ToString("F" + 2)  },
+            };
+                helper.ProcessSpec(items, productItems);
+            });
+        }
+
+        private void buttClearFormSpecRF_Click(object sender, EventArgs e)
+        {
+            NumberContractTextBox.Text = "";
+            buttClearFormSpecRF.Text = "";
+            CompanyNameSpecRFtextBox.Text = "";
+            InnSpecRFtextBox.Text = "";
+            KppSpecRFtextBox.Text = "";
+            AdressSpecRFtextBox.Text = "";
+            BankSpecRFtextBox.Text = "";
+            BikSpecRFtextBox.Text = "";
+            DateContractSpecRFtextBox.Text = "";
+            DolgnostSpecRFTextBox.Text = "";
+            RSspecTextBox.Text = "";
+            KSspecTextBox.Text = "";
+        }
+
+        private void buttContractKZ100_Click(object sender, EventArgs e)
+        {
+            string fileInvoice = "";
+            OpenFileDialog dlg = new OpenFileDialog();
+            dlg.Filter = "Файлы эксель|*.xlsm|Все файлы|*.*";
+            dlg.Title = "Выберите счет для спецификации";
+            if (dlg.ShowDialog() == DialogResult.OK)
+            {
+                fileInvoice = dlg.FileName;
+            }
+            var helper = new wordHelper("ДоговорКЗ.docx");
+            var parserInvoice = new ParserInvoice(fileInvoice);
+            List<ProductItem> productItems = new List<ProductItem>();
+            Task task = Task.Factory.StartNew(() =>
+            {
+                parserInvoice.ProductItemProcessor(productItems);
+                double sum = 0;
+                foreach (var item in productItems)
+                {
+                    sum += item.Sum;
+                }
+                string sumProp = Сумма.Пропись(sum, Валюта.Рубли);
+                CyrNounCollection cyrNounCollection = new CyrNounCollection();
+                CyrAdjectiveCollection cyrAdjectiveCollection = new CyrAdjectiveCollection();
+                CyrPhrase cyrPhrase = new CyrPhrase(cyrNounCollection, cyrAdjectiveCollection);
+                CyrName cyrName = new CyrName();
+                CyrResult resultDolg = cyrPhrase.Decline(DolgnostContractKZtextBox.Text, GetConditionsEnum.Similar);
+                CyrResult resultName = cyrName.Decline(FIOContractKZtextBox.Text);
+                string FioSokr = helper.FioSokr(FIOContractKZtextBox.Text);
+                string NumberContract = dateTimePicker1.Value.ToString("yyMdhm");
+                var items = new Dictionary<string, string>
+            {
+                {"{number}", NumberContract  },
+                {"{org}", CompanyNameContractKZtextBox.Text  },
+                {"{dolg-rod}", resultDolg.Родительный  },
+                {"{fio-rod}", resultName.Родительный  },
+                {"{na-osnovanii}", NaOsnovaniiContractKZtextBox.Text  },
+                {"{Bin}", BINContractKZtextBox.Text  },
+                {"{Adress}", AdressContractKZtextBox.Text  },
+                {"{Bank}", BankContractKZtextBox.Text  },
+                {"{Bik}", BikContractKZtextBox.Text  },
+                {"{DATE}", dateTimePicker1.Value.ToString("dd.MM.yyyy")  },
+                {"{dolg-im}", DolgnostContractKZtextBox.Text  },
+                {"{fio-im}", FIOContractKZtextBox.Text  },
+                {"{fioSokr}", FioSokr  },
+                {"{sumProp}", sumProp  },
+                {"{sum}", sum.ToString("F" + 2)  },
+            };
+                helper.Process(items, productItems);
+            });
+        }
+
+        private void buttContractKZ60_Click(object sender, EventArgs e)
+        {
+            string fileInvoice = "";
+            OpenFileDialog dlg = new OpenFileDialog();
+            dlg.Filter = "Файлы эксель|*.xlsm|Все файлы|*.*";
+            dlg.Title = "Выберите счет для спецификации";
+            if (dlg.ShowDialog() == DialogResult.OK)
+            {
+                fileInvoice = dlg.FileName;
+            }
+            var helper = new wordHelper("ДоговорКЗ60.docx");
+            var parserInvoice = new ParserInvoice(fileInvoice);
+            List<ProductItem> productItems = new List<ProductItem>();
+            Task task = Task.Factory.StartNew(() =>
+            {
+                parserInvoice.ProductItemProcessor(productItems);
+                double sum = 0;
+                foreach (var item in productItems)
+                {
+                    sum += item.Sum;
+                }
+                string sumProp = Сумма.Пропись(sum, Валюта.Рубли);
+                CyrNounCollection cyrNounCollection = new CyrNounCollection();
+                CyrAdjectiveCollection cyrAdjectiveCollection = new CyrAdjectiveCollection();
+                CyrPhrase cyrPhrase = new CyrPhrase(cyrNounCollection, cyrAdjectiveCollection);
+                CyrName cyrName = new CyrName();
+                CyrResult resultDolg = cyrPhrase.Decline(DolgnostContractKZtextBox.Text, GetConditionsEnum.Similar);
+                CyrResult resultName = cyrName.Decline(FIOContractKZtextBox.Text);
+                string FioSokr = helper.FioSokr(FIOContractKZtextBox.Text);
+                string NumberContract = dateTimePicker1.Value.ToString("yyMdhm");
+                var items = new Dictionary<string, string>
+            {
+                {"{number}", NumberContract  },
+                {"{org}", CompanyNameContractKZtextBox.Text  },
+                {"{dolg-rod}", resultDolg.Родительный  },
+                {"{fio-rod}", resultName.Родительный  },
+                {"{na-osnovanii}", NaOsnovaniiContractKZtextBox.Text  },
+                {"{Bin}", BINContractKZtextBox.Text  },
+                {"{Adress}", AdressContractKZtextBox.Text  },
+                {"{Bank}", BankContractKZtextBox.Text  },
+                {"{Bik}", BikContractKZtextBox.Text  },
+                {"{DATE}", dateTimePicker1.Value.ToString("dd.MM.yyyy")  },
+                {"{dolg-im}", DolgnostContractKZtextBox.Text  },
+                {"{fio-im}", FIOContractKZtextBox.Text  },
+                {"{fioSokr}", FioSokr  },
+                {"{sumProp}", sumProp  },
+                {"{sum}", sum.ToString("F" + 2)  },
+            };
+                helper.Process(items, productItems);
+            });
+        }
+
+        private void buttClearFormKZ_Click(object sender, EventArgs e)
+        {
+            CompanyNameContractKZtextBox.Text = "";
+            DolgnostContractKZtextBox.Text = "";
+            NaOsnovaniiContractKZtextBox.Text = "";
+            FIOContractKZtextBox.Text = "";
+            AdressContractKZtextBox.Text = "";
+            BINContractKZtextBox.Text = "";
+            BankContractKZtextBox.Text = "";
+            BikContractKZtextBox.Text = "";
+        }
+
+        private void buttSpecKZ100_Click(object sender, EventArgs e)
+        {
+            string fileInvoice = "";
+            OpenFileDialog dlg = new OpenFileDialog();
+            dlg.Filter = "Файлы эксель|*.xlsm|Все файлы|*.*";
+            dlg.Title = "Выберите счет для спецификации";
+            if (dlg.ShowDialog() == DialogResult.OK)
+            {
+                fileInvoice = dlg.FileName;
+            }
+            var helper = new wordHelper("СпецификацияКЗ.docx");
+            var parserInvoice = new ParserInvoice(fileInvoice);
+            List<ProductItem> productItems = new List<ProductItem>();
+            Task task = Task.Factory.StartNew(() =>
+            {
+                parserInvoice.ProductItemProcessor(productItems);
+                double sum = 0;
+                foreach (var item in productItems)
+                {
+                    sum += item.Sum;
+                }
+                string sumProp = Сумма.Пропись(sum, Валюта.Рубли);
+                string FioSokr = helper.FioSokr(FioSpecKZtextBox.Text);
+                var items = new Dictionary<string, string>
+            {
+                {"{number}", ContactNumberSpecKZtextBox.Text  },
+                {"{org}", CompanyNameSpecKZtextBox.Text  },
+                {"{Bin}", BinSpecKZtextBox.Text  },
+                {"{Adress}", AdressSpecKZtextBox.Text  },
+                {"{Bank}", BankSpecKZtextBox.Text  },
+                {"{Bik}", BikSpecKZtextBox.Text  },
+                {"{DATE}", ContracDatetextBox.Text  },
+                {"{DATESpec}", dateTimePicker1.Value.ToString("dd.MM.yyyy")  },
+                {"{dolg-im}", DolgnostSpecKZtextBox.Text  },
+                {"{fioSokr}", FioSokr  },
+                {"{sumProp}", sumProp  },
+                {"{sum}", sum.ToString("F" + 2)  },
+            };
+                helper.ProcessSpec(items, productItems);
+            });
+        }
+
+        private void buttSpecKZ60_Click(object sender, EventArgs e)
+        {
+            string fileInvoice = "";
+            OpenFileDialog dlg = new OpenFileDialog();
+            dlg.Filter = "Файлы эксель|*.xlsm|Все файлы|*.*";
+            dlg.Title = "Выберите счет для спецификации";
+            if (dlg.ShowDialog() == DialogResult.OK)
+            {
+                fileInvoice = dlg.FileName;
+            }
+            var helper = new wordHelper("СпецификацияКЗ60.docx");
+            var parserInvoice = new ParserInvoice(fileInvoice);
+            List<ProductItem> productItems = new List<ProductItem>();
+            Task task = Task.Factory.StartNew(() =>
+            {
+                parserInvoice.ProductItemProcessor(productItems);
+                double sum = 0;
+                foreach (var item in productItems)
+                {
+                    sum += item.Sum;
+                }
+                string sumProp = Сумма.Пропись(sum, Валюта.Рубли);
+                string FioSokr = helper.FioSokr(FioSpecKZtextBox.Text);
+                var items = new Dictionary<string, string>
+            {
+                {"{number}", ContactNumberSpecKZtextBox.Text  },
+                {"{org}", CompanyNameSpecKZtextBox.Text  },
+                {"{Bin}", BinSpecKZtextBox.Text  },
+                {"{Adress}", AdressSpecKZtextBox.Text  },
+                {"{Bank}", BankSpecKZtextBox.Text  },
+                {"{Bik}", BikSpecKZtextBox.Text  },
+                {"{DATE}", ContracDatetextBox.Text  },
+                {"{DATESpec}", dateTimePicker1.Value.ToString("dd.MM.yyyy")  },
+                {"{dolg-im}", DolgnostSpecKZtextBox.Text  },
+                {"{fioSokr}", FioSokr  },
+                {"{sumProp}", sumProp  },
+                {"{sum}", sum.ToString("F" + 2)  },
+            };
+                helper.ProcessSpec(items, productItems);
+            });
+        }
+
+        private void buttClearFormSpecKZ_Click(object sender, EventArgs e)
+        {
+            ContactNumberSpecKZtextBox.Text = "";
+            ContracDatetextBox.Text = "";
+            CompanyNameSpecKZtextBox.Text = "";
+            DolgnostSpecKZtextBox.Text = "";
+            FioSpecKZtextBox.Text = "";
+            AdressSpecKZtextBox.Text = "";
+            BinSpecKZtextBox.Text = "";
+            BankSpecKZtextBox.Text = "";
+            BikSpecKZtextBox.Text = "";
+        }
     }
 }

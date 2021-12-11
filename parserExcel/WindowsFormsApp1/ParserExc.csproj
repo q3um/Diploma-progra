@@ -121,6 +121,7 @@
     </Compile>
     <Compile Include="GridRow.cs" />
     <Compile Include="Invoice.cs" />
+    <Compile Include="InvoicesAndCustomer.cs" />
     <Compile Include="ProductItemContext.cs" />
     <Compile Include="Parser.cs" />
     <Compile Include="ParserInvoice.cs" />
@@ -164,6 +165,18 @@
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </None>
     <None Include="ДоговорРФ60.docx">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </None>
+    <None Include="СпецификацияКЗ.docx">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </None>
+    <None Include="СпецификацияКЗ60.docx">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </None>
+    <None Include="СпецификацияРФ100.docx">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </None>
+    <None Include="СпецификацияРФ60.docx">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </None>
   </ItemGroup>

@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace WindowsFormsApp1
 {
-    class Invoice
+    class InvoicesAndCustomer
     {
         public int Id { get; set; }
         //public string Company { get; set; }
@@ -15,13 +15,7 @@ namespace WindowsFormsApp1
         public DateTime Date { get; set; }
         public string Type { get; set; }
 
-        public int? CustomerId { get; set; }
-        public virtual Customer Customer { get; set; }
-
-        public override string ToString()
-        {
-            return Acct;
-        }
-
+        public string CompanyName { get; set; }
+        public string Inn { get; set; }
     }
 }
