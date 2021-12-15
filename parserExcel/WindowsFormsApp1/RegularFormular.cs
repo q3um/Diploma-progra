@@ -4,7 +4,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace WindowsFormsApp1
+namespace ParserAndForms
 {
     class RegularFormular
     {
@@ -15,9 +15,11 @@ namespace WindowsFormsApp1
         public const string ClearKppPattern = @"(КПП):?\s{0,2}\d{9}";
         public const string ClearRnnPattern = @"(РНН)\s{0,2}\d{3}\s{0,2}\d{3}\s{0,2}\d{3}\s{0,2}\d{3}";
         public const string AcctInKpInvoice = @"\s\d{11}\s";
-        public const string DateInKPSheet = @"\s\d{2}[.]\d{2}[.]\d{4}\s";
+        public const string AcctInInvoice = @"\s\d{11}";
+        public const string DateInKPSheet = @"\s\d{1,2}[.]\d{2}[.]\d{4}\s";
         public const string Clear = @"(/)?(,)?\s{0,2}(,)?\s{0,2}((тел)|(Тел)|(Доб)|(доб)|(Моб)|(моб)|(факс)|(факс))(:)?(.)?\s{0,2}\d{0,4}(-)?\d{0,4}(,)?";
         public const string Clear2 = @"($,){0,2}";
+        
 
     }
 }

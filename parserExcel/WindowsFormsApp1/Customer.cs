@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 using System.ComponentModel.DataAnnotations.Schema;
 using System.ComponentModel.DataAnnotations;
 
-namespace WindowsFormsApp1
+namespace ParserAndForms
 {
     class Customer
     {

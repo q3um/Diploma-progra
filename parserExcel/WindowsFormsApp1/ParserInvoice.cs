@@ -6,7 +6,7 @@ using System.Text;
 using System.Threading.Tasks;
 using Excel = Microsoft.Office.Interop.Excel;
 
-namespace WindowsFormsApp1
+namespace ParserAndForms
 {
     class ParserInvoice
     {

@@ -4,7 +4,7 @@ using System.IO;
 using Word = Microsoft.Office.Interop.Word;
 using System.Windows.Forms;
 
-namespace WindowsFormsApp1
+namespace ParserAndForms
 {
     class wordHelper
     {

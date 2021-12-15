@@ -1,5 +1,5 @@
 ﻿
-namespace WindowsFormsApp1
+namespace ParserAndForms
 {
     partial class Form1
     {
@@ -35,7 +35,7 @@ namespace WindowsFormsApp1
             this.panel1 = new System.Windows.Forms.Panel();
             this.monthCalendar1 = new System.Windows.Forms.MonthCalendar();
             this.label44 = new System.Windows.Forms.Label();
-            this.buttFilterSrch = new System.Windows.Forms.Button();
+            this.buttFilterSrchItems = new System.Windows.Forms.Button();
             this.label6 = new System.Windows.Forms.Label();
             this.FilterPriceSmaller = new System.Windows.Forms.TextBox();
             this.buttExport = new System.Windows.Forms.Button();
@@ -117,12 +117,11 @@ namespace WindowsFormsApp1
             this.butContrRF100 = new System.Windows.Forms.Button();
             this.tabSpecRF = new System.Windows.Forms.TabPage();
             this.tableLayoutPanel3 = new System.Windows.Forms.TableLayoutPanel();
+            this.DateContractSpecRFtextBox = new System.Windows.Forms.TextBox();
             this.NumberContractTextBox = new System.Windows.Forms.TextBox();
             this.label42 = new System.Windows.Forms.Label();
             this.label18 = new System.Windows.Forms.Label();
             this.CompanyNameSpecRFtextBox = new System.Windows.Forms.TextBox();
-            this.label20 = new System.Windows.Forms.Label();
-            this.DolgnostSpecRFTextBox = new System.Windows.Forms.TextBox();
             this.label21 = new System.Windows.Forms.Label();
             this.FIOSpecRFtextBox = new System.Windows.Forms.TextBox();
             this.label23 = new System.Windows.Forms.Label();
@@ -141,6 +140,9 @@ namespace WindowsFormsApp1
             this.RSspecTextBox = new System.Windows.Forms.TextBox();
             this.label28 = new System.Windows.Forms.Label();
             this.KSspecTextBox = new System.Windows.Forms.TextBox();
+            this.label20 = new System.Windows.Forms.Label();
+            this.DolgnostSpecRFTextBox = new System.Windows.Forms.TextBox();
+            this.label61 = new System.Windows.Forms.Label();
             this.groupBox3 = new System.Windows.Forms.GroupBox();
             this.buttClearFormSpecRF = new System.Windows.Forms.Button();
             this.buttSpecRF60 = new System.Windows.Forms.Button();
@@ -174,9 +176,7 @@ namespace WindowsFormsApp1
             this.label39 = new System.Windows.Forms.Label();
             this.CompanyNameSpecKZtextBox = new System.Windows.Forms.TextBox();
             this.label38 = new System.Windows.Forms.Label();
-            this.label40 = new System.Windows.Forms.Label();
             this.ContactNumberSpecKZtextBox = new System.Windows.Forms.TextBox();
-            this.DolgnostSpecKZtextBox = new System.Windows.Forms.TextBox();
             this.label43 = new System.Windows.Forms.Label();
             this.FioSpecKZtextBox = new System.Windows.Forms.TextBox();
             this.label45 = new System.Windows.Forms.Label();
@@ -189,18 +189,23 @@ namespace WindowsFormsApp1
             this.BikSpecKZtextBox = new System.Windows.Forms.TextBox();
             this.label50 = new System.Windows.Forms.Label();
             this.dateTimePicker4 = new System.Windows.Forms.DateTimePicker();
+            this.label40 = new System.Windows.Forms.Label();
+            this.DolgnostSpecKZtextBox = new System.Windows.Forms.TextBox();
+            this.label62 = new System.Windows.Forms.Label();
+            this.ContracDatetextBox = new System.Windows.Forms.TextBox();
             this.groupBox4 = new System.Windows.Forms.GroupBox();
             this.buttClearFormSpecKZ = new System.Windows.Forms.Button();
             this.buttSpecKZ60 = new System.Windows.Forms.Button();
             this.buttSpecKZ100 = new System.Windows.Forms.Button();
+            this.tabPage1 = new System.Windows.Forms.TabPage();
+            this.monthCalendar3 = new System.Windows.Forms.MonthCalendar();
+            this.cartesianChart1 = new LiveCharts.WinForms.CartesianChart();
+            this.toolStrip1 = new System.Windows.Forms.ToolStrip();
+            this.toolStripButtonGenerate = new System.Windows.Forms.ToolStripButton();
             this.buttInvoice = new System.Windows.Forms.Button();
             this.buttExit = new System.Windows.Forms.Button();
             this.dataGridViewComboBoxColumn1 = new System.Windows.Forms.DataGridViewComboBoxColumn();
             this.dataGridViewComboBoxColumn2 = new System.Windows.Forms.DataGridViewComboBoxColumn();
-            this.label61 = new System.Windows.Forms.Label();
-            this.DateContractSpecRFtextBox = new System.Windows.Forms.TextBox();
-            this.label62 = new System.Windows.Forms.Label();
-            this.ContracDatetextBox = new System.Windows.Forms.TextBox();
             this.tabControl1.SuspendLayout();
             this.tabFiltersItems.SuspendLayout();
             this.panel1.SuspendLayout();
@@ -223,6 +228,8 @@ namespace WindowsFormsApp1
             this.tabSpecKZ.SuspendLayout();
             this.tableLayoutPanel4.SuspendLayout();
             this.groupBox4.SuspendLayout();
+            this.tabPage1.SuspendLayout();
+            this.toolStrip1.SuspendLayout();
             this.SuspendLayout();
             // 
             // tabControl1
@@ -237,6 +244,7 @@ namespace WindowsFormsApp1
             this.tabControl1.Controls.Add(this.tabSpecRF);
             this.tabControl1.Controls.Add(this.tabContractKZ);
             this.tabControl1.Controls.Add(this.tabSpecKZ);
+            this.tabControl1.Controls.Add(this.tabPage1);
             this.tabControl1.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F);
             this.tabControl1.ItemSize = new System.Drawing.Size(139, 40);
             this.tabControl1.Location = new System.Drawing.Point(13, 7);
@@ -252,7 +260,7 @@ namespace WindowsFormsApp1
             this.tabFiltersItems.Controls.Add(this.dataGridView1);
             this.tabFiltersItems.Controls.Add(this.buttAddFile);
             this.tabFiltersItems.Controls.Add(this.butAddFolder);
-            this.tabFiltersItems.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
+            this.tabFiltersItems.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F);
             this.tabFiltersItems.Location = new System.Drawing.Point(4, 44);
             this.tabFiltersItems.Margin = new System.Windows.Forms.Padding(4);
             this.tabFiltersItems.Name = "tabFiltersItems";
@@ -267,7 +275,7 @@ namespace WindowsFormsApp1
             this.panel1.AutoScroll = true;
             this.panel1.Controls.Add(this.monthCalendar1);
             this.panel1.Controls.Add(this.label44);
-            this.panel1.Controls.Add(this.buttFilterSrch);
+            this.panel1.Controls.Add(this.buttFilterSrchItems);
             this.panel1.Controls.Add(this.label6);
             this.panel1.Controls.Add(this.FilterPriceSmaller);
             this.panel1.Controls.Add(this.buttExport);
@@ -302,17 +310,17 @@ namespace WindowsFormsApp1
             this.label44.TabIndex = 15;
             this.label44.Text = "Фильтры";
             // 
-            // buttFilterSrch
+            // buttFilterSrchItems
             // 
-            this.buttFilterSrch.Anchor = System.Windows.Forms.AnchorStyles.None;
-            this.buttFilterSrch.Location = new System.Drawing.Point(19, 495);
-            this.buttFilterSrch.Margin = new System.Windows.Forms.Padding(4);
-            this.buttFilterSrch.Name = "buttFilterSrch";
-            this.buttFilterSrch.Size = new System.Drawing.Size(258, 32);
-            this.buttFilterSrch.TabIndex = 13;
-            this.buttFilterSrch.Text = "Найти";
-            this.buttFilterSrch.UseVisualStyleBackColor = true;
-            this.buttFilterSrch.Click += new System.EventHandler(this.buttFilterSrch_Click);
+            this.buttFilterSrchItems.Anchor = System.Windows.Forms.AnchorStyles.None;
+            this.buttFilterSrchItems.Location = new System.Drawing.Point(19, 495);
+            this.buttFilterSrchItems.Margin = new System.Windows.Forms.Padding(4);
+            this.buttFilterSrchItems.Name = "buttFilterSrchItems";
+            this.buttFilterSrchItems.Size = new System.Drawing.Size(258, 32);
+            this.buttFilterSrchItems.TabIndex = 13;
+            this.buttFilterSrchItems.Text = "Найти";
+            this.buttFilterSrchItems.UseVisualStyleBackColor = true;
+            this.buttFilterSrchItems.Click += new System.EventHandler(this.buttFilterSrchItems_Click);
             // 
             // label6
             // 
@@ -422,20 +430,20 @@ namespace WindowsFormsApp1
             | System.Windows.Forms.AnchorStyles.Right)));
             this.dataGridView1.AutoSizeColumnsMode = System.Windows.Forms.DataGridViewAutoSizeColumnsMode.Fill;
             this.dataGridView1.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            this.dataGridView1.Location = new System.Drawing.Point(325, 7);
+            this.dataGridView1.Location = new System.Drawing.Point(325, 20);
             this.dataGridView1.Name = "dataGridView1";
             this.dataGridView1.RowHeadersWidth = 51;
             this.dataGridView1.RowTemplate.Height = 24;
-            this.dataGridView1.Size = new System.Drawing.Size(920, 647);
+            this.dataGridView1.Size = new System.Drawing.Size(920, 634);
             this.dataGridView1.TabIndex = 2;
             // 
             // buttAddFile
             // 
             this.buttAddFile.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F);
-            this.buttAddFile.Location = new System.Drawing.Point(152, 20);
+            this.buttAddFile.Location = new System.Drawing.Point(165, 20);
             this.buttAddFile.Margin = new System.Windows.Forms.Padding(4);
             this.buttAddFile.Name = "buttAddFile";
-            this.buttAddFile.Size = new System.Drawing.Size(141, 32);
+            this.buttAddFile.Size = new System.Drawing.Size(153, 32);
             this.buttAddFile.TabIndex = 1;
             this.buttAddFile.Text = "Добавить файл";
             this.buttAddFile.UseVisualStyleBackColor = true;
@@ -447,7 +455,7 @@ namespace WindowsFormsApp1
             this.butAddFolder.Location = new System.Drawing.Point(8, 20);
             this.butAddFolder.Margin = new System.Windows.Forms.Padding(4);
             this.butAddFolder.Name = "butAddFolder";
-            this.butAddFolder.Size = new System.Drawing.Size(136, 32);
+            this.butAddFolder.Size = new System.Drawing.Size(157, 32);
             this.butAddFolder.TabIndex = 0;
             this.butAddFolder.Text = "Добавить папку";
             this.butAddFolder.UseVisualStyleBackColor = true;
@@ -473,21 +481,21 @@ namespace WindowsFormsApp1
             | System.Windows.Forms.AnchorStyles.Right)));
             this.dataGridView2.AutoSizeColumnsMode = System.Windows.Forms.DataGridViewAutoSizeColumnsMode.Fill;
             this.dataGridView2.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            this.dataGridView2.Location = new System.Drawing.Point(325, 3);
+            this.dataGridView2.Location = new System.Drawing.Point(325, 20);
             this.dataGridView2.Name = "dataGridView2";
             this.dataGridView2.RowHeadersWidth = 51;
             this.dataGridView2.RowTemplate.Height = 24;
-            this.dataGridView2.Size = new System.Drawing.Size(920, 647);
+            this.dataGridView2.Size = new System.Drawing.Size(920, 634);
             this.dataGridView2.TabIndex = 4;
             this.dataGridView2.Tag = "";
             // 
             // button1
             // 
             this.button1.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F);
-            this.button1.Location = new System.Drawing.Point(152, 20);
+            this.button1.Location = new System.Drawing.Point(166, 20);
             this.button1.Margin = new System.Windows.Forms.Padding(4);
             this.button1.Name = "button1";
-            this.button1.Size = new System.Drawing.Size(141, 32);
+            this.button1.Size = new System.Drawing.Size(152, 32);
             this.button1.TabIndex = 3;
             this.button1.Text = "Добавить файл";
             this.button1.UseVisualStyleBackColor = true;
@@ -499,7 +507,7 @@ namespace WindowsFormsApp1
             this.button2.Location = new System.Drawing.Point(8, 20);
             this.button2.Margin = new System.Windows.Forms.Padding(4);
             this.button2.Name = "button2";
-            this.button2.Size = new System.Drawing.Size(136, 32);
+            this.button2.Size = new System.Drawing.Size(157, 32);
             this.button2.TabIndex = 2;
             this.button2.Text = "Добавить папку";
             this.button2.UseVisualStyleBackColor = true;
@@ -673,10 +681,10 @@ namespace WindowsFormsApp1
             // button3
             // 
             this.button3.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F);
-            this.button3.Location = new System.Drawing.Point(152, 20);
+            this.button3.Location = new System.Drawing.Point(166, 20);
             this.button3.Margin = new System.Windows.Forms.Padding(4);
             this.button3.Name = "button3";
-            this.button3.Size = new System.Drawing.Size(141, 32);
+            this.button3.Size = new System.Drawing.Size(152, 32);
             this.button3.TabIndex = 8;
             this.button3.Text = "Добавить файл";
             this.button3.UseVisualStyleBackColor = true;
@@ -688,7 +696,7 @@ namespace WindowsFormsApp1
             this.button4.Location = new System.Drawing.Point(8, 20);
             this.button4.Margin = new System.Windows.Forms.Padding(4);
             this.button4.Name = "button4";
-            this.button4.Size = new System.Drawing.Size(136, 32);
+            this.button4.Size = new System.Drawing.Size(157, 32);
             this.button4.TabIndex = 7;
             this.button4.Text = "Добавить папку";
             this.button4.UseVisualStyleBackColor = true;
@@ -798,11 +806,11 @@ namespace WindowsFormsApp1
             | System.Windows.Forms.AnchorStyles.Right)));
             this.dataGridView3.AutoSizeColumnsMode = System.Windows.Forms.DataGridViewAutoSizeColumnsMode.Fill;
             this.dataGridView3.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            this.dataGridView3.Location = new System.Drawing.Point(325, 7);
+            this.dataGridView3.Location = new System.Drawing.Point(325, 20);
             this.dataGridView3.Name = "dataGridView3";
             this.dataGridView3.RowHeadersWidth = 51;
             this.dataGridView3.RowTemplate.Height = 24;
-            this.dataGridView3.Size = new System.Drawing.Size(920, 647);
+            this.dataGridView3.Size = new System.Drawing.Size(920, 634);
             this.dataGridView3.TabIndex = 5;
             // 
             // tabContractRF
@@ -1209,6 +1217,14 @@ namespace WindowsFormsApp1
             this.tableLayoutPanel3.Size = new System.Drawing.Size(913, 569);
             this.tableLayoutPanel3.TabIndex = 3;
             // 
+            // DateContractSpecRFtextBox
+            // 
+            this.DateContractSpecRFtextBox.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Left | System.Windows.Forms.AnchorStyles.Right)));
+            this.DateContractSpecRFtextBox.Location = new System.Drawing.Point(687, 12);
+            this.DateContractSpecRFtextBox.Name = "DateContractSpecRFtextBox";
+            this.DateContractSpecRFtextBox.Size = new System.Drawing.Size(223, 26);
+            this.DateContractSpecRFtextBox.TabIndex = 28;
+            // 
             // NumberContractTextBox
             // 
             this.NumberContractTextBox.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Left | System.Windows.Forms.AnchorStyles.Right)));
@@ -1246,24 +1262,6 @@ namespace WindowsFormsApp1
             this.CompanyNameSpecRFtextBox.Name = "CompanyNameSpecRFtextBox";
             this.CompanyNameSpecRFtextBox.Size = new System.Drawing.Size(222, 26);
             this.CompanyNameSpecRFtextBox.TabIndex = 12;
-            // 
-            // label20
-            // 
-            this.label20.Anchor = System.Windows.Forms.AnchorStyles.Right;
-            this.label20.AutoSize = true;
-            this.label20.Location = new System.Drawing.Point(541, 56);
-            this.label20.Name = "label20";
-            this.label20.Size = new System.Drawing.Size(140, 40);
-            this.label20.TabIndex = 1;
-            this.label20.Text = "Должность представителя";
-            // 
-            // DolgnostSpecRFTextBox
-            // 
-            this.DolgnostSpecRFTextBox.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Left | System.Windows.Forms.AnchorStyles.Right)));
-            this.DolgnostSpecRFTextBox.Location = new System.Drawing.Point(687, 63);
-            this.DolgnostSpecRFTextBox.Name = "DolgnostSpecRFTextBox";
-            this.DolgnostSpecRFTextBox.Size = new System.Drawing.Size(223, 26);
-            this.DolgnostSpecRFTextBox.TabIndex = 20;
             // 
             // label21
             // 
@@ -1442,6 +1440,35 @@ namespace WindowsFormsApp1
             this.KSspecTextBox.Name = "KSspecTextBox";
             this.KSspecTextBox.Size = new System.Drawing.Size(450, 26);
             this.KSspecTextBox.TabIndex = 18;
+            // 
+            // label20
+            // 
+            this.label20.Anchor = System.Windows.Forms.AnchorStyles.Right;
+            this.label20.AutoSize = true;
+            this.label20.Location = new System.Drawing.Point(541, 56);
+            this.label20.Name = "label20";
+            this.label20.Size = new System.Drawing.Size(140, 40);
+            this.label20.TabIndex = 1;
+            this.label20.Text = "Должность представителя";
+            // 
+            // DolgnostSpecRFTextBox
+            // 
+            this.DolgnostSpecRFTextBox.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Left | System.Windows.Forms.AnchorStyles.Right)));
+            this.DolgnostSpecRFTextBox.Location = new System.Drawing.Point(687, 63);
+            this.DolgnostSpecRFTextBox.Name = "DolgnostSpecRFTextBox";
+            this.DolgnostSpecRFTextBox.Size = new System.Drawing.Size(223, 26);
+            this.DolgnostSpecRFTextBox.TabIndex = 20;
+            // 
+            // label61
+            // 
+            this.label61.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Left | System.Windows.Forms.AnchorStyles.Right)));
+            this.label61.AutoSize = true;
+            this.label61.Location = new System.Drawing.Point(459, 15);
+            this.label61.Name = "label61";
+            this.label61.Size = new System.Drawing.Size(222, 20);
+            this.label61.TabIndex = 27;
+            this.label61.Text = "От";
+            this.label61.TextAlign = System.Drawing.ContentAlignment.TopRight;
             // 
             // groupBox3
             // 
@@ -1850,16 +1877,6 @@ namespace WindowsFormsApp1
             this.label38.Text = "К договору №";
             this.label38.TextAlign = System.Drawing.ContentAlignment.TopRight;
             // 
-            // label40
-            // 
-            this.label40.Anchor = System.Windows.Forms.AnchorStyles.Right;
-            this.label40.AutoSize = true;
-            this.label40.Location = new System.Drawing.Point(541, 56);
-            this.label40.Name = "label40";
-            this.label40.Size = new System.Drawing.Size(140, 40);
-            this.label40.TabIndex = 1;
-            this.label40.Text = "Должность представителя";
-            // 
             // ContactNumberSpecKZtextBox
             // 
             this.ContactNumberSpecKZtextBox.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Left | System.Windows.Forms.AnchorStyles.Right)));
@@ -1867,14 +1884,6 @@ namespace WindowsFormsApp1
             this.ContactNumberSpecKZtextBox.Name = "ContactNumberSpecKZtextBox";
             this.ContactNumberSpecKZtextBox.Size = new System.Drawing.Size(222, 26);
             this.ContactNumberSpecKZtextBox.TabIndex = 26;
-            // 
-            // DolgnostSpecKZtextBox
-            // 
-            this.DolgnostSpecKZtextBox.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Left | System.Windows.Forms.AnchorStyles.Right)));
-            this.DolgnostSpecKZtextBox.Location = new System.Drawing.Point(687, 63);
-            this.DolgnostSpecKZtextBox.Name = "DolgnostSpecKZtextBox";
-            this.DolgnostSpecKZtextBox.Size = new System.Drawing.Size(223, 26);
-            this.DolgnostSpecKZtextBox.TabIndex = 20;
             // 
             // label43
             // 
@@ -1996,6 +2005,42 @@ namespace WindowsFormsApp1
             this.dateTimePicker4.Size = new System.Drawing.Size(223, 26);
             this.dateTimePicker4.TabIndex = 24;
             // 
+            // label40
+            // 
+            this.label40.Anchor = System.Windows.Forms.AnchorStyles.Right;
+            this.label40.AutoSize = true;
+            this.label40.Location = new System.Drawing.Point(541, 56);
+            this.label40.Name = "label40";
+            this.label40.Size = new System.Drawing.Size(140, 40);
+            this.label40.TabIndex = 1;
+            this.label40.Text = "Должность представителя";
+            // 
+            // DolgnostSpecKZtextBox
+            // 
+            this.DolgnostSpecKZtextBox.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Left | System.Windows.Forms.AnchorStyles.Right)));
+            this.DolgnostSpecKZtextBox.Location = new System.Drawing.Point(687, 63);
+            this.DolgnostSpecKZtextBox.Name = "DolgnostSpecKZtextBox";
+            this.DolgnostSpecKZtextBox.Size = new System.Drawing.Size(223, 26);
+            this.DolgnostSpecKZtextBox.TabIndex = 20;
+            // 
+            // label62
+            // 
+            this.label62.Anchor = System.Windows.Forms.AnchorStyles.Right;
+            this.label62.AutoSize = true;
+            this.label62.Location = new System.Drawing.Point(649, 15);
+            this.label62.Name = "label62";
+            this.label62.Size = new System.Drawing.Size(32, 20);
+            this.label62.TabIndex = 27;
+            this.label62.Text = "От";
+            // 
+            // ContracDatetextBox
+            // 
+            this.ContracDatetextBox.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Left | System.Windows.Forms.AnchorStyles.Right)));
+            this.ContracDatetextBox.Location = new System.Drawing.Point(687, 12);
+            this.ContracDatetextBox.Name = "ContracDatetextBox";
+            this.ContracDatetextBox.Size = new System.Drawing.Size(223, 26);
+            this.ContracDatetextBox.TabIndex = 28;
+            // 
             // groupBox4
             // 
             this.groupBox4.BackColor = System.Drawing.Color.White;
@@ -2040,9 +2085,60 @@ namespace WindowsFormsApp1
             this.buttSpecKZ100.UseVisualStyleBackColor = true;
             this.buttSpecKZ100.Click += new System.EventHandler(this.buttSpecKZ100_Click);
             // 
+            // tabPage1
+            // 
+            this.tabPage1.Controls.Add(this.monthCalendar3);
+            this.tabPage1.Controls.Add(this.cartesianChart1);
+            this.tabPage1.Controls.Add(this.toolStrip1);
+            this.tabPage1.Location = new System.Drawing.Point(4, 44);
+            this.tabPage1.Name = "tabPage1";
+            this.tabPage1.Padding = new System.Windows.Forms.Padding(3);
+            this.tabPage1.Size = new System.Drawing.Size(1249, 662);
+            this.tabPage1.TabIndex = 7;
+            this.tabPage1.Text = "График";
+            this.tabPage1.UseVisualStyleBackColor = true;
+            // 
+            // monthCalendar3
+            // 
+            this.monthCalendar3.Location = new System.Drawing.Point(26, 65);
+            this.monthCalendar3.MaxSelectionCount = 10;
+            this.monthCalendar3.Name = "monthCalendar3";
+            this.monthCalendar3.SelectionRange = new System.Windows.Forms.SelectionRange(new System.DateTime(2021, 12, 4, 0, 0, 0, 0), new System.DateTime(2021, 12, 13, 0, 0, 0, 0));
+            this.monthCalendar3.TabIndex = 2;
+            // 
+            // cartesianChart1
+            // 
+            this.cartesianChart1.Dock = System.Windows.Forms.DockStyle.Right;
+            this.cartesianChart1.Location = new System.Drawing.Point(238, 30);
+            this.cartesianChart1.Name = "cartesianChart1";
+            this.cartesianChart1.Size = new System.Drawing.Size(1008, 629);
+            this.cartesianChart1.TabIndex = 1;
+            this.cartesianChart1.Text = "cartesianChart1";
+            // 
+            // toolStrip1
+            // 
+            this.toolStrip1.ImageScalingSize = new System.Drawing.Size(20, 20);
+            this.toolStrip1.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
+            this.toolStripButtonGenerate});
+            this.toolStrip1.Location = new System.Drawing.Point(3, 3);
+            this.toolStrip1.Name = "toolStrip1";
+            this.toolStrip1.Size = new System.Drawing.Size(1243, 27);
+            this.toolStrip1.TabIndex = 0;
+            this.toolStrip1.Text = "toolStrip1";
+            // 
+            // toolStripButtonGenerate
+            // 
+            this.toolStripButtonGenerate.DisplayStyle = System.Windows.Forms.ToolStripItemDisplayStyle.Text;
+            this.toolStripButtonGenerate.Image = ((System.Drawing.Image)(resources.GetObject("toolStripButtonGenerate.Image")));
+            this.toolStripButtonGenerate.ImageTransparentColor = System.Drawing.Color.Magenta;
+            this.toolStripButtonGenerate.Name = "toolStripButtonGenerate";
+            this.toolStripButtonGenerate.Size = new System.Drawing.Size(171, 24);
+            this.toolStripButtonGenerate.Text = "Сформировать график";
+            this.toolStripButtonGenerate.Click += new System.EventHandler(this.toolStripButtonGenerate_Click);
+            // 
             // buttInvoice
             // 
-            this.buttInvoice.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
+            this.buttInvoice.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left)));
             this.buttInvoice.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F);
             this.buttInvoice.Location = new System.Drawing.Point(43, 724);
             this.buttInvoice.Name = "buttInvoice";
@@ -2085,43 +2181,6 @@ namespace WindowsFormsApp1
             this.dataGridViewComboBoxColumn2.SortMode = System.Windows.Forms.DataGridViewColumnSortMode.Automatic;
             this.dataGridViewComboBoxColumn2.Width = 867;
             // 
-            // label61
-            // 
-            this.label61.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Left | System.Windows.Forms.AnchorStyles.Right)));
-            this.label61.AutoSize = true;
-            this.label61.Location = new System.Drawing.Point(459, 15);
-            this.label61.Name = "label61";
-            this.label61.Size = new System.Drawing.Size(222, 20);
-            this.label61.TabIndex = 27;
-            this.label61.Text = "От";
-            this.label61.TextAlign = System.Drawing.ContentAlignment.TopRight;
-            // 
-            // DateContractSpecRFtextBox
-            // 
-            this.DateContractSpecRFtextBox.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Left | System.Windows.Forms.AnchorStyles.Right)));
-            this.DateContractSpecRFtextBox.Location = new System.Drawing.Point(687, 12);
-            this.DateContractSpecRFtextBox.Name = "DateContractSpecRFtextBox";
-            this.DateContractSpecRFtextBox.Size = new System.Drawing.Size(223, 26);
-            this.DateContractSpecRFtextBox.TabIndex = 28;
-            // 
-            // label62
-            // 
-            this.label62.Anchor = System.Windows.Forms.AnchorStyles.Right;
-            this.label62.AutoSize = true;
-            this.label62.Location = new System.Drawing.Point(649, 15);
-            this.label62.Name = "label62";
-            this.label62.Size = new System.Drawing.Size(32, 20);
-            this.label62.TabIndex = 27;
-            this.label62.Text = "От";
-            // 
-            // ContracDatetextBox
-            // 
-            this.ContracDatetextBox.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Left | System.Windows.Forms.AnchorStyles.Right)));
-            this.ContracDatetextBox.Location = new System.Drawing.Point(687, 12);
-            this.ContracDatetextBox.Name = "ContracDatetextBox";
-            this.ContracDatetextBox.Size = new System.Drawing.Size(223, 26);
-            this.ContracDatetextBox.TabIndex = 28;
-            // 
             // Form1
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(9F, 18F);
@@ -2135,7 +2194,7 @@ namespace WindowsFormsApp1
             this.Margin = new System.Windows.Forms.Padding(4);
             this.MinimumSize = new System.Drawing.Size(1301, 780);
             this.Name = "Form1";
-            this.Text = "Analyzis&Forms";
+            this.Text = "Elcom";
             this.tabControl1.ResumeLayout(false);
             this.tabFiltersItems.ResumeLayout(false);
             this.panel1.ResumeLayout(false);
@@ -2165,6 +2224,10 @@ namespace WindowsFormsApp1
             this.tableLayoutPanel4.ResumeLayout(false);
             this.tableLayoutPanel4.PerformLayout();
             this.groupBox4.ResumeLayout(false);
+            this.tabPage1.ResumeLayout(false);
+            this.tabPage1.PerformLayout();
+            this.toolStrip1.ResumeLayout(false);
+            this.toolStrip1.PerformLayout();
             this.ResumeLayout(false);
 
         }
@@ -2288,7 +2351,7 @@ namespace WindowsFormsApp1
         private System.Windows.Forms.TextBox ContactNumberSpecKZtextBox;
         private System.Windows.Forms.Panel panel1;
         private System.Windows.Forms.Label label44;
-        private System.Windows.Forms.Button buttFilterSrch;
+        private System.Windows.Forms.Button buttFilterSrchItems;
         private System.Windows.Forms.Label label6;
         private System.Windows.Forms.TextBox FilterPriceSmaller;
         private System.Windows.Forms.Button buttExport;
@@ -2350,6 +2413,11 @@ namespace WindowsFormsApp1
         private System.Windows.Forms.Label label61;
         private System.Windows.Forms.Label label62;
         private System.Windows.Forms.TextBox ContracDatetextBox;
+        private System.Windows.Forms.TabPage tabPage1;
+        private System.Windows.Forms.ToolStrip toolStrip1;
+        private System.Windows.Forms.ToolStripButton toolStripButtonGenerate;
+        private LiveCharts.WinForms.CartesianChart cartesianChart1;
+        private System.Windows.Forms.MonthCalendar monthCalendar3;
     }
 }
 

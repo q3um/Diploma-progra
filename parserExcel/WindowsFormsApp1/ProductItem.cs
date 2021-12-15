@@ -6,7 +6,7 @@ using System.Text;
 using System.Threading.Tasks;
 using Excel = Microsoft.Office.Interop.Excel;
 
-namespace WindowsFormsApp1
+namespace ParserAndForms
 {
     class ProductItem
     {
@@ -21,6 +21,6 @@ namespace WindowsFormsApp1
         public string Type { get; set; }
         public string note { get; set; }
 
-        
+
     }
 }

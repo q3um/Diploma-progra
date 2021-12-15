@@ -10,8 +10,11 @@ using Cyriller;
 using Cyriller.Model;
 using Excel = Microsoft.Office.Interop.Excel;
 using System.Data.Entity;
+using LiveCharts;
+using LiveCharts.Wpf;
+using LiveCharts.WinForms;
 
-namespace WindowsFormsApp1
+namespace ParserAndForms
 {
     public partial class Form1 : Form
     {
@@ -100,7 +103,7 @@ namespace WindowsFormsApp1
                     //}
                     //Task.WaitAll(tasks.ToArray());
 
-                    Parallel.ForEach(fileList, filename =>
+                    Parallel.ForEach(fileList, new ParallelOptions { MaxDegreeOfParallelism = 8 }, filename =>
                     {
                         if (filename.Contains("~$"))
                         {
@@ -112,7 +115,8 @@ namespace WindowsFormsApp1
                     stopWatch.Stop();
                     TimeSpan ts = stopWatch.Elapsed;
                     string elapsedTime = String.Format("{0:00}:{1:00}", ts.Minutes, ts.Seconds);
-                    MessageBox.Show(elapsedTime);
+                    MessageBox.Show($"Обработка счетов завершена успешно за {elapsedTime}", "Сообщение", MessageBoxButtons.OK, MessageBoxIcon.Information);
+
                 }
             }
         }
@@ -132,8 +136,8 @@ namespace WindowsFormsApp1
                 {
                     parser.ProductItemProcessor(dlg.FileName);
                 });
-            }
 
+            }
         }
 
 
@@ -211,7 +215,7 @@ namespace WindowsFormsApp1
             Process.Start(@"C:\элком_бланки\Blanks.xltm");
         }
 
-        private void buttFilterSrch_Click(object sender, EventArgs e)
+        private void buttFilterSrchItems_Click(object sender, EventArgs e)
         {
 
             double PriceSmaller = default;
@@ -236,7 +240,9 @@ namespace WindowsFormsApp1
                 {
                     var data = (from d in db.ProductItems
                                 where d.Price > PriceMore &&
-                                d.Price < PriceSmaller
+                                d.Price < PriceSmaller &&
+                                d.Date == monthCalendar1.TodayDate
+                                orderby d.Date descending
                                 select d);
                     dataGridView1.DataSource = data.ToList();
                 }
@@ -248,6 +254,7 @@ namespace WindowsFormsApp1
                                 d.Price < PriceSmaller &&
                                 monthCalendar1.SelectionStart <= d.Date &&
                                 monthCalendar1.SelectionEnd >= d.Date
+                                orderby d.Date descending
                                 select d);
                     dataGridView1.DataSource = data.ToList();
                 }
@@ -258,6 +265,7 @@ namespace WindowsFormsApp1
                                 where d.Price > PriceMore &&
                                 d.Price < PriceSmaller &&
                                 d.PartNumber.Contains(PartNumber)
+                                orderby d.Date descending
                                 select d);
                     dataGridView1.DataSource = data.ToList();
                 }
@@ -270,6 +278,7 @@ namespace WindowsFormsApp1
                                 d.PartNumber.Contains(PartNumber) &&
                                 monthCalendar1.SelectionStart <= d.Date &&
                                 monthCalendar1.SelectionEnd >= d.Date
+                                orderby d.Date descending
                                 select d);
                     dataGridView1.DataSource = data.ToList();
                 }
@@ -282,6 +291,7 @@ namespace WindowsFormsApp1
                                 d.Price < PriceSmaller &&
                                 d.PartNumber.Contains(PartNumber) &&
                                 d.Customer.Contains(Customer)
+                                orderby d.Date descending
                                 select d);
                     dataGridView1.DataSource = data.ToList();
                 }
@@ -296,6 +306,7 @@ namespace WindowsFormsApp1
                                 d.Customer.Contains(Customer) &&
                                 monthCalendar1.SelectionStart <= d.Date &&
                                 monthCalendar1.SelectionEnd >= d.Date
+                                orderby d.Date descending
                                 select d);
                     dataGridView1.DataSource = data.ToList();
                 }
@@ -308,8 +319,8 @@ namespace WindowsFormsApp1
 
                                 d.PartNumber.Contains(PartNumber) &&
                                 d.Customer.Contains(Customer) &&
-                                d.Acct == Invoice
-
+                                d.Acct.Contains(Invoice)
+                                orderby d.Date descending
                                 select d);
                     dataGridView1.DataSource = data.ToList();
                 }
@@ -321,7 +332,7 @@ namespace WindowsFormsApp1
                                 d.Price < PriceSmaller &&
 
                                 d.Customer.Contains(Customer)
-
+                                orderby d.Date descending
                                 select d);
                     dataGridView1.DataSource = data.ToList();
                 }
@@ -335,7 +346,7 @@ namespace WindowsFormsApp1
                                 d.Customer.Contains(Customer) &&
                                 monthCalendar1.SelectionStart <= d.Date &&
                                 monthCalendar1.SelectionEnd >= d.Date
-
+                                orderby d.Date descending
                                 select d);
                     dataGridView1.DataSource = data.ToList();
                 }
@@ -347,8 +358,8 @@ namespace WindowsFormsApp1
                                 d.Price < PriceSmaller &&
 
                                 d.Customer.Contains(Customer) &&
-                                d.Acct == Invoice
-
+                                d.Acct.Contains(Invoice)
+                                orderby d.Date descending
                                 select d);
                     dataGridView1.DataSource = data.ToList();
                 }
@@ -360,8 +371,8 @@ namespace WindowsFormsApp1
                                 d.Price < PriceSmaller &&
 
                                 d.PartNumber.Contains(PartNumber) &&
-                                d.Acct == Invoice
-
+                                d.Acct.Contains(Invoice)
+                                orderby d.Date descending
                                 select d);
                     dataGridView1.DataSource = data.ToList();
 
@@ -373,8 +384,8 @@ namespace WindowsFormsApp1
                                 where d.Price > PriceMore &&
                                 d.Price < PriceSmaller &&
 
-                                d.Acct == Invoice
-
+                                d.Acct.Contains(Invoice)
+                                orderby d.Date descending
                                 select d);
                     dataGridView1.DataSource = data.ToList();
                 }
@@ -430,7 +441,9 @@ namespace WindowsFormsApp1
                 {
                     var data = (from d in db.Invoices.Include(a => a.Customer)
                                 where d.Sum > SumMore &&
-                                d.Sum < SumSmaller
+                                d.Sum < SumSmaller &&
+                                d.Date == monthCalendar2.TodayDate
+                                orderby d.Date descending
                                 select d);
                     dataGridView2.DataSource = data.ToList().Select(a => new InvoicesAndCustomer
                     {
@@ -453,6 +466,7 @@ namespace WindowsFormsApp1
                                 d.Sum < SumSmaller &&
                                 monthCalendar2.SelectionStart <= d.Date &&
                                 monthCalendar2.SelectionEnd >= d.Date
+                                orderby d.Date descending
                                 select d);
                     dataGridView2.DataSource = data.ToList().Select(a => new InvoicesAndCustomer
                     {
@@ -472,6 +486,7 @@ namespace WindowsFormsApp1
                                 where d.Sum > SumMore &&
                                 d.Sum < SumSmaller &&
                                 d.Type.Contains(type)
+                                orderby d.Date descending
                                 select d);
                     dataGridView2.DataSource = data.ToList().Select(a => new InvoicesAndCustomer
                     {
@@ -493,6 +508,7 @@ namespace WindowsFormsApp1
                                 d.Type.Contains(type) &&
                                 monthCalendar2.SelectionStart <= d.Date &&
                                 monthCalendar2.SelectionEnd >= d.Date
+                                orderby d.Date descending
                                 select d);
                     dataGridView2.DataSource = data.ToList().Select(a => new InvoicesAndCustomer
                     {
@@ -514,6 +530,7 @@ namespace WindowsFormsApp1
                                 d.Sum < SumSmaller &&
                                 d.Type.Contains(type) &&
                                 d.Customer.CompanyName.Contains(Customer)
+                                orderby d.Date descending
                                 select d);
                     dataGridView2.DataSource = data.ToList().Select(a => new InvoicesAndCustomer
                     {
@@ -537,6 +554,7 @@ namespace WindowsFormsApp1
                                 d.Customer.CompanyName.Contains(Customer) &&
                                 monthCalendar2.SelectionStart <= d.Date &&
                                 monthCalendar2.SelectionEnd >= d.Date
+                                orderby d.Date descending
                                 select d);
                     dataGridView2.DataSource = data.ToList().Select(a => new InvoicesAndCustomer
                     {
@@ -558,8 +576,8 @@ namespace WindowsFormsApp1
 
                                 d.Type.Contains(type) &&
                                 d.Customer.CompanyName.Contains(Customer) &&
-                                d.Acct == Invoice
-
+                                d.Acct.Contains(Invoice)
+                                orderby d.Date descending
                                 select d);
                     dataGridView2.DataSource = data.ToList().Select(a => new InvoicesAndCustomer
                     {
@@ -580,7 +598,7 @@ namespace WindowsFormsApp1
                                 d.Sum < SumSmaller &&
 
                                 d.Customer.CompanyName.Contains(Customer)
-
+                                orderby d.Date descending
                                 select d);
                     dataGridView2.DataSource = data.ToList().Select(a => new InvoicesAndCustomer
                     {
@@ -603,7 +621,7 @@ namespace WindowsFormsApp1
                                 d.Customer.CompanyName.Contains(Customer) &&
                                 monthCalendar1.SelectionStart <= d.Date &&
                                 monthCalendar1.SelectionEnd >= d.Date
-
+                                orderby d.Date descending
                                 select d);
                     dataGridView2.DataSource = data.ToList().Select(a => new InvoicesAndCustomer
                     {
@@ -624,8 +642,8 @@ namespace WindowsFormsApp1
                                 d.Sum < SumSmaller &&
 
                                 d.Customer.CompanyName.Contains(Customer) &&
-                                d.Acct == Invoice
-
+                                d.Acct.Contains(Invoice)
+                                orderby d.Date descending
                                 select d);
                     dataGridView2.DataSource = data.ToList().Select(a => new InvoicesAndCustomer
                     {
@@ -646,8 +664,8 @@ namespace WindowsFormsApp1
                                 d.Sum < SumSmaller &&
 
                                 d.Type.Contains(type) &&
-                                d.Acct == Invoice
-
+                                d.Acct.Contains(Invoice)
+                                orderby d.Date descending
                                 select d);
                     dataGridView2.DataSource = data.ToList().Select(a => new InvoicesAndCustomer
                     {
@@ -667,8 +685,8 @@ namespace WindowsFormsApp1
                                 where d.Sum > SumMore &&
                                 d.Sum < SumSmaller &&
 
-                                d.Acct == Invoice
-
+                                d.Acct.Contains(Invoice)
+                                orderby d.Date descending
                                 select d);
                     dataGridView2.DataSource = data.ToList().Select(a => new InvoicesAndCustomer
                     {
@@ -681,8 +699,9 @@ namespace WindowsFormsApp1
                         Inn = a.Customer.Inn
                     }).ToList();
                 }
-
             }
+
+
 
         }
 
@@ -698,6 +717,7 @@ namespace WindowsFormsApp1
                 {
                     var data = (from d in db.Customers
                                 where d.Inn.Contains(inn)
+                                orderby d.CompanyName descending
                                 select d);
                     dataGridView3.DataSource = data.ToList();
                 }
@@ -706,6 +726,7 @@ namespace WindowsFormsApp1
                 {
                     var data = (from d in db.Customers
                                 where d.CompanyName.Contains(customerName)
+                                orderby d.CompanyName descending
                                 select d);
                     dataGridView3.DataSource = data.ToList();
                 }
@@ -713,6 +734,7 @@ namespace WindowsFormsApp1
                 {
                     var data = (from d in db.Customers
                                 where d.Adress.Contains(adress)
+                                orderby d.CompanyName descending
                                 select d);
                     dataGridView3.DataSource = data.ToList();
                 }
@@ -726,6 +748,7 @@ namespace WindowsFormsApp1
                     var data = (from d in db.Customers
                                 where d.Inn.Contains(inn) &&
                                 d.CompanyName.Contains(customerName)
+                                orderby d.CompanyName descending
                                 select d);
                     dataGridView3.DataSource = data.ToList();
                 }
@@ -735,6 +758,7 @@ namespace WindowsFormsApp1
                                 where d.Inn.Contains(inn) &&
                                 d.CompanyName.Contains(customerName) &&
                                 d.Adress.Contains(adress)
+                                orderby d.CompanyName descending
                                 select d);
                     dataGridView3.DataSource = data.ToList();
                 }
@@ -743,6 +767,7 @@ namespace WindowsFormsApp1
                     var data = (from d in db.Customers
                                 where d.Inn.Contains(inn) &&
                                 d.Adress.Contains(adress)
+                                orderby d.CompanyName descending
                                 select d);
                     dataGridView3.DataSource = data.ToList();
                 }
@@ -751,6 +776,7 @@ namespace WindowsFormsApp1
                     var data = (from d in db.Customers
                                 where d.CompanyName.Contains(customerName) &&
                                 d.Adress.Contains(adress)
+                                orderby d.CompanyName descending
                                 select d);
                     dataGridView3.DataSource = data.ToList();
                 }
@@ -779,7 +805,7 @@ namespace WindowsFormsApp1
                         else
                             wsh.Cells[i + 1, j + 1] = dataGridView2[j, i].Value.ToString();
                     }
-                    sum += Convert.ToDouble(dataGridView2[2, i].Value);
+                    sum += Convert.ToDouble(dataGridView2[1, i].Value);
                 }
                 wsh.Cells[dataGridView2.Rows.Count + 1, 1] = $"Количество счетов {dataGridView2.Rows.Count}, на сумму {sum}";
                 exApp.Visible = true;
@@ -1192,6 +1218,42 @@ namespace WindowsFormsApp1
             BinSpecKZtextBox.Text = "";
             BankSpecKZtextBox.Text = "";
             BikSpecKZtextBox.Text = "";
+        }
+
+        private void toolStripButtonGenerate_Click(object sender, EventArgs e)
+        {
+            using (ProductItemContext db = new ProductItemContext())
+            {
+                SeriesCollection series = new SeriesCollection();
+                ChartValues<double> zp = new ChartValues<double>();
+                List<string> date = new List<string>();
+                var data = (from d in db.Invoices
+                            where d.Date>monthCalendar3.SelectionStart&&
+                            d.Date<monthCalendar3.SelectionEnd
+                            select d
+                            ).ToList();
+                
+
+
+                foreach (var item in data)
+                {
+                    
+                        zp.Add(item.Sum);
+                        date.Add(item.Date.ToString());
+                }
+                cartesianChart1.AxisX.Clear();
+                cartesianChart1.AxisX.Add(new Axis
+                {
+                    Title = "Дата",
+                    Labels = date
+                });
+                LineSeries line = new LineSeries();
+                line.Title = "";
+                line.Values = zp;
+
+                series.Add(line);
+                cartesianChart1.Series = series;
+            }
         }
     }
 }

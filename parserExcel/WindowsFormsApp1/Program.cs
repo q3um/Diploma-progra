@@ -3,9 +3,9 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
 using System.Windows.Forms;
-using WindowsFormsApp1;
+using ParserAndForms;
 
-namespace WindowsFormsApp1
+namespace ParserAndForms
 {
     static class Program
     {
