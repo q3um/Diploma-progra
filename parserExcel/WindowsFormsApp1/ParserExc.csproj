@@ -155,6 +155,7 @@
     <Compile Include="GridRow.cs" />
     <Compile Include="Invoice.cs" />
     <Compile Include="InvoicesAndCustomer.cs" />
+    <Compile Include="PresentDateCount.cs" />
     <Compile Include="ProductItemContext.cs" />
     <Compile Include="Parser.cs" />
     <Compile Include="ParserInvoice.cs" />

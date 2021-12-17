@@ -13,20 +13,25 @@ using System.Data.Entity;
 using LiveCharts;
 using LiveCharts.Wpf;
 using LiveCharts.WinForms;
+using WindowsFormsApp1;
 
 namespace ParserAndForms
 {
     public partial class Form1 : Form
     {
         Parser parser = new Parser();
-
+        public MonthCalendar GetMonthCalendar()
+        {
+            return monthCalendar3;
+        }
 
         public Form1()
         {
             InitializeComponent();
-
+            DateTime today = DateTime.Today;
+            DateTime before = today.AddDays(-10);
+            monthCalendar3.SetSelectionRange(before, today);
         }
-
 
         private void buttExport_Click(object sender, EventArgs e)
         {
@@ -103,7 +108,7 @@ namespace ParserAndForms
                     //}
                     //Task.WaitAll(tasks.ToArray());
 
-                    Parallel.ForEach(fileList, new ParallelOptions { MaxDegreeOfParallelism = 8 }, filename =>
+                    Parallel.ForEach(fileList, new ParallelOptions { MaxDegreeOfParallelism = 16 }, filename =>
                     {
                         if (filename.Contains("~$"))
                         {
@@ -264,7 +269,7 @@ namespace ParserAndForms
                     var data = (from d in db.ProductItems
                                 where d.Price > PriceMore &&
                                 d.Price < PriceSmaller &&
-                                d.PartNumber.Contains(PartNumber)
+                                d.PartNumber.ToUpper().Contains(PartNumber.ToUpper())
                                 orderby d.Date descending
                                 select d);
                     dataGridView1.DataSource = data.ToList();
@@ -275,7 +280,7 @@ namespace ParserAndForms
                     var data = (from d in db.ProductItems
                                 where d.Price > PriceMore &&
                                 d.Price < PriceSmaller &&
-                                d.PartNumber.Contains(PartNumber) &&
+                                d.PartNumber.ToUpper().Contains(PartNumber.ToUpper()) &&
                                 monthCalendar1.SelectionStart <= d.Date &&
                                 monthCalendar1.SelectionEnd >= d.Date
                                 orderby d.Date descending
@@ -289,8 +294,8 @@ namespace ParserAndForms
                     var data = (from d in db.ProductItems
                                 where d.Price > PriceMore &&
                                 d.Price < PriceSmaller &&
-                                d.PartNumber.Contains(PartNumber) &&
-                                d.Customer.Contains(Customer)
+                                d.PartNumber.ToUpper().Contains(PartNumber.ToUpper()) &&
+                                d.Customer.ToUpper().Contains(Customer.ToUpper())
                                 orderby d.Date descending
                                 select d);
                     dataGridView1.DataSource = data.ToList();
@@ -302,8 +307,8 @@ namespace ParserAndForms
                     var data = (from d in db.ProductItems
                                 where d.Price > PriceMore &&
                                 d.Price < PriceSmaller &&
-                                d.PartNumber.Contains(PartNumber) &&
-                                d.Customer.Contains(Customer) &&
+                                d.PartNumber.ToUpper().Contains(PartNumber.ToUpper()) &&
+                                d.Customer.ToUpper().Contains(Customer.ToUpper()) &&
                                 monthCalendar1.SelectionStart <= d.Date &&
                                 monthCalendar1.SelectionEnd >= d.Date
                                 orderby d.Date descending
@@ -317,8 +322,8 @@ namespace ParserAndForms
                                 where d.Price > PriceMore &&
                                 d.Price < PriceSmaller &&
 
-                                d.PartNumber.Contains(PartNumber) &&
-                                d.Customer.Contains(Customer) &&
+                                d.PartNumber.ToUpper().Contains(PartNumber.ToUpper()) &&
+                                d.Customer.ToUpper().Contains(Customer.ToUpper()) &&
                                 d.Acct.Contains(Invoice)
                                 orderby d.Date descending
                                 select d);
@@ -331,7 +336,7 @@ namespace ParserAndForms
                                 where d.Price > PriceMore &&
                                 d.Price < PriceSmaller &&
 
-                                d.Customer.Contains(Customer)
+                                d.Customer.ToUpper().Contains(Customer.ToUpper())
                                 orderby d.Date descending
                                 select d);
                     dataGridView1.DataSource = data.ToList();
@@ -343,7 +348,7 @@ namespace ParserAndForms
                                 where d.Price > PriceMore &&
                                 d.Price < PriceSmaller &&
 
-                                d.Customer.Contains(Customer) &&
+                                d.Customer.ToUpper().Contains(Customer.ToUpper()) &&
                                 monthCalendar1.SelectionStart <= d.Date &&
                                 monthCalendar1.SelectionEnd >= d.Date
                                 orderby d.Date descending
@@ -357,7 +362,7 @@ namespace ParserAndForms
                                 where d.Price > PriceMore &&
                                 d.Price < PriceSmaller &&
 
-                                d.Customer.Contains(Customer) &&
+                                d.Customer.ToUpper().Contains(Customer.ToUpper()) &&
                                 d.Acct.Contains(Invoice)
                                 orderby d.Date descending
                                 select d);
@@ -370,7 +375,7 @@ namespace ParserAndForms
                                 where d.Price > PriceMore &&
                                 d.Price < PriceSmaller &&
 
-                                d.PartNumber.Contains(PartNumber) &&
+                                d.PartNumber.ToUpper().Contains(PartNumber.ToUpper()) &&
                                 d.Acct.Contains(Invoice)
                                 orderby d.Date descending
                                 select d);
@@ -529,7 +534,7 @@ namespace ParserAndForms
                                 where d.Sum > SumMore &&
                                 d.Sum < SumSmaller &&
                                 d.Type.Contains(type) &&
-                                d.Customer.CompanyName.Contains(Customer)
+                                d.Customer.CompanyName.ToUpper().Contains(Customer.ToUpper())
                                 orderby d.Date descending
                                 select d);
                     dataGridView2.DataSource = data.ToList().Select(a => new InvoicesAndCustomer
@@ -551,7 +556,7 @@ namespace ParserAndForms
                                 where d.Sum > SumMore &&
                                 d.Sum < SumSmaller &&
                                 d.Type.Contains(type) &&
-                                d.Customer.CompanyName.Contains(Customer) &&
+                                d.Customer.CompanyName.ToUpper().Contains(Customer.ToUpper()) &&
                                 monthCalendar2.SelectionStart <= d.Date &&
                                 monthCalendar2.SelectionEnd >= d.Date
                                 orderby d.Date descending
@@ -575,7 +580,7 @@ namespace ParserAndForms
                                 d.Sum < SumSmaller &&
 
                                 d.Type.Contains(type) &&
-                                d.Customer.CompanyName.Contains(Customer) &&
+                                d.Customer.CompanyName.ToUpper().Contains(Customer.ToUpper()) &&
                                 d.Acct.Contains(Invoice)
                                 orderby d.Date descending
                                 select d);
@@ -597,7 +602,7 @@ namespace ParserAndForms
                                 where d.Sum > SumMore &&
                                 d.Sum < SumSmaller &&
 
-                                d.Customer.CompanyName.Contains(Customer)
+                                d.Customer.CompanyName.ToUpper().Contains(Customer.ToUpper())
                                 orderby d.Date descending
                                 select d);
                     dataGridView2.DataSource = data.ToList().Select(a => new InvoicesAndCustomer
@@ -618,7 +623,7 @@ namespace ParserAndForms
                                 where d.Sum > SumMore &&
                                 d.Sum < SumSmaller &&
 
-                                d.Customer.CompanyName.Contains(Customer) &&
+                                d.Customer.CompanyName.ToUpper().Contains(Customer.ToUpper()) &&
                                 monthCalendar1.SelectionStart <= d.Date &&
                                 monthCalendar1.SelectionEnd >= d.Date
                                 orderby d.Date descending
@@ -641,7 +646,7 @@ namespace ParserAndForms
                                 where d.Sum > SumMore &&
                                 d.Sum < SumSmaller &&
 
-                                d.Customer.CompanyName.Contains(Customer) &&
+                                d.Customer.CompanyName.ToUpper().Contains(Customer.ToUpper()) &&
                                 d.Acct.Contains(Invoice)
                                 orderby d.Date descending
                                 select d);
@@ -725,7 +730,7 @@ namespace ParserAndForms
                 if (FilterCustomerName.Text.IsNotNullOrEmpty() && FilterCustomerINN.Text.IsNullOrEmpty() && FilterCustomerAdress.Text.IsNullOrEmpty())
                 {
                     var data = (from d in db.Customers
-                                where d.CompanyName.Contains(customerName)
+                                where d.CompanyName.ToUpper().Contains(customerName.ToUpper())
                                 orderby d.CompanyName descending
                                 select d);
                     dataGridView3.DataSource = data.ToList();
@@ -733,7 +738,7 @@ namespace ParserAndForms
                 if (FilterCustomerName.Text.IsNullOrEmpty() && FilterCustomerINN.Text.IsNullOrEmpty() && FilterCustomerAdress.Text.IsNotNullOrEmpty())
                 {
                     var data = (from d in db.Customers
-                                where d.Adress.Contains(adress)
+                                where d.Adress.ToUpper().Contains(adress.ToUpper())
                                 orderby d.CompanyName descending
                                 select d);
                     dataGridView3.DataSource = data.ToList();
@@ -747,7 +752,7 @@ namespace ParserAndForms
                 {
                     var data = (from d in db.Customers
                                 where d.Inn.Contains(inn) &&
-                                d.CompanyName.Contains(customerName)
+                                d.CompanyName.ToUpper().Contains(customerName.ToUpper())
                                 orderby d.CompanyName descending
                                 select d);
                     dataGridView3.DataSource = data.ToList();
@@ -756,8 +761,8 @@ namespace ParserAndForms
                 {
                     var data = (from d in db.Customers
                                 where d.Inn.Contains(inn) &&
-                                d.CompanyName.Contains(customerName) &&
-                                d.Adress.Contains(adress)
+                                d.CompanyName.ToUpper().Contains(customerName.ToUpper()) &&
+                                d.Adress.ToUpper().Contains(adress.ToUpper())
                                 orderby d.CompanyName descending
                                 select d);
                     dataGridView3.DataSource = data.ToList();
@@ -766,7 +771,7 @@ namespace ParserAndForms
                 {
                     var data = (from d in db.Customers
                                 where d.Inn.Contains(inn) &&
-                                d.Adress.Contains(adress)
+                                d.Adress.ToUpper().Contains(adress.ToUpper())
                                 orderby d.CompanyName descending
                                 select d);
                     dataGridView3.DataSource = data.ToList();
@@ -774,8 +779,8 @@ namespace ParserAndForms
                 if (FilterCustomerName.Text.IsNotNullOrEmpty() && FilterCustomerINN.Text.IsNullOrEmpty() && FilterCustomerAdress.Text.IsNotNullOrEmpty())
                 {
                     var data = (from d in db.Customers
-                                where d.CompanyName.Contains(customerName) &&
-                                d.Adress.Contains(adress)
+                                where d.CompanyName.ToUpper().Contains(customerName.ToUpper()) &&
+                                d.Adress.ToUpper().Contains(adress.ToUpper())
                                 orderby d.CompanyName descending
                                 select d);
                     dataGridView3.DataSource = data.ToList();
@@ -1222,24 +1227,54 @@ namespace ParserAndForms
 
         private void toolStripButtonGenerate_Click(object sender, EventArgs e)
         {
+
             using (ProductItemContext db = new ProductItemContext())
             {
                 SeriesCollection series = new SeriesCollection();
-                ChartValues<double> zp = new ChartValues<double>();
+                SeriesCollection series2 = new SeriesCollection();
+                ChartValues<double> CountAcct = new ChartValues<double>();
+                ChartValues<double> countSum = new ChartValues<double>();
                 List<string> date = new List<string>();
+                List<PresentDateCount> pdc = new List<PresentDateCount>();
                 var data = (from d in db.Invoices
-                            where d.Date>monthCalendar3.SelectionStart&&
-                            d.Date<monthCalendar3.SelectionEnd
+                            where d.Date >= monthCalendar3.SelectionStart &&
+                            d.Date <= monthCalendar3.SelectionEnd
                             select d
                             ).ToList();
-                
 
-
-                foreach (var item in data)
+                data.Sort((x, y) => x.Date.CompareTo(y.Date));
+                int countAcct = 0;
+                double Sum = 0;
+                for (int i = 1; i < data.Count; i++)
                 {
-                    
-                        zp.Add(item.Sum);
-                        date.Add(item.Date.ToString());
+                    if (i == 1)
+                    {
+                        countAcct++;
+                        Sum += (int)data[i].Sum;
+                    }
+                    else if (data[i].Date == data[i - 1].Date)
+                    {
+                        countAcct++;
+                        Sum += data[i].Sum;
+                    }
+                    if (data[i].Date != data[i - 1].Date)
+                    {
+                        PresentDateCount dateCount = new PresentDateCount();
+                        dateCount.Count = countAcct;
+                        dateCount.Sum = Sum;
+                        dateCount.Date = data[i - 1].Date;
+                        pdc.Add(dateCount);
+                        countAcct = 1;
+                        Sum = data[i].Sum;
+                    }
+                }
+
+                foreach (var item in pdc)
+                {
+
+                    CountAcct.Add(item.Count);
+                    countSum.Add(item.Sum);
+                    date.Add(item.Date.ToString());
                 }
                 cartesianChart1.AxisX.Clear();
                 cartesianChart1.AxisX.Add(new Axis
@@ -1247,12 +1282,176 @@ namespace ParserAndForms
                     Title = "Дата",
                     Labels = date
                 });
+                cartesianChart2.AxisX.Clear();
+                cartesianChart2.AxisX.Add(new Axis
+                {
+                    Title = "Дата",
+                    Labels = date
+                });
                 LineSeries line = new LineSeries();
-                line.Title = "";
-                line.Values = zp;
-
+                line.Title = "Количество счетов";
+                line.Values = CountAcct;
+                LineSeries line2 = new LineSeries();
+                line2.Title = "Сумма";
+                line2.Values = countSum;
                 series.Add(line);
+                series2.Add(line2);
                 cartesianChart1.Series = series;
+                cartesianChart2.Series = series2;
+            }
+        }
+
+
+
+
+
+        private void Form1_Load(object sender, EventArgs e)
+        {
+            using (ProductItemContext db = new ProductItemContext())
+            {
+                SeriesCollection series = new SeriesCollection();
+                SeriesCollection series2 = new SeriesCollection();
+                ChartValues<double> CountAcct = new ChartValues<double>();
+                ChartValues<double> countSum = new ChartValues<double>();
+                List<string> date = new List<string>();
+                List<PresentDateCount> pdc = new List<PresentDateCount>();
+                var data = (from d in db.Invoices
+                            where d.Date >= monthCalendar3.SelectionStart &&
+                            d.Date <= monthCalendar3.SelectionEnd
+                            select d
+                            ).ToList();
+
+                data.Sort((x, y) => x.Date.CompareTo(y.Date));
+                int countAcct = 0;
+                double Sum = 0;
+                for (int i = 1; i < data.Count; i++)
+                {
+                    if (i == 1)
+                    {
+                        countAcct++;
+                        Sum += (int)data[i].Sum;
+                    }
+                    else if (data[i].Date == data[i - 1].Date)
+                    {
+                        countAcct++;
+                        Sum += data[i].Sum;
+                    }
+                    if (data[i].Date != data[i - 1].Date)
+                    {
+                        PresentDateCount dateCount = new PresentDateCount();
+                        dateCount.Count = countAcct;
+                        dateCount.Sum = Sum;
+                        dateCount.Date = data[i - 1].Date;
+                        pdc.Add(dateCount);
+                        countAcct = 1;
+                        Sum = data[i].Sum;
+                    }
+                }
+
+                foreach (var item in pdc)
+                {
+
+                    CountAcct.Add(item.Count);
+                    countSum.Add(item.Sum);
+                    date.Add(item.Date.ToString());
+                }
+                cartesianChart1.AxisX.Clear();
+                cartesianChart1.AxisX.Add(new Axis
+                {
+                    Title = "Дата",
+                    Labels = date
+                });
+                cartesianChart2.AxisX.Clear();
+                cartesianChart2.AxisX.Add(new Axis
+                {
+                    Title = "Дата",
+                    Labels = date
+                });
+                LineSeries line = new LineSeries();
+                line.Title = "Количество счетов";
+                line.Values = CountAcct;
+                LineSeries line2 = new LineSeries();
+                line2.Title = "Сумма";
+                line2.Values = countSum;
+                series.Add(line);
+                series2.Add(line2);
+                cartesianChart1.Series = series;
+                cartesianChart2.Series = series2;
+            }
+        }
+
+        private void butChartGenerate_Click(object sender, EventArgs e)
+        {
+            using (ProductItemContext db = new ProductItemContext())
+            {
+                SeriesCollection series = new SeriesCollection();
+                SeriesCollection series2 = new SeriesCollection();
+                ChartValues<double> CountAcct = new ChartValues<double>();
+                ChartValues<double> countSum = new ChartValues<double>();
+                List<string> date = new List<string>();
+                List<PresentDateCount> pdc = new List<PresentDateCount>();
+                var data = (from d in db.Invoices
+                            where d.Date >= monthCalendar3.SelectionStart &&
+                            d.Date <= monthCalendar3.SelectionEnd
+                            select d
+                            ).ToList();
+
+                data.Sort((x, y) => x.Date.CompareTo(y.Date));
+                int countAcct = 0;
+                double Sum = 0;
+                for (int i = 1; i < data.Count; i++)
+                {
+                    if (i == 1)
+                    {
+                        countAcct++;
+                        Sum += (int)data[i].Sum;
+                    }
+                    else if (data[i].Date == data[i - 1].Date)
+                    {
+                        countAcct++;
+                        Sum += data[i].Sum;
+                    }
+                    if (data[i].Date != data[i - 1].Date)
+                    {
+                        PresentDateCount dateCount = new PresentDateCount();
+                        dateCount.Count = countAcct;
+                        dateCount.Sum = Sum;
+                        dateCount.Date = data[i - 1].Date;
+                        pdc.Add(dateCount);
+                        countAcct = 1;
+                        Sum = data[i].Sum;
+                    }
+                }
+
+                foreach (var item in pdc)
+                {
+
+                    CountAcct.Add(item.Count);
+                    countSum.Add(item.Sum);
+                    date.Add(item.Date.ToString());
+                }
+                cartesianChart1.AxisX.Clear();
+                cartesianChart1.AxisX.Add(new Axis
+                {
+                    Title = "Дата",
+                    Labels = date
+                });
+                cartesianChart2.AxisX.Clear();
+                cartesianChart2.AxisX.Add(new Axis
+                {
+                    Title = "Дата",
+                    Labels = date
+                });
+                LineSeries line = new LineSeries();
+                line.Title = "Количество счетов";
+                line.Values = CountAcct;
+                LineSeries line2 = new LineSeries();
+                line2.Title = "Сумма";
+                line2.Values = countSum;
+                series.Add(line);
+                series2.Add(line2);
+                cartesianChart1.Series = series;
+                cartesianChart2.Series = series2;
             }
         }
     }

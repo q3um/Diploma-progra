@@ -31,6 +31,14 @@ namespace ParserAndForms
         {
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(Form1));
             this.tabControl1 = new System.Windows.Forms.TabControl();
+            this.Chart = new System.Windows.Forms.TabPage();
+            this.tableLayoutPanel5 = new System.Windows.Forms.TableLayoutPanel();
+            this.label63 = new System.Windows.Forms.Label();
+            this.label64 = new System.Windows.Forms.Label();
+            this.cartesianChart2 = new LiveCharts.WinForms.CartesianChart();
+            this.cartesianChart1 = new LiveCharts.WinForms.CartesianChart();
+            this.butChartGenerate = new System.Windows.Forms.Button();
+            this.monthCalendar3 = new System.Windows.Forms.MonthCalendar();
             this.tabFiltersItems = new System.Windows.Forms.TabPage();
             this.panel1 = new System.Windows.Forms.Panel();
             this.monthCalendar1 = new System.Windows.Forms.MonthCalendar();
@@ -197,16 +205,13 @@ namespace ParserAndForms
             this.buttClearFormSpecKZ = new System.Windows.Forms.Button();
             this.buttSpecKZ60 = new System.Windows.Forms.Button();
             this.buttSpecKZ100 = new System.Windows.Forms.Button();
-            this.tabPage1 = new System.Windows.Forms.TabPage();
-            this.monthCalendar3 = new System.Windows.Forms.MonthCalendar();
-            this.cartesianChart1 = new LiveCharts.WinForms.CartesianChart();
-            this.toolStrip1 = new System.Windows.Forms.ToolStrip();
-            this.toolStripButtonGenerate = new System.Windows.Forms.ToolStripButton();
             this.buttInvoice = new System.Windows.Forms.Button();
             this.buttExit = new System.Windows.Forms.Button();
             this.dataGridViewComboBoxColumn1 = new System.Windows.Forms.DataGridViewComboBoxColumn();
             this.dataGridViewComboBoxColumn2 = new System.Windows.Forms.DataGridViewComboBoxColumn();
             this.tabControl1.SuspendLayout();
+            this.Chart.SuspendLayout();
+            this.tableLayoutPanel5.SuspendLayout();
             this.tabFiltersItems.SuspendLayout();
             this.panel1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).BeginInit();
@@ -228,8 +233,6 @@ namespace ParserAndForms
             this.tabSpecKZ.SuspendLayout();
             this.tableLayoutPanel4.SuspendLayout();
             this.groupBox4.SuspendLayout();
-            this.tabPage1.SuspendLayout();
-            this.toolStrip1.SuspendLayout();
             this.SuspendLayout();
             // 
             // tabControl1
@@ -237,6 +240,7 @@ namespace ParserAndForms
             this.tabControl1.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
             | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
+            this.tabControl1.Controls.Add(this.Chart);
             this.tabControl1.Controls.Add(this.tabFiltersItems);
             this.tabControl1.Controls.Add(this.tabFiltersInvoices);
             this.tabControl1.Controls.Add(this.tabCustomer);
@@ -244,7 +248,6 @@ namespace ParserAndForms
             this.tabControl1.Controls.Add(this.tabSpecRF);
             this.tabControl1.Controls.Add(this.tabContractKZ);
             this.tabControl1.Controls.Add(this.tabSpecKZ);
-            this.tabControl1.Controls.Add(this.tabPage1);
             this.tabControl1.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F);
             this.tabControl1.ItemSize = new System.Drawing.Size(139, 40);
             this.tabControl1.Location = new System.Drawing.Point(13, 7);
@@ -253,6 +256,103 @@ namespace ParserAndForms
             this.tabControl1.SelectedIndex = 0;
             this.tabControl1.Size = new System.Drawing.Size(1257, 710);
             this.tabControl1.TabIndex = 0;
+            // 
+            // Chart
+            // 
+            this.Chart.Controls.Add(this.tableLayoutPanel5);
+            this.Chart.Location = new System.Drawing.Point(4, 44);
+            this.Chart.Name = "Chart";
+            this.Chart.Size = new System.Drawing.Size(1249, 662);
+            this.Chart.TabIndex = 8;
+            this.Chart.Text = "График";
+            this.Chart.UseVisualStyleBackColor = true;
+            // 
+            // tableLayoutPanel5
+            // 
+            this.tableLayoutPanel5.ColumnCount = 2;
+            this.tableLayoutPanel5.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 207F));
+            this.tableLayoutPanel5.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle());
+            this.tableLayoutPanel5.Controls.Add(this.label63, 1, 2);
+            this.tableLayoutPanel5.Controls.Add(this.label64, 1, 0);
+            this.tableLayoutPanel5.Controls.Add(this.cartesianChart2, 1, 3);
+            this.tableLayoutPanel5.Controls.Add(this.cartesianChart1, 1, 1);
+            this.tableLayoutPanel5.Controls.Add(this.butChartGenerate, 0, 2);
+            this.tableLayoutPanel5.Controls.Add(this.monthCalendar3, 0, 1);
+            this.tableLayoutPanel5.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.tableLayoutPanel5.Location = new System.Drawing.Point(0, 0);
+            this.tableLayoutPanel5.Name = "tableLayoutPanel5";
+            this.tableLayoutPanel5.RowCount = 4;
+            this.tableLayoutPanel5.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 8F));
+            this.tableLayoutPanel5.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 42F));
+            this.tableLayoutPanel5.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 8F));
+            this.tableLayoutPanel5.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 42F));
+            this.tableLayoutPanel5.Size = new System.Drawing.Size(1249, 662);
+            this.tableLayoutPanel5.TabIndex = 0;
+            // 
+            // label63
+            // 
+            this.label63.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
+            | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
+            this.label63.AutoSize = true;
+            this.label63.Location = new System.Drawing.Point(210, 330);
+            this.label63.Name = "label63";
+            this.label63.Size = new System.Drawing.Size(1118, 52);
+            this.label63.TabIndex = 12;
+            this.label63.Text = "Общая сумма заказов по дням за указанный период";
+            this.label63.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
+            // 
+            // label64
+            // 
+            this.label64.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
+            | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
+            this.label64.AutoSize = true;
+            this.label64.Location = new System.Drawing.Point(210, 0);
+            this.label64.Name = "label64";
+            this.label64.Size = new System.Drawing.Size(1118, 52);
+            this.label64.TabIndex = 11;
+            this.label64.Text = "Количество счетов по дням за указанный период";
+            this.label64.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
+            // 
+            // cartesianChart2
+            // 
+            this.cartesianChart2.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.cartesianChart2.Location = new System.Drawing.Point(210, 385);
+            this.cartesianChart2.Name = "cartesianChart2";
+            this.cartesianChart2.Size = new System.Drawing.Size(1118, 274);
+            this.cartesianChart2.TabIndex = 10;
+            this.cartesianChart2.Text = "cartesianChart2";
+            // 
+            // cartesianChart1
+            // 
+            this.cartesianChart1.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.cartesianChart1.Location = new System.Drawing.Point(210, 55);
+            this.cartesianChart1.Name = "cartesianChart1";
+            this.cartesianChart1.Size = new System.Drawing.Size(1118, 272);
+            this.cartesianChart1.TabIndex = 9;
+            this.cartesianChart1.Text = "cartesianChart1";
+            // 
+            // butChartGenerate
+            // 
+            this.butChartGenerate.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
+            this.butChartGenerate.Location = new System.Drawing.Point(10, 332);
+            this.butChartGenerate.Margin = new System.Windows.Forms.Padding(10, 2, 10, 2);
+            this.butChartGenerate.Name = "butChartGenerate";
+            this.butChartGenerate.Size = new System.Drawing.Size(187, 48);
+            this.butChartGenerate.TabIndex = 8;
+            this.butChartGenerate.Text = "Сформировать график";
+            this.butChartGenerate.UseVisualStyleBackColor = true;
+            this.butChartGenerate.Click += new System.EventHandler(this.butChartGenerate_Click);
+            // 
+            // monthCalendar3
+            // 
+            this.monthCalendar3.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
+            this.monthCalendar3.Location = new System.Drawing.Point(9, 114);
+            this.monthCalendar3.MaxSelectionCount = 365;
+            this.monthCalendar3.Name = "monthCalendar3";
+            this.monthCalendar3.TabIndex = 3;
             // 
             // tabFiltersItems
             // 
@@ -2085,57 +2185,6 @@ namespace ParserAndForms
             this.buttSpecKZ100.UseVisualStyleBackColor = true;
             this.buttSpecKZ100.Click += new System.EventHandler(this.buttSpecKZ100_Click);
             // 
-            // tabPage1
-            // 
-            this.tabPage1.Controls.Add(this.monthCalendar3);
-            this.tabPage1.Controls.Add(this.cartesianChart1);
-            this.tabPage1.Controls.Add(this.toolStrip1);
-            this.tabPage1.Location = new System.Drawing.Point(4, 44);
-            this.tabPage1.Name = "tabPage1";
-            this.tabPage1.Padding = new System.Windows.Forms.Padding(3);
-            this.tabPage1.Size = new System.Drawing.Size(1249, 662);
-            this.tabPage1.TabIndex = 7;
-            this.tabPage1.Text = "График";
-            this.tabPage1.UseVisualStyleBackColor = true;
-            // 
-            // monthCalendar3
-            // 
-            this.monthCalendar3.Location = new System.Drawing.Point(26, 65);
-            this.monthCalendar3.MaxSelectionCount = 10;
-            this.monthCalendar3.Name = "monthCalendar3";
-            this.monthCalendar3.SelectionRange = new System.Windows.Forms.SelectionRange(new System.DateTime(2021, 12, 4, 0, 0, 0, 0), new System.DateTime(2021, 12, 13, 0, 0, 0, 0));
-            this.monthCalendar3.TabIndex = 2;
-            // 
-            // cartesianChart1
-            // 
-            this.cartesianChart1.Dock = System.Windows.Forms.DockStyle.Right;
-            this.cartesianChart1.Location = new System.Drawing.Point(238, 30);
-            this.cartesianChart1.Name = "cartesianChart1";
-            this.cartesianChart1.Size = new System.Drawing.Size(1008, 629);
-            this.cartesianChart1.TabIndex = 1;
-            this.cartesianChart1.Text = "cartesianChart1";
-            // 
-            // toolStrip1
-            // 
-            this.toolStrip1.ImageScalingSize = new System.Drawing.Size(20, 20);
-            this.toolStrip1.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
-            this.toolStripButtonGenerate});
-            this.toolStrip1.Location = new System.Drawing.Point(3, 3);
-            this.toolStrip1.Name = "toolStrip1";
-            this.toolStrip1.Size = new System.Drawing.Size(1243, 27);
-            this.toolStrip1.TabIndex = 0;
-            this.toolStrip1.Text = "toolStrip1";
-            // 
-            // toolStripButtonGenerate
-            // 
-            this.toolStripButtonGenerate.DisplayStyle = System.Windows.Forms.ToolStripItemDisplayStyle.Text;
-            this.toolStripButtonGenerate.Image = ((System.Drawing.Image)(resources.GetObject("toolStripButtonGenerate.Image")));
-            this.toolStripButtonGenerate.ImageTransparentColor = System.Drawing.Color.Magenta;
-            this.toolStripButtonGenerate.Name = "toolStripButtonGenerate";
-            this.toolStripButtonGenerate.Size = new System.Drawing.Size(171, 24);
-            this.toolStripButtonGenerate.Text = "Сформировать график";
-            this.toolStripButtonGenerate.Click += new System.EventHandler(this.toolStripButtonGenerate_Click);
-            // 
             // buttInvoice
             // 
             this.buttInvoice.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left)));
@@ -2195,7 +2244,11 @@ namespace ParserAndForms
             this.MinimumSize = new System.Drawing.Size(1301, 780);
             this.Name = "Form1";
             this.Text = "Elcom";
+            this.Load += new System.EventHandler(this.Form1_Load);
             this.tabControl1.ResumeLayout(false);
+            this.Chart.ResumeLayout(false);
+            this.tableLayoutPanel5.ResumeLayout(false);
+            this.tableLayoutPanel5.PerformLayout();
             this.tabFiltersItems.ResumeLayout(false);
             this.panel1.ResumeLayout(false);
             this.panel1.PerformLayout();
@@ -2224,10 +2277,6 @@ namespace ParserAndForms
             this.tableLayoutPanel4.ResumeLayout(false);
             this.tableLayoutPanel4.PerformLayout();
             this.groupBox4.ResumeLayout(false);
-            this.tabPage1.ResumeLayout(false);
-            this.tabPage1.PerformLayout();
-            this.toolStrip1.ResumeLayout(false);
-            this.toolStrip1.PerformLayout();
             this.ResumeLayout(false);
 
         }
@@ -2413,10 +2462,13 @@ namespace ParserAndForms
         private System.Windows.Forms.Label label61;
         private System.Windows.Forms.Label label62;
         private System.Windows.Forms.TextBox ContracDatetextBox;
-        private System.Windows.Forms.TabPage tabPage1;
-        private System.Windows.Forms.ToolStrip toolStrip1;
-        private System.Windows.Forms.ToolStripButton toolStripButtonGenerate;
+        private System.Windows.Forms.TabPage Chart;
+        private System.Windows.Forms.TableLayoutPanel tableLayoutPanel5;
+        private System.Windows.Forms.Label label63;
+        private System.Windows.Forms.Label label64;
+        private LiveCharts.WinForms.CartesianChart cartesianChart2;
         private LiveCharts.WinForms.CartesianChart cartesianChart1;
+        private System.Windows.Forms.Button butChartGenerate;
         private System.Windows.Forms.MonthCalendar monthCalendar3;
     }
 }

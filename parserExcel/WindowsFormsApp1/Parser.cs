@@ -48,12 +48,7 @@ namespace ParserAndForms
                     Regex regexAcct = new Regex(RegularFormular.AcctInKpInvoice);
                     if (nameList == "НДС внутри" || nameList == "НДС сверху" || nameList == "НДС 0%")
                     {
-                        //if (excelSheet.Range["B16"].Value == null & excelSheet.Range["B5"].Value == null)
-                        //{
-                        //    excelWorkBook.Close(false, Type.Missing, Type.Missing);
-                        //    excelApp.Quit();
-                        //    return;
-                        //}
+                        
                         if (excelSheet.Range["B16"].Value.ToString().Contains("КП"))
                         {
                             int countNameInInvoice = 27;
